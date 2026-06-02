@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEDMUSEUM - Tratado Completo de Soporte Vital Básico</title>
+    <title>SCARMUSEUM - Tratado Completo de Soporte Vital Básico</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- NUEVAS FUENTES: Inter para textos limpios y Space Mono para el toque de monitor/instrumento -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body { 
@@ -49,10 +48,9 @@
 </head>
 <body class="bg-grid-medical min-h-screen selection:bg-rose-400 selection:text-black">
 
-    <!-- BARRA DE CONTROL FLOTANTE -->
     <div class="fixed top-0 left-0 w-full bg-stone-950/90 backdrop-blur-2xl border-b border-rose-950/20 z-50 px-6 py-4 flex justify-between items-center shadow-md">
         <div class="flex items-center gap-4">
-            <span class="font-mono text-rose-400 font-bold text-xs tracking-wider animate-pulse">● INTERFAZ CLÍNICA: PABELLÓN DE HEMODINÁMICA</span>
+            <span class="font-mono text-rose-400 font-bold text-xs tracking-wider animate-pulse">● INTERFAZ CLÍNICA: PABELLÓN DE SVB</span>
             <div class="h-1.5 w-48 bg-stone-900 rounded-full overflow-hidden border border-stone-800 hidden sm:block">
                 <div id="lectura-progreso" class="h-full bg-gradient-to-r from-rose-400 to-rose-500 w-0 transition-all duration-100"></div>
             </div>
@@ -67,24 +65,35 @@
         </div>
     </div>
 
-    <!-- HÉROE PRINCIPAL DE EXPOSICIÓN -->
     <header class="max-w-7xl mx-auto px-6 pt-28 pb-12 text-center relative">
         <span class="text-xs font-mono font-bold tracking-widest text-rose-300 uppercase bg-rose-950/30 px-4 py-2 rounded-lg border border-rose-900/30 mb-4 inline-block">
-            Módulo II: Simulación de Alta Fidelidad en Paro Cardiorrespiratorio
+            Módulo I: Simulación de Alta Fidelidad en Paro Cardiorrespiratorio
         </span>
         <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-stone-100 leading-tight mt-2">
-            Compendio de <br><span class="text-rose-400 pastel-glow-rose font-mono">Reanimación Cardiopulmonar</span>
+            Pabellón de <br><span class="text-rose-400 pastel-glow-rose font-mono">Soporte Vital Básico</span>
         </h1>
+
+        <div class="max-w-2xl mx-auto mt-8 p-6 rounded-2xl bg-stone-950/60 border border-stone-900 text-left">
+            <p class="text-xs text-stone-300 leading-relaxed font-light">
+                <strong class="font-mono text-rose-400 text-[11px] block mb-1 uppercase tracking-wider">¿Qué es el SVB?</strong>
+                El Soporte Vital Básico (SVB) es el conjunto de maniobras secuenciales y no invasivas, ejecutadas sin necesidad de equipamiento especializado, que tienen como finalidad mantener la perfusión de los órganos vitales, principalmente el cerebro y el miocardio, ante un evento de parada cardiorrespiratoria o una obstrucción aguda de la vía aérea.
+
+Su relevancia técnica radica en los siguientes puntos clave:
+
+Objetivo Crítico: Actuar como un puente temporal inmediato para preservar la viabilidad celular hasta el arribo del soporte médico avanzado.
+
+Fisiopatología: Busca contrarrestar el cese absoluto de la entrega de oxígeno y glucosa, evitando el daño irreversible en estructuras cerebrales que son incapaces de almacenar sustratos energéticos.
+
+Mecanismo de Acción: Implementa maniobras compresivas externas que, al comprimir los ventrículos contra la masa vertebral posterior, logran generar un gasto sistémico artificial necesario para sostener la función orgánica mínima.
+            </p>
+        </div>
     </header>
 
-    <!-- CUERPO CENTRAL DE LA EXHIBICIÓN -->
     <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 pb-32">
         
-        <!-- SIDEBAR IZQUIERDO: SIMULADORES Y PANELES MÓVILES -->
         <div class="lg:col-span-4 space-y-6">
             <div class="lg:sticky lg:top-24 space-y-6">
                 
-                <!-- MONITOR BIOMÉTRICO DINÁMICO -->
                 <div class="bg-stone-950/80 border border-rose-950/20 p-6 rounded-3xl shadow-xl relative overflow-hidden monitor-scan">
                     <h3 class="text-xs font-mono text-stone-400 font-bold uppercase tracking-wider mb-4 flex items-center gap-2">⏱️ Reloj Clínico de Anoxia Cerebral</h3>
                     
@@ -93,7 +102,6 @@
                         <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase">Cronómetro de muerte celular tisular</p>
                     </div>
 
-                    <!-- ESTADOS EVOLUTIVOS EN VIVO -->
                     <div class="space-y-2 font-mono text-[11px]" id="estados-reloj">
                         <div id="st-1" class="p-2.5 rounded-xl bg-rose-950/20 text-rose-300 border border-rose-900/30 flex justify-between transition-all">
                             <span>0-4 min: Fase Eléctrica</span> <span class="font-bold">VIABLE</span>
@@ -112,7 +120,6 @@
                     </div>
                 </div>
 
-                <!-- CALCULADORA DE PRESIÓN ESTERNAL -->
                 <div class="bg-stone-950/80 border border-rose-950/20 p-6 rounded-3xl shadow-xl">
                     <h3 class="text-xs font-mono text-stone-400 font-bold uppercase tracking-wider mb-2">📐 Calibrador de Compresión Mecánica</h3>
                     <p class="text-[11px] text-stone-400 font-light mb-4">Modifica la profundidad para evaluar el impacto en la bomba cardíaca del paciente.</p>
@@ -131,10 +138,8 @@
             </div>
         </div>
 
-        <!-- TEXTO MASIVO CON ELEMENTOS GRÁFICOS INTERACTIVOS -->
         <div class="lg:col-span-8 space-y-12">
             
-            <!-- SECCIÓN 1: CAPA FISIOLÓGICA -->
             <section class="bg-stone-950/40 border border-rose-950/10 p-6 md:p-8 rounded-3xl space-y-6">
                 <div class="flex items-center gap-3 border-b border-stone-900 pb-4">
                     <div class="w-1 h-5 bg-rose-400 rounded-full"></div>
@@ -143,10 +148,8 @@
                 
                 <div class="text-sm text-stone-300 leading-relaxed font-light space-y-4">
                     <p>
-                        Cuando se produce el cese abrupto de la actividad mecánica miocárdica, la entrega de oxígeno ($O_2$) y glucosa a los tejidos periféricos se interrumpe de inmediato de forma absoluta. El cerebro es incapaz de almacenar sustratos energéticos, por lo que su ventana de viabilidad funcional estructural es críticamente reducida.
-                    </p>
+                        La Cascada de Isquemia y la Fisiopatología Orgánica en una parada cardiorrespiratoria describe el deterioro sistémico acelerado que ocurre al interrumpirse la entrega de oxígeno O2 y glucosa a los tejidos. 
 
-                    <!-- SIMULACIONES VISUALES CON PALETA ROSA/CORAL PASTEL -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
                         <div class="bg-stone-900/40 border border-stone-800 p-4 rounded-2xl flex flex-col justify-between items-center text-center relative overflow-hidden">
                             <span class="absolute top-2 left-3 font-mono text-[9px] text-rose-300 tracking-wider uppercase">DINÁMICA 01 // PERFUSIÓN</span>
@@ -172,24 +175,21 @@
                     </div>
 
                     <p>
-                        A los 10 segundos de isquemia, la corteza cerebral sufre una pérdida total de su espectro electroencefalográfico, provocando lipotimia inmediata. Si la perfusión coronaria no se restablece mediante maniobras compresivas externas capaces de exprimir los ventrículos contra la masa vertebral ósea posterior, las neuronas ingresan en la vía irreversible de la necrosis por licuación y apoptosis generalizada inducida por calcio.
+                        A los 10 segundos de isquemia, cuando la actividad mecánica del miocardio cesa abruptamente, se interrumpe de manera total la perfusión sistémica, impidiendo la llegada de sustratos metabólicos fundamentales a todo el organismo.Debido a que el cerebro es incapaz de almacenar energía, su ventana de viabilidad funcional es extremadamente estrecha, lo que lo convierte en el órgano más vulnerable. Apenas diez segundos después de la interrupción del flujo, el cerebro pierde toda su actividad electroencefalográfica, provocando una lipotimia inmediata. Ante la falta de perfusión, las células inician una ruta irreversible hacia la necrosis y la apoptosis, procesos que se ven agravados por la acumulación local de metabolitos tóxicos y una grave alteración en el equilibrio del calcio intracelular.La única alternativa para frenar esta cascada sin contar con equipo médico especializado es la implementación inmediata de maniobras de compresión. Estas maniobras fuerzan mecánicamente la eyección arterial al comprimir los ventrículos contra la masa vertebral ósea, permitiendo mantener una perfusión mínima necesaria para retrasar el daño irreversible antes de que el soporte médico avanzado pueda intervenir.
                     </p>
                 </div>
             </section>
 
-            <!-- SECCIÓN 2: ALGORITMO AHA -->
             <section class="bg-stone-950/40 border border-rose-950/10 p-6 md:p-8 rounded-3xl space-y-6">
                 <div class="flex items-center gap-3 border-b border-stone-900 pb-4">
                     <div class="w-1 h-5 bg-rose-400 rounded-full"></div>
-                    <h2 class="text-lg font-bold text-stone-100">2.0 Secuencia Operativa del Algoritmo AHA (Despliegue Dinámico)</h2>
+                    <h2 class="text-lg font-bold text-stone-100">2.0 Secuencia Operativa del Algoritmo AHA </h2>
                 </div>
                 <p class="text-xs text-stone-400 font-light">
-                    Hacé clic en los botones de expansión de abajo. El sistema inyectará la información académica oculta al instante abriendo las compuertas del bloque de forma segura.
+                    Haz clic en los botones de expansión de abajo. El sistema inyectará la información académica oculta al instante abriendo las compuertas del bloque de forma segura.
                 </p>
 
-                <!-- ACORDEONES RE-ESTILIZADOS -->
                 <div class="space-y-3">
-                    <!-- BLOQUE 1 -->
                     <div class="bg-stone-900/30 border border-stone-800 rounded-2xl overflow-hidden">
                         <button onclick="desplegarBloque('ac-1', 'btn-1')" class="w-full text-left p-4 bg-stone-900/60 hover:bg-stone-900 flex justify-between items-center font-mono text-xs font-bold text-stone-200 transition cursor-pointer">
                             <span>FASE 01: EVALUACIÓN TRIDIMENSIONAL DEL ENTORNO</span>
@@ -197,7 +197,11 @@
                         </button>
                         <div id="ac-1" class="hidden p-5 text-xs text-stone-400 font-light space-y-3 border-t border-stone-950 leading-relaxed bg-stone-950/20">
                             <p>
-                                La aproximación inicial prohíbe el contactó directo inmediato con la víctima. El rescatista debe realizar un escaneo analítico ambiental en tres ejes (X, Y, Z) buscando factores de riesgo biomecánicos, fugas de fluidos volátiles, cables conductores de alta tensión expuestos, o cinemática activa de tránsito vehicular en la periferia inmediata.
+                                La Evaluación Tridimensional del Entorno constituye el primer y más crítico eslabón de la cadena de supervivencia, estableciendo una barrera de seguridad necesaria para que la intervención sea posible y efectiva. Este proceso no es una simple observación visual, sino un análisis analítico y metódico del espacio en los ejes X, Y y Z, diseñado para garantizar que el rescatista no se convierta en una segunda víctima del incidente. La premisa fundamental aquí es la seguridad de la escena como un axioma innegociable; si el entorno presenta una amenaza latente o activa, toda maniobra de reanimación debe ser suspendida de manera inmediata hasta que personal logístico o equipos de rescate especializados neutralicen el peligro.
+
+En la práctica, este análisis implica un escaneo exhaustivo de factores de riesgo biomecánicos y ambientales que podrían comprometer la integridad física del reanimador. El rescatista debe observar la periferia buscando fuentes de energía no controladas, como cables de alta tensión expuestos, fugas de fluidos volátiles o gases tóxicos, y estructuras con riesgo de colapso. Asimismo, debe evaluarse la cinemática del lugar, especialmente en entornos urbanos donde la presencia de tránsito vehicular activo representa un riesgo constante de atropellamiento o colisión secundaria. Este escaneo tridimensional también considera la posibilidad de agresiones externas o la presencia de materiales peligrosos que, aunque no sean evidentes a simple vista, podrían estar alterando las condiciones del aire o la superficie de contacto.
+
+La profundidad de este concepto reside en la gestión de la responsabilidad y el juicio clínico bajo presión. Existe un sesgo cognitivo natural donde el impulso de ayudar puede cegar al rescatista ante peligros evidentes; por ello, el entrenamiento en SVB insiste en que una escena insegura es un escenario de desastre inminente. Si el rescatista decide proceder sin validar la seguridad tridimensional, el riesgo de que la intervención se interrumpa por un evento adverso es extremadamente alto, invalidando cualquier esfuerzo previo de RCP. Por lo tanto, dominar esta evaluación no solo protege al equipo, sino que asegura que la cadena de supervivencia se mantenga intacta, permitiendo que el paciente sea atendido en condiciones estables mientras se gestiona la llegada del soporte avanzado.
                             </p>
                             <p class="border-l-2 border-rose-400 pl-3 text-[11px] text-stone-300 font-mono">
                                 💡 <strong>Estándar Académico:</strong> La seguridad de la escena es un axioma absoluto. Si la zona representa una amenaza no controlada, la intervención se suspende hasta el arribo de personal logístico de rescate especializado.
@@ -205,7 +209,6 @@
                         </div>
                     </div>
 
-                    <!-- BLOQUE 2 -->
                     <div class="bg-stone-900/30 border border-stone-800 rounded-2xl overflow-hidden">
                         <button onclick="desplegarBloque('ac-2', 'btn-2')" class="w-full text-left p-4 bg-stone-900/60 hover:bg-stone-900 flex justify-between items-center font-mono text-xs font-bold text-stone-200 transition cursor-pointer">
                             <span>FASE 02: DIAGNÓSTICO CLÍNICO AGUDO DE PARO CARDÍACO</span>
@@ -213,7 +216,11 @@
                         </button>
                         <div id="ac-2" class="hidden p-5 text-xs text-stone-400 font-light space-y-3 border-t border-stone-950 leading-relaxed bg-stone-950/20">
                             <p>
-                                Se debe aplicar un estímulo de compresión dolorosa bilateral sobre los músculos trapecios, acompañado de comandos auditivos directos a viva voz. Al mismo tiempo, se realiza la palpación digital del pulso carotídeo en el canal anatómico situado entre la tráquea y el músculo esternocleidomastoideo.
+                                El Diagnóstico Clínico Agudo de Paro Cardíaco es el proceso de toma de decisiones más crítico dentro de la reanimación, ya que determina el inicio inmediato de maniobras que pueden salvar la vida del paciente o, por el contrario, exponer a una persona que no lo requiere a compresiones torácicas innecesarias. Este diagnóstico se basa en la rapidez y la precisión, integrando la evaluación del estado de consciencia, la ventilación y la presencia de pulso central en un intervalo de tiempo que no debe superar los diez segundos. Es una evaluación de carácter eminentemente clínico, donde el rescatista debe evitar depender de tecnología o herramientas de diagnóstico si estas no están al alcance de la mano, priorizando la destreza manual y la observación directa.
+
+El primer pilar de este diagnóstico es la confirmación de la inconsciencia mediante el uso de estímulos sensoriales potentes. Se debe sacudir suavemente a la víctima por los hombros mientras se emiten comandos verbales enérgicos. Si no hay respuesta, se debe proceder a un estímulo doloroso, generalmente mediante una presión firme sobre los músculos trapecios o el esternón. La ausencia total de respuesta ante estos estímulos, combinada con la falta de movimiento corporal, confirma el estado de coma. Inmediatamente después, el rescatista debe evaluar la ventilación de forma simultánea a la búsqueda del pulso carotídeo. La técnica implica observar la expansión torácica mientras se palpa la arteria carótida, ubicada en el surco entre la tráquea y el músculo esternocleidomastoideo, ejerciendo una presión moderada pero firme con los dedos índice y medio.
+
+Un error crítico en este diagnóstico es la interpretación errónea del "gasping" o respiración agónica. Es imperativo que el rescatista comprenda que estas bocanadas irregulares, infrecuentes y de baja amplitud no constituyen una respiración efectiva, sino que son un signo patognomónico de actividad cerebral hipóxica severa. Si el paciente presenta este fenómeno, la ausencia de un pulso palpable o la duda sobre su presencia obligan al rescatista a declarar el estado de paro cardíaco e iniciar la reanimación de inmediato. Este enfoque clínico riguroso minimiza el tiempo de no flujo y asegura que la intervención mecánica comience cuando la probabilidad de recuperación es mayor, antes de que el daño tisular sea irreversible.
                             </p>
                             <p class="border-l-2 border-orange-400 pl-3 text-[11px] text-stone-300 font-mono">
                                 ⚠️ <strong>Alerta de Gasping:</strong> Si el sujeto no responde y solo presenta movimientos respiratorios ineficaces o bocanadas de aire espasmódicas (Gasping), esto constituye un signo patognomónico de actividad cerebral hipóxica terminal. Se debe iniciar RCP de inmediato.
@@ -221,7 +228,6 @@
                         </div>
                     </div>
 
-                    <!-- BLOQUE 3 -->
                     <div class="bg-stone-900/30 border border-stone-800 rounded-2xl overflow-hidden">
                         <button onclick="desplegarBloque('ac-3', 'btn-3')" class="w-full text-left p-4 bg-stone-900/60 hover:bg-stone-900 flex justify-between items-center font-mono text-xs font-bold text-stone-200 transition cursor-pointer">
                             <span>FASE 03: ACTIVACIÓN DE RECURSOS LOGÍSTICOS Y ADQUISICIÓN DEL DEA</span>
@@ -229,7 +235,11 @@
                         </button>
                         <div id="ac-3" class="hidden p-5 text-xs text-stone-400 font-light space-y-3 border-t border-stone-950 leading-relaxed bg-stone-950/20">
                             <p>
-                                La comunicación al centro de despacho médico institucional (como el Servicio Integrado ECU-911) debe ser categórica y libre de ambigüedades informativas. Se debe delegar la tarea apuntando directamente a un observador, eliminando el sesgo de dilución de responsabilidad social.
+                                La Activación de Recursos Logísticos y Adquisición del DEA constituye el puente esencial entre el auxilio inicial y la atención médica definitiva, fundamentándose en una comunicación estructurada y una gestión eficiente del entorno. La activación del sistema de emergencias médicas (como el ECU-911 en el contexto local) debe ser una acción ejecutada con categórica precisión y sin ambigüedades informativas, asegurando que el centro de despacho reciba los datos necesarios para movilizar el recurso adecuado, que es una ambulancia de soporte vital avanzado equipada con tecnología de reanimación avanzada.
+
+Para optimizar esta gestión, el rescatista debe evitar el fenómeno psicológico conocido como la dilución de la responsabilidad social. Este ocurre cuando, ante un grupo de testigos, cada individuo asume que alguien más ya llamó a emergencias, resultando en una falta de acción colectiva. Para contrarrestar esto, la técnica operativa dicta que el rescatista debe delegar la tarea de forma directa y personalizada, señalando a un observador específico mediante un comando verbal claro y una instrucción directa, asegurando así que la responsabilidad de la llamada recaiga en una persona identificada que pueda reportar el progreso de la ayuda.
+
+El mensaje transmitido al centro de despacho debe ser un protocolo estandarizado y libre de sesgos narrativos. La estructura mandatoria que se debe seguir es: "Adulto inconsciente en parada cardiorrespiratoria en esta ubicación específica". Posteriormente, se debe integrar la solicitud urgente de un Desfibrilador Externo Automático (DEA) de acceso público, subrayando que es un recurso crítico que debe ser traído a la escena inmediatamente. Esta acción es vital, ya que el desfibrilador representa la única intervención capaz de revertir ritmos desfibrilables y restaurar la actividad eléctrica miocárdica, maximizando exponencialmente la probabilidad de supervivencia del paciente mucho antes de que el soporte médico avanzado logre estabilizar la situación en el lugar.
                             </p>
                             <p>
                                 El mensaje estructurado mandatorio es: <em>"Adulto inconsciente en paro cardiorrespiratorio en esta locación exacta. Solicito ambulancia de soporte avanzado de vida y un Desfibrilador Externo Automático (DEA) de acceso público ahora mismo"</em>.
@@ -239,7 +249,6 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN 3: METRÓNOMO AUDIBLE METAMORFOSEADO A TONO ESMERALDA QUIRÚRGICO -->
             <section class="bg-stone-950/40 border border-rose-950/10 p-6 md:p-8 rounded-3xl space-y-6">
                 <div class="flex items-center gap-3 border-b border-stone-900 pb-4">
                     <div class="w-1 h-5 bg-emerald-400 rounded-full"></div>
@@ -266,9 +275,8 @@
                 </div>
             </section>
 
-            <!-- AVANCE EXTREMO MULTIPÁGINA -->
             <div class="bg-gradient-to-br from-stone-950 to-stone-900 border border-stone-900 p-8 rounded-3xl text-center space-y-4">
-                <span class="text-[10px] font-mono font-bold text-stone-500 uppercase tracking-wider block">Siguiente Pabellón de Anatomía Crítica</span>
+                <span class="text-[10px] font-mono font-bold text-stone-500 uppercase tracking-wider block">Siguiente Pabellón de OVC</span>
                 <h4 class="text-stone-200 font-bold text-base">¿Pasamos a la resolución del colapso respiratorio por oclusión?</h4>
                 <p class="text-xs text-stone-400 font-light max-w-lg mx-auto">
                     Cuando un cuerpo extraño bloquea mecánicamente la tráquea, la RCP no sirve si no se descomprime la vía aérea mediante vectores físicos de presión intratorácica retrógrada.
@@ -282,10 +290,9 @@
     </main>
 
     <footer class="border-t border-stone-950 py-8 text-center text-[10px] text-stone-600 font-mono bg-stone-950">
-        UNIVERSIDAD CENTRAL DEL ECUADOR • FACULTAD DE CIENCIAS MÉDICAS • TRATADO INTERACTIVO MULTIPÁGINA
+        ITECSUR • EMERGENCIAS MEDICAS • TRATADO INTERACTIVO 
     </footer>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
         // BARRA DE PROGRESO DE LECTURA DE PANTALLA
         window.addEventListener('scroll', () => {
