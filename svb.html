@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pabellón de Soporte Vital Básico (SVB)</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050811; color: #f3f4f6; }
+        .bg-museum-texture {
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .ambient-glow { background: radial-gradient(circle, rgba(6,182,212,0.18) 0%, transparent 65%); }
+        @keyframes pulse-cyan {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
+            50% { transform: scale(1.06); box-shadow: 0 0 35px rgba(6, 182, 212, 0.9); background-color: #06b6d4; }
+        }
+        .pulse-active { animation: pulse-cyan 0.545s infinite; }
+    </style>
+</head>
+<body class="bg-museum-texture min-h-screen p-6 md:p-12 relative overflow-x-hidden">
+
+    <div class="absolute top-1/4 right-1/4 w-[600px] h-[600px] ambient-glow pointer-events-none z-0"></div>
+
+    <!-- ENCABEZADO DE SALA -->
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center mb-12 border-b border-slate-900 pb-6 relative z-10 gap-4">
+        <div>
+            <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest bg-cyan-950/60 px-3 py-1 rounded border border-cyan-900/50">Sala de Simulación 01</span>
+            <h1 class="text-3xl font-black text-white mt-2">Pabellón Avanzado: Soporte Vital Básico</h1>
+        </div>
+        <a href="index.html" class="text-xs font-bold text-gray-400 hover:text-white border border-slate-800 px-4 py-2 rounded-xl bg-slate-950/50 transition">
+            ← Salir al Vestíbulo
+        </a>
+    </div>
+
+    <!-- CONTENIDO EXPANDIDO DE LA EXHIBICIÓN -->
+    <main class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+        
+        <!-- SECCIÓN IZQUIERDA: DATOS IMPORTANTES CLÍNICOS -->
+        <div class="space-y-6 lg:col-span-1">
+            <div class="bg-slate-950/90 p-6 rounded-2xl border border-slate-900 shadow-xl">
+                <h3 class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider mb-3">📍 Datos Clínicos Vitales</h3>
+                <div class="space-y-4 text-xs font-light text-gray-400">
+                    <div>
+                        <b class="text-white block font-semibold">Profundidad Estricta:</b>
+                        Compresión constante de entre 5 cm a 6 cm máximo para evitar daños estructurales en las costillas.
+                    </div>
+                    <div>
+                        <b class="text-white block font-semibold">Frecuencia de Reemplazo:</b>
+                        Cada 2 minutos (5 ciclos de 30:2) se debe cambiar de reanimador para evitar que la fatiga reduzca la calidad de la perfusión.
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTÓN QUE REVELA INFORMACIÓN OCULTA (MODAL) -->
+            <div class="bg-gradient-to-br from-slate-950 to-slate-900 p-6 rounded-2xl border border-cyan-900/40 text-center">
+                <h4 class="text-white font-bold text-xs mb-3 font-mono">🔍 INVESTIGACIÓN OCULTA</h4>
+                <p class="text-[11px] text-gray-400 mb-4 font-light">Examine las excepciones del algoritmo internacional AHA para casos pediátricos o ahogamiento.</p>
+                <button onclick="document.getElementById('modal-info').classList.remove('hidden')" class="w-full bg-cyan-500/10 text-cyan-400 font-bold text-xs uppercase py-3 rounded-xl border border-cyan-500/30 hover:bg-cyan-500 hover:text-slate-950 transition cursor-pointer">
+                    Desbloquear Archivos Médicos
+                </button>
+            </div>
+        </div>
+
+        <!-- SECCIÓN CENTRAL Y DERECHA: EXPOSITOR GRANDE, GIFS Y SIMULADOR -->
+        <div class="lg:col-span-2 space-y-8">
+            
+            <!-- Algoritmo Extendido -->
+            <div class="bg-slate-950/80 p-8 rounded-3xl border border-slate-900">
+                <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                    <span class="w-2 h-4 bg-cyan-500 rounded-sm"></span>
+                    Secuencia Detallada de Supervivencia Cardíaca
+                </h3>
+                <div class="space-y-4 text-xs leading-relaxed text-gray-400 font-light">
+                    <p><strong class="text-cyan-400 font-mono">Fase 1: Cinética de Escena.</strong> Inspección ocular de riesgos eléctricos, químicos o colapsos estructurales en menos de 5 segundos.</p>
+                    <p><strong class="text-cyan-400 font-mono">Fase 2: Estímulo y Ventilación.</strong> Aplicación de compresión dolorosa en los trapecios. Ejecución de la maniobra frente-mentón para alinear los ejes laríngeo y faríngeo.</p>
+                    <p><strong class="text-cyan-400 font-mono">Fase 3: Ejecución de Compresión.</strong> Posicionamiento del talón de la mano dominante exactamente sobre la línea intermamaria (mitad inferior del esternón), entrelazando la segunda mano por encima.</p>
+                </div>
+            </div>
+
+            <!-- CONTENEDOR DE PANTALLA MULTIMEDIA PARA GIF -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-black/40 border-2 border-dashed border-slate-800 rounded-3xl flex flex-col items-center justify-center p-6 text-center min-h-[220px] relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <span class="text-cyan-400 text-3xl mb-1">🖼️</span>
+                    <span class="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">GIF: Vector de Postura Correcta</span>
+                    <p class="text-[10px] text-gray-500 max-w-[200px] mt-2 leading-relaxed">Inserta aquí tu animación de los brazos a 90° bloqueados para usar el peso corporal en la compresión.</p>
+                </div>
+
+                <!-- Simulador de Ritmo Auditivo -->
+                <div class="bg-slate-950 border border-slate-900 p-6 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-sm font-bold text-white mb-2">Simulador Auditivo Sincronizado</h4>
+                        <p class="text-[11px] text-gray-400 leading-relaxed font-light">Haga clic abajo para sintonizar su memoria auditiva con los 110 latidos por minuto requeridos mecánicamente.</p>
+                    </div>
+                    <div class="flex items-center gap-4 mt-4">
+                        <div id="metronome-visual" class="w-12 h-12 rounded-full bg-cyan-950 border-2 border-cyan-500 flex items-center justify-center transition-all duration-100"></div>
+                        <button id="btn-metronomo" class="bg-cyan-500 text-slate-950 font-bold text-[10px] uppercase px-4 py-3 rounded-lg hover:bg-cyan-400 transition cursor-pointer tracking-wider">Activar Pulso</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTÓN CRÍTICO DE TRÁNSITO AL SIGUIENTE TEMA -->
+            <div class="flex justify-end pt-6 border-t border-slate-900">
+                <a href="ovace.html" class="bg-gradient-to-r from-red-500 to-amber-600 text-white font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-red-500/10 hover:scale-105 transition-all duration-300 text-xs uppercase tracking-wider">
+                    Avanzar al Pabellón OVACE (Asfixia) →
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- VENTANA DE INFORMACIÓN INTERACTIVA OCULTA (MODAL) -->
+    <div id="modal-info" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-950 border border-slate-800 p-8 rounded-3xl max-w-lg w-full relative">
+            <h4 class="text-lg font-bold text-cyan-400 mb-4 font-mono">📑 PROTOCOLOS ESPECIALES (AHA)</h4>
+            <div class="space-y-3 text-xs text-gray-400 leading-relaxed font-light">
+                <p>🔹 <b>Lactantes y Niños:</b> Si se encuentra un solo reanimador, la relación pasa a ser de 30 compresiones por 2 ventilaciones. Si hay dos reanimadores entrenados, cambia a 15:2.</p>
+                <p>🔹 <b>Ahogamiento / Causas Asfícticas:</b> A diferencia del paro de origen cardíaco súbito, en situaciones de inmersión se debe priorizar la apertura de la vía aérea e iniciar con 5 ventilaciones de rescate antes de las compresiones.</p>
+            </div>
+            <button onclick="document.getElementById('modal-info').classList.add('hidden')" class="mt-6 bg-slate-900 text-white border border-slate-800 text-xs uppercase font-bold py-2.5 px-4 rounded-xl hover:bg-slate-800 transition w-full cursor-pointer">
+                Cerrar Expediente
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const btnMetronomo = document.getElementById('btn-metronomo');
+        const visualMetronome = document.getElementById('metronome-visual');
+        let metronomoActivo = false, metronomeInterval, audioCtx;
+
+        function reproducirClick() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            let osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+            osc.type = 'sine'; osc.frequency.setValueAtTime(900, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.04);
+        }
+
+        btnMetronomo.addEventListener('click', () => {
+            if (!metronomoActivo) {
+                metronomoActivo = true;
+                btnMetronomo.textContent = "DETENER";
+                btnMetronomo.classList.replace('bg-cyan-500', 'bg-red-500');
+                visualMetronome.classList.add('pulse-active');
+                metronomeInterval = setInterval(reproducirClick, 545);
+            } else {
+                metronomoActivo = false;
+                btnMetronomo.textContent = "ACTIVAR PULSO";
+                btnMetronomo.classList.replace('bg-red-500', 'bg-cyan-500');
+                visualMetronome.classList.remove('pulse-active');
+                clearInterval(metronomeInterval);
+            }
+        });
+    </script>
+</body>
+</html>
