@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pabellón de Manejo OVACE (Asfixia)</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050811; color: #f3f4f6; }
+        .bg-museum-texture {
+            background-image: 
+                linear-gradient(rgba(239, 68, 68, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(239, 68, 68, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .ambient-glow { background: radial-gradient(circle, rgba(239,68,68,0.14) 0%, transparent 65%); }
+        
+        /* TARJETAS INTERACTIVAS GIRATORIAS 3D */
+        .flip-card { background-color: transparent; perspective: 1000px; height: 240px; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1.25rem; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; }
+        .flip-card-front { background: linear-gradient(135deg, #0f172a, #1e293b); border: 1px solid rgba(255,255,255,0.06); }
+        .flip-card-back { background: linear-gradient(135deg, #090d16, #180909); transform: rotateY(180deg); border: 1px solid rgba(239, 68, 68, 0.3); }
+    </style>
+</head>
+<body class="bg-museum-texture min-h-screen p-6 md:p-12 relative overflow-x-hidden">
+
+    <div class="absolute top-1/3 left-1/4 w-[600px] h-[600px] ambient-glow pointer-events-none z-0"></div>
+
+    <!-- ENCABEZADO DE SALA -->
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center mb-12 border-b border-slate-900 pb-6 relative z-10 gap-4">
+        <div>
+            <span class="text-xs font-mono text-red-400 font-bold uppercase tracking-widest bg-red-950/60 px-3 py-1 rounded border border-red-900/50">Sala de Simulación 02</span>
+            <h1 class="text-3xl font-black text-white mt-2">Pabellón Avanzado: Manejo de OVACE</h1>
+        </div>
+        <a href="index.html" class="text-xs font-bold text-gray-400 hover:text-white border border-slate-800 px-4 py-2 rounded-xl bg-slate-950/50 transition">
+            ← Salir al Vestíbulo
+        </a>
+    </div>
+
+    <!-- CONTENIDO MASIVO OVACE -->
+    <main class="max-w-6xl mx-auto space-y-12 relative z-10">
+        
+        <!-- Bloque 1: Diagnóstico Diferencial Rápido -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 bg-slate-950/90 rounded-2xl border border-slate-900">
+                <span class="text-[10px] font-mono font-bold text-cyan-400 bg-cyan-950/40 px-2 py-1 rounded uppercase tracking-wider">Caso Clínico: Obstrucción Parcial</span>
+                <h4 class="text-lg font-bold text-white mt-3 mb-2">Intercambio Gaseoso Preservado</h4>
+                <p class="text-xs text-gray-400 leading-relaxed font-light mb-4">El cuerpo extraño permite el paso de flujos mínimos de aire. El paciente está consciente, desesperado, pero emite sonidos o tose de forma enérgica.</p>
+                <div class="bg-slate-900 p-3 rounded-xl text-xs font-bold text-cyan-400 border-l-4 border-cyan-500 font-mono">
+                    ⚠️ PROTOCOLO: Incentive la tos continua. Jamás aplique golpes en la espalda en este punto.
+                </div>
+            </div>
+
+            <div class="p-6 bg-slate-950/90 rounded-2xl border border-slate-900">
+                <span class="text-[10px] font-mono font-bold text-red-400 bg-red-950/40 px-2 py-1 rounded uppercase tracking-wider">Caso Clínico: Obstrucción Total</span>
+                <h4 class="text-lg font-bold text-white mt-3 mb-2">Signo Patognomónico Universal</h4>
+                <p class="text-xs text-gray-400 leading-relaxed font-light mb-4">Silencio respiratorio absoluto. El paciente se agarra el cuello con ambas manos (reflejo de asfixia). Se inicia la cianosis peribucal de forma inmediata.</p>
+                <div class="bg-slate-900 p-3 rounded-xl text-xs font-bold text-red-400 border-l-4 border-red-500 font-mono">
+                    🚨 PROTOCOLO: Active emergencias e inicie de inmediato las compresiones abdominales en J.
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloque 2: Galería de Mitos Interactivos en 3D -->
+        <div>
+            <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                <span class="w-2 h-4 bg-red-500 rounded-sm"></span>
+                Laboratorio de Desmitificación Médica (Girar Módulos)
+            </h3>
+            <p class="text-xs text-gray-400 mb-6 font-light">Pase el puntero del mouse sobre las vitrinas para revelar el contraargumento científico.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-red-400 text-2xl mb-2">❌ Mito 01</span>
+                            <h4 class="font-bold text-white text-sm">Dar agua o tragar trozos de pan blando</h4>
+                            <p class="text-[10px] text-red-400 font-mono mt-3 uppercase tracking-widest">Girar para analizar →</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h5 class="text-red-400 font-bold text-xs mb-2">IMPACTACIÓN NEUMÁTICA EXTREMA</h5>
+                            <p class="text-xs text-gray-300 leading-relaxed font-light">Añadir masa o líquidos en una vía bloqueada aumenta la presión hidrodinámica hacia abajo, desplazando el objeto hacia la zona subglótica honda o induciendo broncoaspiración letal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span class="text-red-400 text-2xl mb-2">❌ Mito 02</span>
+                            <h4 class="font-bold text-white text-sm">Golpear la espalda con el paciente erguido</h4>
+                            <p class="text-[10px] text-red-400 font-mono mt-3 uppercase tracking-widest">Girar para analizar →</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h5 class="text-red-400 font-bold text-xs mb-2">EFECTO DE DESCENSO POR GRAVEDAD</h5>
+                            <p class="text-xs text-gray-300 leading-relaxed font-light">Los golpes verticales e interescapulares rompen el flujo espiratorio de la tos. Por acción de la gravedad, esto provoca que el cuerpo extraño caiga aún más adentro en el árbol bronquial.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloque 3: Mecánica de Fluidos Heimlich + Zona Multimedia -->
+        <div class="bg-slate-950/80 p-8 rounded-3xl border border-slate-900 flex flex-col lg:flex-row gap-8 items-center">
+            <div class="w-full lg:w-1/2 space-y-4">
+                <h4 class="font-bold text-white text-lg">La Maniobra de Heimlich y el Efecto Pistón</h4>
+                <p class="text-xs text-gray-400 leading-relaxed font-light">El objetivo es presionar mecánicamente el diafragma hacia arriba. Esto disminuye súbitamente el volumen pulmonar, obligando al aire residual atrapado en los alvéolos a eyectarse a alta velocidad, expulsando el objeto como un corcho de champaña.</p>
+                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800 space-y-2 text-xs font-mono">
+                    <p class="text-gray-300"><b class="text-red-400">1. Posición:</b> Colocarse detrás, rodear la cintura.</p>
+                    <p class="text-gray-300"><b class="text-red-400">2. Vector:</b> Puño cerrado sobre el epigastrio, tirando firmemente <span class="text-white font-bold">hacia adentro y hacia arriba (en "J")</span>.</p>
+                </div>
+            </div>
+            
+            <!-- CONTENEDOR DE PANTALLA MULTIMEDIA PARA GIF OVACE -->
+            <div class="w-full lg:w-1/2 bg-black/40 border-2 border-dashed border-slate-800 rounded-2xl flex flex-col items-center justify-center p-6 text-center min-h-[220px] relative overflow-hidden group">
+                <div class="absolute inset-0 bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <span class="text-red-400 text-3xl mb-1">🖼️</span>
+                <span class="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">GIF: Vectorización de la Maniobra en J</span>
+                <p class="text-[10px] text-gray-500 max-w-[200px] mt-2 leading-relaxed">Inserta aquí tu animación donde se observe la presión del diafragma simulando el pistón neumático.</p>
+            </div>
+        </div>
+
+        <!-- CIERRE TRIUNFAL: VOLVER AL VESTÍBULO -->
+        <div class="flex flex-col items-center justify-center p-8 bg-gradient-to-br from-slate-950 to-slate-900 border border-slate-900 rounded-3xl text-center">
+            <span class="text-3xl mb-2">🏛️</span>
+            <h4 class="font-bold text-white text-base">Fin del Recorrido Técnico de Emergencias</h4>
+            <p class="text-xs text-gray-400 mt-1 mb-6 font-light max-w-md">Ha completado el estudio avanzado de los pabellones críticos de simulación y soporte vital.</p>
+            <a href="index.html" class="bg-white text-slate-950 font-extrabold text-xs uppercase px-10 py-4 rounded-xl hover:bg-gray-200 transition tracking-wider">
+                Regresar al Vestíbulo Central
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="mt-16 text-center text-[10px] text-gray-600 font-mono">
+        &copy; 2026 MEDMUSEUM VIRTUAL • SIMULACIÓN ACADÉMICA INTERACTIVA DE ALTO IMPACTO
+    </footer>
+
+</body>
+</html>
