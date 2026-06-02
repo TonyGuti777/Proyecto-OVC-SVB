@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEDMUSEUM - Vestíbulo de Simulación Masiva</title>
+    <title>SCARMUSEUM - Vestíbulo de Simulación Masiva</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,16 +31,16 @@
     <div class="w-full bg-zinc-900/40 backdrop-blur-md border-b border-white/5 py-2.5 text-[10px] font-sans font-medium text-zinc-400 uppercase tracking-[0.2em] overflow-hidden relative z-50">
         <div class="marquee">
             <div class="marquee-content">
-                <span>🚨 PROTOCOLO ACTUALIZADO AHA 2026: MINIMIZAR INTERRUPCIONES EN COMPRESIONES A MENOS DE 10 SEG</span>
-                <span>• STATUS SISTEMA: SIMULADOR OPERATIVO</span>
-                <span>• EPIDEMIOLOGÍA: EL 70% DE LOS PAROS CARDÍACOS OCURREN EN EL ENTORNO EXTRAHOSPITALARIO</span>
-                <span>• REANIMACIÓN: LA RCP TEMPRANA PUEDE TRIPLICAR LAS TASAS DE SUPERVIVENCIA</span>
+                <span>🚨 PROTOCOLO ACTUALIZADO AHA 2026: MINIMIZAR INTERRUPCIONES EN COMPRESIONES A MENOS DE 10 SEG 🚨</span>
+                <span>• 🚨 STATUS SISTEMA: SIMULADOR OPERATIVO 🚨</span>
+                <span>• 🚨 EPIDEMIOLOGÍA: EL 70% DE LOS PAROS CARDÍACOS OCURREN EN EL ENTORNO EXTRAHOSPITALARIO 🚨</span>
+                <span>• 🚨 REANIMACIÓN: LA RCP TEMPRANA PUEDE TRIPLICAR LAS TASAS DE SUPERVIVENCIA 🚨</span>
             </div>
             <div class="marquee-content" aria-hidden="true">
-                <span>🚨 PROTOCOLO ACTUALIZADO AHA 2026: MINIMIZAR INTERRUPCIONES EN COMPRESIONES A MENOS DE 10 SEG</span>
-                <span>• STATUS SISTEMA: SIMULADOR OPERATIVO</span>
-                <span>• EPIDEMIOLOGÍA: EL 70% DE LOS PAROS CARDÍACOS OCURREN EN EL ENTORNO EXTRAHOSPITALARIO</span>
-                <span>• REANIMACIÓN: LA RCP TEMPRANA PUEDE TRIPLICAR LAS TASAS DE SUPERVIVENCIA</span>
+                <span>🚨 PROTOCOLO ACTUALIZADO AHA 2026: MINIMIZAR INTERRUPCIONES EN COMPRESIONES A MENOS DE 10 SEG 🚨</span>
+                <span>• 🚨 STATUS SISTEMA: SIMULADOR OPERATIVO 🚨</span>
+                <span>• 🚨 EPIDEMIOLOGÍA: EL 70% DE LOS PAROS CARDÍACOS OCURREN EN EL ENTORNO EXTRAHOSPITALARIO 🚨</span>
+                <span>• 🚨 REANIMACIÓN: LA RCP TEMPRANA PUEDE TRIPLICAR LAS TASAS DE SUPERVIVENCIA 🚨</span>
             </div>
         </div>
     </div>
@@ -48,8 +48,8 @@
     <!-- NAVEGACIÓN PRINCIPAL -->
     <nav class="max-w-7xl w-full mx-auto px-6 py-6 flex justify-between items-center relative z-10">
         <div class="flex items-center gap-3">
-            <span class="font-extrabold text-xl tracking-[0.15em] text-white font-sans">MED<span class="text-amber-500 font-light">MUSEUM</span></span>
-            <span class="text-[9px] font-sans border border-zinc-800 bg-zinc-900/40 px-2.5 py-1 rounded text-zinc-400 uppercase tracking-widest">SALA DE CONTROL • v2.4.0</span>
+            <span class="font-extrabold text-xl tracking-[0.15em] text-white font-sans">SCAR<span class="text-amber-500 font-light">MUSEUM</span></span>
+            <span class="text-[9px] font-sans border border-zinc-800 bg-zinc-900/40 px-2.5 py-1 rounded text-zinc-400 uppercase tracking-widest">SALA DE ESPERA</span>
         </div>
         <div id="reloj-servidor" class="text-[11px] font-sans font-medium tracking-wider text-zinc-400 bg-zinc-900/30 backdrop-blur-md border border-white/5 px-4 py-2 rounded-xl">
             SISTEMA HORA: 14:18:26
@@ -70,7 +70,7 @@
                 <div class="space-y-3">
                     <input type="text" id="nombre-usuario" placeholder="Nombre completo del alumno..." class="w-full bg-zinc-900/50 border border-white/5 rounded-xl px-4 py-3 text-xs font-sans text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500/50 transition">
                     <button onclick="guardarCredencial()" class="w-full bg-white/5 hover:bg-white hover:text-black border border-white/10 font-sans text-[11px] font-semibold py-3 rounded-xl transition cursor-pointer uppercase tracking-widest">
-                        Establecer Matrícula
+                        Registrar
                     </button>
                 </div>
                 <div id="feedback-credencial" class="mt-3 text-[10px] font-sans text-emerald-400 hidden text-center">✓ Operador registrado en base de datos.</div>
@@ -81,7 +81,7 @@
                 <h3 class="text-[11px] font-sans font-bold text-zinc-400 uppercase tracking-[0.15em] mb-4">📊 Monitor Epidemiológico Global</h3>
                 <div class="flex gap-4 border-b border-white/5 pb-2 mb-4 text-[11px] font-sans tracking-wider">
                     <button onclick="cambiarTab('tab-rcp')" id="btn-tab-rcp" class="text-amber-500 border-b-2 border-amber-500 pb-1 font-bold cursor-pointer transition">PARO CARDÍACO</button>
-                    <button onclick="cambiarTab('tab-ovace')" id="btn-tab-ovace" class="text-zinc-500 pb-1 hover:text-zinc-300 cursor-pointer transition">ASFIXIA MECHANICS</button>
+                    <button onclick="cambiarTab('tab-ovace')" id="btn-tab-ovace" class="text-zinc-500 pb-1 hover:text-zinc-300 cursor-pointer transition">ASFIXIA MECANICAS</button>
                 </div>
                 
                 <!-- TAB RCP -->
@@ -121,8 +121,8 @@
             <!-- GRAN MARCO EXPOSITOR CENTRAL -->
             <div class="bg-gradient-to-br from-zinc-950 to-zinc-900/40 border border-white/5 p-8 md:p-12 rounded-3xl flex flex-col items-start justify-center relative overflow-hidden shadow-2xl">
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
-                <span class="text-[10px] font-sans font-bold tracking-[0.2em] text-amber-500 uppercase bg-amber-950/40 px-4 py-2 rounded-lg border border-amber-900/40 mb-6">CENTRO DE INSTRUCCIÓN CLÍNICA INTERACTIVA</span>
-                <h1 class="text-3xl md:text-6xl font-extrabold mb-6 tracking-tight text-white leading-none font-sans">Pabellón de <br><span class="text-amber-500 museum-glow font-light">Urgencias Médicas</span></h1>
+                <span class="text-[10px] font-sans font-bold tracking-[0.2em] text-amber-500 uppercase bg-amber-950/40 px-4 py-2 rounded-lg border border-amber-900/40 mb-6">MUSEO DE INSTRUCCIÓN CLÍNICA INTERACTIVA</span>
+                <h1 class="text-3xl md:text-6xl font-extrabold mb-6 tracking-tight text-white leading-none font-sans">Museo interactivo de <br><span class="text-amber-500 museum-glow font-light">Urgencias Médicas</span></h1>
                 <p class="text-zinc-400 text-xs md:text-sm leading-relaxed font-light mb-8 max-w-2xl">
                     Explore un compendio enciclopédico inmenso diseñado para la asimilación profunda de maniobras críticas de salvamento. Cruce las puertas para acceder a un recorrido de alta densidad conceptual, con simuladores integrados, capas de datos anatómicos y esquemas visuales avanzados.
                 </p>
@@ -159,7 +159,7 @@
 
     <!-- PIE DE PÁGINA HISTÓRICO -->
     <footer class="border-t border-white/5 py-6 text-center text-[10px] text-zinc-500 font-sans tracking-[0.15em] relative z-10 bg-[#05070f] mt-8">
-        PLATAFORMA INTEGRAL DE RESPUESTAS MÉDICAS AVANZADAS • UNIVERSIDAD CENTRAL DEL ECUADOR
+        PLATAFORMA INTEGRAL DE RESPUESTAS MÉDICAS AVANZADAS • ITECSUR
     </footer>
 
     <!-- LÓGICA RETENIDA EXACTAMENTE IGUAL -->
