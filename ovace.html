@@ -3,161 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pabellón del Manejo Avanzado de OVACE</title>
+    <title>MEDMUSEUM - Gestión Radical de OVACE</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #f3f4f6; }
-        .bg-grid-medical {
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #02040a; color: #f3f4f6; }
+        .bg-grid-dense {
             background-image: 
-                linear-gradient(rgba(239, 68, 68, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(239, 68, 68, 0.04) 1px, transparent 1px);
-            background-size: 20px 20px;
+                linear-gradient(rgba(249, 115, 22px, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(249, 115, 22px, 0.04) 1px, transparent 1px);
+            background-size: 15px 15px;
         }
-        .glow-red { background: radial-gradient(circle, rgba(239,68,68,0.18) 0%, transparent 65%); }
+        .neon-glow-orange { text-shadow: 0 0 15px rgba(249, 115, 22, 0.6); }
         
-        /* TARJETAS INTERACTIVAS 3D POTENCIADAS */
-        .flip-card { background-color: transparent; perspective: 1200px; height: 260px; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
-        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1.5rem; display: flex; flex-direction: column; justify-content: center; align-align: center; padding: 2rem; }
-        .flip-card-front { background: linear-gradient(135deg, #090d16, #111827); border: 1px solid rgba(255,255,255,0.05); shadow: inset 0 0 20px rgba(0,0,0,0.6); }
-        .flip-card-back { background: linear-gradient(135deg, #180909, #030712); transform: rotateY(180deg); border: 1px solid rgba(239, 68, 68, 0.3); }
+        /* Animación de flujo de aire (Tráquea) */
+        @keyframes air-flow {
+            0% { transform: translateY(-100%); opacity: 0.1; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(100%); opacity: 0.1; }
+        }
+        .animate-air { animation: air-flow 1.5s linear infinite; }
     </style>
 </head>
-<body class="bg-grid-medical min-h-screen p-6 md:p-12 relative overflow-x-hidden">
+<body class="bg-grid-dense min-h-screen selection:bg-orange-500 selection:text-black">
 
-    <div class="absolute top-1/4 left-1/4 w-[700px] h-[700px] glow-red pointer-events-none z-0"></div>
-
-    <!-- HEADER SÓLIDO -->
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center mb-12 border-b border-slate-900 pb-6 relative z-10 gap-4">
-        <div>
-            <span class="text-xs font-mono text-red-400 font-bold uppercase tracking-widest bg-red-950/50 px-3 py-1.5 rounded-md border border-red-900/40">SALA DE EXPOSICIÓN CLÍNICA A-2</span>
-            <h1 class="text-3xl md:text-4xl font-black text-white mt-2 font-mono">MANEJO DE LA OBSTRUCCIÓN RESPIRATORIA</h1>
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+    <div class="fixed top-0 left-0 w-full bg-slate-950/95 backdrop-blur-2xl border-b border-slate-900 z-50 px-6 py-4 flex justify-between items-center shadow-2xl">
+        <div class="flex items-center gap-4">
+            <span class="font-mono text-orange-500 font-extrabold text-xs tracking-widest animate-pulse">● PABELLÓN DE VÍA AÉREA</span>
         </div>
-        <a href="index.html" class="text-xs font-mono font-bold text-slate-400 hover:text-white border border-slate-800 px-4 py-2.5 rounded-xl bg-slate-950/60 backdrop-blur transition">
-            ← RETORNAR AL VESTÍBULO
-        </a>
-    </div>
-
-    <!-- CONTENIDO ACADÉMICO MASIVO -->
-    <main class="max-w-7xl mx-auto space-y-12 relative z-10">
-        
-        <!-- SECCIÓN 1: DIAGNÓSTICO DIFERENCIAL AVANZADO -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            <div class="p-8 bg-slate-950/90 rounded-3xl border border-slate-900 shadow-2xl relative overflow-hidden group">
-                <span class="text-[10px] font-mono font-bold text-cyan-400 bg-cyan-950/50 px-3 py-1.5 rounded uppercase tracking-wider border border-cyan-800/40">Entidad Clínica: Obstrucción Incompleta</span>
-                <h4 class="text-2xl font-bold text-white mt-4 mb-3 font-mono">Flujo Gaseoso Parcial Preservado</h4>
-                <p class="text-xs text-slate-400 leading-relaxed font-light mb-6">
-                    La luz laringotraqueal se encuentra parcialmente comprometida. El paciente retiene la capacidad de intercambio gaseoso, manifestando tos enérgica reflexiva, estridor inspiratorio agudo y gesticulación desesperada. Existe ventilación alveolar residual.
-                </p>
-                <div class="bg-slate-900 p-4 rounded-xl text-xs font-bold text-cyan-400 border-l-4 border-cyan-500 font-mono leading-relaxed">
-                    ⚙️ ACCIÓN CONDUCTUAL: Estimular de forma exclusiva la tos mecánica voluntaria. Monitorizar estrechamente. Prohibido aplicar golpes interescapulares que puedan impactar el objeto.
-                </div>
-            </div>
-
-            <div class="p-8 bg-slate-950/90 rounded-3xl border border-slate-900 shadow-2xl relative overflow-hidden group">
-                <span class="text-[10px] font-mono font-bold text-red-400 bg-red-950/50 px-3 py-1.5 rounded uppercase tracking-wider border border-red-800/40">Entidad Clínica: Obstrucción Completa</span>
-                <h4 class="text-2xl font-bold text-white mt-4 mb-3 font-mono">Signo Patognomónico Fisiológico</h4>
-                <p class="text-xs text-slate-400 leading-relaxed font-light mb-6">
-                    Abolición absoluta del flujo de aire. Incapacidad biológica para la fonación, afonía súbita y ausencia de expansión torácica. La víctima adopta el signo universal (manos en garra sobre la laringe). Se desata hipoxia severa con cianosis periférica y labial rápida.
-                </p>
-                <div class="bg-slate-900 p-4 rounded-xl text-xs font-bold text-red-400 border-l-4 border-red-500 font-mono leading-relaxed">
-                    🚨 ACCIÓN QUIRÚRGICA/MECÁNICA: Ejecución inmediata de la Maniobra de Heimlich. Si la víctima pierde la consciencia, se suspende la tracción y se migra de inmediato al protocolo de RCP estándar.
-                </div>
-            </div>
-
-        </div>
-
-        <!-- SECCIÓN 2: VITRINAS 3D DE RECHAZO DE MITOS EMPÍRICOS -->
-        <div>
-            <h3 class="text-xl font-bold text-white mb-3 font-mono flex items-center gap-2">
-                <span class="w-3 h-5 bg-red-500 rounded-sm"></span>
-                Laboratorio Anatómico Forense de Prácticas Erróneas
-            </h3>
-            <p class="text-xs text-slate-400 mb-6 font-light">Pase el puntero por encima de los módulos para desglosar la justificación patológica del error.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <span class="text-red-500 text-3xl mb-2">❌</span>
-                            <h4 class="font-bold text-white text-base font-mono">Ingesta forzada de bolos alimenticios sólidos o líquidos</h4>
-                            <p class="text-[10px] text-red-400 font-mono mt-4 uppercase tracking-widest">GIRAR VITRINA →</p>
-                        </div>
-                        <div class="flip-card-back text-left">
-                            <h5 class="text-red-400 font-bold text-xs font-mono mb-2 uppercase">Impactación y Obstrucción Cruzada</h5>
-                            <p class="text-xs text-slate-300 leading-relaxed font-light">
-                                Introducir fluidos o pan blando incrementa drásticamente la presión hidrostática sobre el cuerpo extraño. Esto empuja el objeto desde la región supraglótica directamente hacia la tráquea profunda o el bronquio principal derecho, obturando por completo el árbol respiratorio y desencadenando una broncoaspiración masiva.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <span class="text-red-500 text-3xl mb-2">❌</span>
-                            <h4 class="font-bold text-white text-base font-mono">Impactos interescapulares en víctimas erguidas</h4>
-                            <p class="text-[10px] text-red-400 font-mono mt-4 uppercase tracking-widest">GIRAR VITRINA →</p>
-                        </div>
-                        <div class="flip-card-back text-left">
-                            <h5 class="text-red-400 font-bold text-xs font-mono mb-2 uppercase">Cinética Gravitatoria Negativa</h5>
-                            <p class="text-xs text-slate-300 leading-relaxed font-light">
-                                Las palmadas verticales aplicadas en la columna dorsal cuando el paciente está erecto generan ondas de vibración cinética. Por acción de la fuerza de gravedad, estas vibraciones causan que el objeto, que podría estar flotando suelto, descienda y encaje de manera fija en el estrechamiento de las cuerdas vocales, transformando una obstrucción parcial en una total letal.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- SECCIÓN 3: PISTÓN NEUMÁTICO HEIMLICH + MULTIMEDIA -->
-        <div class="bg-slate-950 border border-slate-900 p-8 rounded-3xl flex flex-col lg:flex-row gap-8 items-center shadow-2xl">
-            <div class="w-full lg:w-1/2 space-y-5">
-                <h4 class="font-bold text-white text-xl font-mono">Dinámica de Fluidos: La Maniobra de Heimlich</h4>
-                <p class="text-xs text-slate-400 leading-relaxed font-light">
-                    La maniobra fundamenta su efectividad en la física de compresión de gases. Al aplicar una fuerza súbita en el epigastrio, se desplaza el diafragma hacia la cavidad cefálica. Esto contrae el volumen pulmonar instantáneamente, elevando la presión intratorácica por encima de la presión atmosférica externa. El aire residual de los alvéolos actúa como un pistón neumático, eyectando el cuerpo extraño hacia el exterior.
-                </p>
-                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800 space-y-3 text-xs font-mono text-slate-300">
-                    <p><b class="text-red-400">1. Geometría del Puño:</b> Posicionar el pulgar replegado hacia adentro, situándolo exactamente en el punto medio entre el apéndice xifoides y el ombligo.</p>
-                    <p><b class="text-red-400">2. Vector de Fuerza en "J":</b> Ejecutar una tracción violenta dirigida de forma sincrónica <span class="text-white font-bold">hacia atrás y hacia arriba</span>.</p>
-                </div>
-            </div>
-            
-            <!-- ESPACIO MULTIMEDIA OVACE GIF -->
-            <div class="w-full lg:w-1/2 bg-black/60 border-2 border-dashed border-slate-800 rounded-3xl p-6 text-center flex flex-col justify-center items-center relative group min-h-[260px]">
-                <div class="absolute inset-0 bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                <span class="text-3xl mb-2">🖼️</span>
-                <h5 class="text-xs font-mono font-bold text-slate-300 uppercase">MÓDULO MULTIMEDIA: VECTOR NEUMÁTICO</h5>
-                <p class="text-[11px] text-slate-500 max-w-[260px] mt-2 leading-relaxed">
-                    Insertá acá el GIF dinámico o esquema visual que ilustra la elevación del músculo diafragmático y la consiguiente compresión del árbol bronquial inferior.
-                </p>
-            </div>
-        </div>
-
-        <!-- CIERRE TRIUNFAL ACADÉMICO -->
-        <div class="bg-gradient-to-br from-slate-950 to-slate-900 border border-slate-800 p-10 rounded-3xl text-center flex flex-col items-center">
-            <div class="w-16 h-16 bg-cyan-950 border border-cyan-800 rounded-full flex items-center justify-center mb-4 text-2xl shadow-lg">🏛️</div>
-            <h4 class="font-bold text-white text-xl font-mono">Fin de la Certificación del Recorrido Virtual</h4>
-            <p class="text-xs text-slate-400 mt-2 mb-8 font-light max-w-xl leading-relaxed">
-                Usted ha completado el análisis de profundidad anatómica y procedimental de los pabellones críticos de emergencias médicas. Su registro operativo ha sido archivado con éxito.
-            </p>
-            <a href="index.html" class="bg-white text-slate-950 font-mono font-black text-xs uppercase px-12 py-5 rounded-xl hover:bg-gray-200 transition-all tracking-widest shadow-xl">
-                REGRESAR AL VESTÍBULO PRINCIPAL
+        <div class="flex items-center gap-4">
+            <a href="svb.html" class="text-xs font-mono font-bold text-slate-400 hover:text-white border border-slate-800 px-4 py-2 bg-slate-900/50 rounded-xl transition">
+                ← REGRESAR A SVB
             </a>
         </div>
+    </div>
 
+    <!-- CABECERA -->
+    <header class="max-w-7xl mx-auto px-6 pt-28 pb-8 text-center">
+        <span class="text-xs font-mono font-bold tracking-widest text-orange-400 uppercase bg-orange-950/40 px-4 py-2 rounded-lg border border-orange-900/50 mb-4 inline-block">
+            MÓDULO INTERACTIVO DE ASFIXIA MECHANICAL Y DESOBSTRUCCIÓN
+        </span>
+        <h1 class="text-4xl md:text-6xl font-black font-mono tracking-tight text-white leading-none mt-2">
+            Protocolo de Crisis: <span class="text-orange-500 neon-glow-orange">OVACE</span>
+        </h1>
+    </header>
+
+    <!-- CUERPO PRINCIPAL DEL PANEL -->
+    <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 pb-32">
+        
+        <!-- BLOQUE IZQUIERDO: MONITOR DE ESTADO Y SIMULADOR DE FLUJO DE GASES (5 COLS) -->
+        <div class="lg:col-span-5 space-y-6">
+            <div class="bg-slate-950 border border-slate-900 p-6 rounded-3xl shadow-2xl relative overflow-hidden">
+                <h3 class="text-xs font-mono text-slate-400 font-bold uppercase tracking-wider mb-4 flex items-center gap-2">🫁 Monitor del Lumen Laringotraqueal</h3>
+                
+                <!-- GIF/DIAGRAMA ANIMADO DE LA VÍA AÉREA -->
+                <div class="bg-slate-900 rounded-2xl p-4 border border-slate-800 flex flex-col items-center justify-center relative min-h-[180px]">
+                    <div class="absolute top-2 left-3 font-mono text-[9px] text-orange-500 tracking-widest uppercase">Visualizador de Gases v.2</div>
+                    
+                    <!-- Esquema de la tráquea con puros bloques CSS -->
+                    <div class="w-20 h-32 bg-slate-950 border-2 border-slate-800 rounded-full relative flex items-center justify-center overflow-hidden">
+                        <!-- Flujo de aire animado -->
+                        <div id="flujo-aire-grafico" class="absolute inset-x-6 top-0 bottom-0 bg-cyan-500/20 animate-air rounded"></div>
+                        <!-- Objeto extraño blocking -->
+                        <div id="objeto-extraño" class="w-8 h-8 rounded-full bg-red-600 border-2 border-white shadow-lg shadow-red-500/50 z-10 transition-all duration-500 transform translate-y-0"></div>
+                    </div>
+
+                    <div class="mt-4 font-mono text-[11px] text-center" id="monitor-texto-estado">
+                        ESTADO: <span class="text-amber-400 font-bold uppercase">Obstrucción Parcial Activa</span>
+                    </div>
+                </div>
+
+                <!-- SELECTOR DE DIAGNÓSTICO EN VIVO -->
+                <div class="grid grid-cols-2 gap-2 mt-4">
+                    <button onclick="cambiarDiagnostico('parcial')" class="bg-slate-900 hover:bg-slate-850 text-amber-400 border border-amber-900/50 font-mono text-[10px] font-bold uppercase py-2.5 rounded-xl transition cursor-pointer">Parcial (Tose)</button>
+                    <button onclick="cambiarDiagnostico('total')" class="bg-slate-900 hover:bg-slate-850 text-red-500 border border-red-900/50 font-mono text-[10px] font-bold uppercase py-2.5 rounded-xl transition cursor-pointer">Total (Silencio)</button>
+                </div>
+            </div>
+
+            <!-- JUEGO INTERACTIVO: SIMULADOR DE PRESIÓN INTRATORÁCICA (MANIOBRA DE HEIMLICH) -->
+            <div class="bg-slate-950 border border-slate-900 p-6 rounded-3xl shadow-2xl space-y-4">
+                <div>
+                    <h3 class="text-xs font-mono text-slate-400 font-bold uppercase tracking-wider">🦺 Simulador Activo de Compresión Abdominal</h3>
+                    <p class="text-[11px] text-slate-500 font-light mt-1">Presioná el disparador de presión repetidamente para simular los vectores físicos ascendentes de la Maniobra de Heimlich.</p>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex justify-between font-mono text-[10px] text-slate-400">
+                        <span>PRESIÓN SUBDIAFRAGMÁTICA:</span>
+                        <span id="txt-libras-presion" class="font-bold text-orange-400">0%</span>
+                    </div>
+                    <div class="w-full h-3 bg-slate-900 border border-slate-800 rounded-full overflow-hidden">
+                        <div id="barra-presion-heimlich" class="h-full bg-gradient-to-r from-orange-500 to-red-500 w-0 transition-all duration-150"></div>
+                    </div>
+                </div>
+
+                <button onclick="inyectarCompresionHeimlich()" class="w-full bg-orange-500 text-slate-950 hover:bg-orange-400 font-mono text-xs font-black uppercase py-3.5 rounded-xl transition shadow-lg tracking-wider cursor-pointer">
+                    💥 ¡EJECUTAR COMPRESIÓN SUBXIFOIDEA!
+                </button>
+            </div>
+        </div>
+
+        <!-- BLOQUE DERECHO: CONSOLA MULTIPESTAÑA DE ALTA DENSIDAD INFORMATIVA (7 COLS) -->
+        <div class="lg:col-span-7 space-y-6">
+            <div class="bg-slate-950 border border-slate-900 p-6 md:p-8 rounded-3xl shadow-2xl">
+                
+                <!-- BOTONERA DE PESTAÑAS (TABS) -->
+                <div class="flex border-b border-slate-900 pb-3 gap-2 overflow-x-auto">
+                    <button onclick="activarPestaña('tab-mecanica', this)" class="tab-btn px-4 py-2 bg-orange-950/40 border border-orange-900/50 text-orange-400 font-mono text-xs font-bold rounded-xl transition cursor-pointer">
+                        1.0 Biomecánica de la Tos
+                    </button>
+                    <button onclick="activarPestaña('tab-embarazo', this)" class="tab-btn px-4 py-2 bg-slate-900 text-slate-400 font-mono text-xs font-bold rounded-xl hover:text-white transition cursor-pointer">
+                        2.0 Casos Especiales
+                    </button>
+                    <button onclick="activarPestaña('tab-inconsciente', this)" class="tab-btn px-4 py-2 bg-slate-900 text-slate-400 font-mono text-xs font-bold rounded-xl hover:text-white transition cursor-pointer">
+                        3.0 Colapso Terminal
+                    </button>
+                </div>
+
+                <!-- CONTENEDOR DE CONTENIDOS -->
+                <div class="mt-6 text-xs text-slate-400 leading-relaxed font-light space-y-4">
+                    
+                    <!-- PESTAÑA 1: BIOMECÁNICA -->
+                    <div id="tab-mecanica" class="tab-content space-y-4">
+                        <p>
+                            La maniobra de desobstrucción se fundamenta rigurosamente en la <strong class="text-white">Ley de Boyle-Mariotte</strong> de la física de gases. Al aplicar una fuerza de compresión brusca hacia adentro y hacia arriba en el epicentro del epigastrio (justo por debajo del apéndice xifoides), se eleva artificialmente la cúpula del músculo diafragmático.
+                        </p>
+                        <p>
+                            Este desplazamiento reduce instantáneamente el volumen de la cavidad torácica, elevando la presión intrapulmonar de forma violenta. El aire remanente atrapado en los alvéolos y bronquiolos es propulsado hacia el exterior a través de la tráquea, actuando como un pistón neumático que impacta y eyecta el cuerpo extraño incrustado en la glotis o cuerdas vocales.
+                        </p>
+                        <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 text-[11px] font-mono border-l-2 border-orange-500">
+                            <strong>Signo Universal de Asfixia:</strong> La víctima rodea instintivamente su cuello con ambas manos en forma de "C". Es una respuesta autonómica refleja ante el corte drástico del flujo de ventilación alveolar.
+                        </div>
+                    </div>
+
+                    <!-- PESTAÑA 2: EMBARAZADAS Y OBESIDAD -->
+                    <div id="tab-embarazo" class="tab-content hidden space-y-4">
+                        <p>
+                            En pacientes gestantes que cursan el segundo o tercer trimestre, o en individuos con obesidad mórbida severa, el vector de compresión abdominal clásico de Heimlich está estrictamente contraindicado debido al riesgo de ruptura uterina o ineficacia mecánica por panículo adiposo denso.
+                        </p>
+                        <p>
+                            El protocolo dictamina migrar inmediatamente el punto de aplicación de la fuerza hacia el **tercio medio del esternón** (idéntico a la posición de las manos en la RCP). Las compresiones se ejecutan de forma lineal y enérgica hacia atrás, exprimiendo directamente la caja torácica sin alterar la presión de la cavidad peritoneal.
+                        </p>
+                    </div>
+
+                    <!-- PESTAÑA 3: TRANSICIÓN A INCONSCIENTE -->
+                    <div id="tab-inconsciente" class="tab-content hidden space-y-4">
+                        <p>
+                            Si los vectores mecánicos fracasan y la hipoxia cerebral induce un síncope, el paciente colapsará cayendo al suelo inconsciente. En este milisegundo exacto, **la maniobra de Heimlich se suspende por completo** y el algoritmo muta de forma radical hacia un esquema de Soporte Vital Básico modificado.
+                        </p>
+                        <p>
+                            Se posiciona al sujeto en decúbito supino y se inicia inmediatamente el ciclo de 30 compresiones torácicas. La variante crítica del protocolo exige que, antes de administrar cada ventilación de rescate, el reanimador realice una apertura forzada de la cavidad bucal para inspeccionar visualmente la faringe posterior. Solo si el objeto extraño es plenamente visible se procederá a realizar la extracción manual en gancho; de lo contrario, se prohíbe el barrido digital a ciegas para evitar impactar el bolo con mayor profundidad.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PANEL LOGÍSTICO PARA AGREGAR IMÁGENES MANUALMENTE LUEGO -->
+            <div class="bg-slate-900/40 border border-dashed border-slate-800 p-6 rounded-2xl font-mono text-[11px] text-slate-500 text-center">
+                📷 [Módulo de Expansión Visual: Aquí puedes insertar manualmente etiquetas &lt;img&gt; o GIFs externos para ilustrar las maniobras sin tocar los scripts del simulador]
+            </div>
+        </div>
     </main>
 
-    <footer class="mt-16 text-center text-[10px] text-slate-600 font-mono py-6 border-t border-slate-900">
-        MEDMUSEUM SURGICAL PLATFORM • UNIVERSIDAD CENTRAL DEL ECUADOR • COMPENDIO MULTIPÁGINA AVANZADO
+    <footer class="border-t border-slate-950 py-8 text-center text-[10px] text-slate-600 font-mono bg-[#02040a]">
+        UNIVERSIDAD CENTRAL DEL ECUADOR • FACULTAD DE CIENCIAS MÉDICAS • MÓDULO OVACE V.2
     </footer>
 
+    <!-- LOGICA DE CONTROL DE OVACE -->
+    <script>
+        // MANEJO DE CAMBIO DE DIAGNÓSTICO EN EL MONITOR VISUAL
+        function cambiarDiagnostico(tipo) {
+            const flujo = document.getElementById('flujo-aire-grafico');
+            const objeto = document.getElementById('objeto-extraño');
+            const texto = document.getElementById('monitor-texto-estado');
+
+            if(tipo === 'parcial') {
+                flujo.className = "absolute inset-x-6 top-0 bottom-0 bg-cyan-500/20 animate-air rounded";
+                objeto.className = "w-8 h-8 rounded-full bg-red-600 border-2 border-white shadow-lg shadow-red-500/50 z-10 transition-all duration-500 transform translate-y-0";
+                texto.innerHTML = `ESTADO: <span class="text-amber-400 font-bold uppercase">Obstrucción Parcial Activa</span>`;
+            } else {
+                flujo.className = "absolute inset-x-6 top-0 bottom-0 bg-transparent rounded"; // Detiene el flujo visual de gas
+                objeto.className = "w-8 h-8 rounded-full bg-red-700 border-2 border-slate-900 shadow-xl z-10 transition-all duration-500 transform translate-y-6 scale-110";
+                texto.innerHTML = `ESTADO: <span class="text-red-500 font-bold uppercase animate-pulse">¡OBSTRUCCIÓN TOTAL / ASFIXIA!</span>`;
+            }
+        }
+
+        // JUEGO INTERACTIVO: SIMULADOR DE BARRA DE PRESIÓN DE HEIMLICH
+        let presionAcumulada = 0;
+        function inyectarCompresionHeimlich() {
+            presionAcumulada += 25; // Sube de 25 en 25 por cada clic
+            if(presionAcumulada > 100) presionAcumulada = 100;
+
+            const barra = document.getElementById('barra-presion-heimlich');
+            const txt = document.getElementById('txt-libras-presion');
+            
+            barra.style.width = presionAcumulada + '%';
+            txt.textContent = presionAcumulada + '%';
+
+            // Si llega al 100% el objeto es eyectado visualmente
+            if(presionAcumulada === 100) {
+                document.getElementById('objeto-extraño').className = "w-8 h-8 rounded-full bg-emerald-500 border-2 border-white shadow-lg transform -translate-y-24 transition-all duration-700";
+                document.getElementById('monitor-texto-estado').innerHTML = `ESTADO: <span class="text-emerald-400 font-bold uppercase">¡CUERPO EXTRAÑO EXPULSADO EN ÉXITO!</span>`;
+                
+                // Reset automático del simulador después de 2.5 segundos
+                setTimeout(() => {
+                    presionAcumulada = 0;
+                    barra.style.width = '0%';
+                    txt.textContent = '0%';
+                    cambiarDiagnostico('parcial');
+                }, 2500);
+            }
+        }
+
+        // SISTEMA DE CONTROL DE PESTAÑAS (TABS) CORRECTO
+        function activarPestaña(idTab, botonActivo) {
+            // Ocultar todos los bloques de contenido
+            document.querySelectorAll('.tab-content').forEach(bloque => {
+                bloque.classList.add('hidden');
+            });
+
+            // Quitar estilos activos a todos los botones
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-4 py-2 bg-slate-900 text-slate-400 font-mono text-xs font-bold rounded-xl hover:text-white transition cursor-pointer";
+            });
+
+            // Mostrar el bloque seleccionado
+            document.getElementById(idTab).classList.remove('hidden');
+
+            // Darle estilo de botón activo al clicado
+            botonActivo.className = "tab-btn px-4 py-2 bg-orange-950/40 border border-orange-900/50 text-orange-400 font-mono text-xs font-bold rounded-xl transition cursor-pointer";
+        }
+    </script>
 </body>
 </html>
