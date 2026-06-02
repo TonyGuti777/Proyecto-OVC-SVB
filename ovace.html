@@ -11,51 +11,45 @@
     <style>
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: #05070f; 
-            color: #e2e8f0; 
+            background-color: #060814; 
+            color: #f1f5f9; 
         }
-        /* Fondo con entramado de galería de exposición */
+        /* Fondo con entramado de galería de exposición con luces ámbar */
         .museum-floor {
             background-image: 
-                radial-gradient(circle at 50% 30%, rgba(249, 115, 22, 0.08) 0%, transparent 70%),
+                radial-gradient(circle at 50% 25%, rgba(217, 119, 6, 0.07) 0%, transparent 65%),
                 linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-            background-size: 100% 100%, 30px 30px, 30px 30px;
+            background-size: 100% 100%, 35px 35px, 35px 35px;
         }
-        /* Efecto de haz de luz de museo sobre la pieza */
+        /* Haz de luz ámbar/fuego sobre el pedestal */
         .museum-spotlight {
-            box-shadow: inset 0 0 60px rgba(0,0,0,0.8), 0 -30px 100px -20px rgba(249, 115, 22, 0.15);
+            box-shadow: inset 0 0 60px rgba(0,0,0,0.85), 0 -25px 80px -15px rgba(217, 119, 6, 0.12);
         }
         .museum-pedestal {
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, rgba(2, 4, 10, 0.9) 100%);
-            border: 1px solid rgba(249, 115, 22, 0.15);
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.5) 0%, rgba(3, 7, 18, 0.95) 1005);
+            border: 1px solid rgba(217, 119, 6, 0.15);
         }
-        /* Animación de la onda de choque en la desobstrucción */
-        @keyframes shockwave {
-            0% { transform: scale(0.9); opacity: 1; }
-            100% { transform: scale(1.4); opacity: 0; border-color: rgba(239, 68, 68, 0); }
-        }
-        .pulse-wave { animation: shockwave 1s ease-out infinite; }
     </style>
 </head>
-<body class="museum-floor min-h-screen selection:bg-orange-500 selection:text-black">
+<body class="museum-floor min-h-screen selection:bg-amber-500 selection:text-black">
 
     <!-- BARRA DE NAVEGACIÓN ESTILO GALERÍA -->
-    <nav class="fixed top-0 left-0 w-full bg-slate-950/80 backdrop-blur-md border-b border-orange-950/40 z-50 px-8 py-4 flex justify-between items-center">
+    <nav class="fixed top-0 left-0 w-full bg-slate-950/80 backdrop-blur-md border-b border-amber-950/40 z-50 px-8 py-4 flex justify-between items-center">
         <div class="flex items-center gap-3">
-            <div class="w-2.5 h-2.5 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.8)]"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(217,119,6,0.8)]"></div>
             <span class="font-mono text-xs tracking-widest text-slate-400 font-bold uppercase">SALA 02 • EXHIBICIÓN DE VÍA AÉREA</span>
         </div>
-        <a href="svb.html" class="text-xs font-mono border border-slate-800 hover:border-orange-500/50 px-4 py-2 rounded-lg bg-slate-900/40 text-slate-400 hover:text-orange-400 transition-all">
+        <a href="svb.html" class="text-xs font-mono border border-slate-800 hover:border-amber-500/50 px-4 py-2 rounded-lg bg-slate-900/40 text-slate-400 hover:text-amber-400 transition-all">
             ← VOLVER AL PABELLÓN SVB
         </a>
     </nav>
 
     <!-- ENTRADA DE LA EXHIBICIÓN -->
     <header class="max-w-6xl mx-auto px-6 pt-28 pb-12 text-center">
-        <p class="text-xs font-mono tracking-[0.3em] text-orange-500/80 uppercase mb-2">Exhibición Museística Interactiva</p>
+        <p class="text-xs font-mono tracking-[0.3em] text-amber-500/80 uppercase mb-2">Exhibición Museística Interactiva</p>
         <h1 class="text-3xl md:text-5xl font-extrabold font-mono text-white tracking-tight">
-            Pabellón Mecánico: <span class="underline decoration-orange-500/40 underline-offset-8">OVACE</span>
+            Pabellón Mecánico: <span class="underline decoration-amber-500/40 underline-offset-8">OVACE</span>
         </h1>
         <p class="max-w-xl mx-auto text-xs text-slate-500 mt-4 font-light">
             Exploración táctil y física del colapso respiratorio por cuerpos extraños. Interactúa con las piezas de exhibición técnica regulando la presión y fuerza real del diafragma.
@@ -67,13 +61,12 @@
         
         <!-- PIEZA DE MUSEO 1: EL SIMULADOR DE SINCRONIZACIÓN RÍTMICA (6 COLS) -->
         <section class="lg:col-span-6 museum-pedestal museum-spotlight p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
-            <!-- Etiqueta de la pieza de museo -->
-            <div class="absolute top-4 right-4 font-mono text-[9px] text-orange-500/60 bg-orange-950/20 px-2 py-1 rounded border border-orange-950">
+            <div class="absolute top-4 right-4 font-mono text-[9px] text-amber-500/60 bg-amber-950/20 px-2 py-1 rounded border border-amber-950">
                 PIEZA #04 - ESTACIÓN DE TRACCIÓN
             </div>
 
             <div class="space-y-4">
-                <div class="border-l-2 border-orange-500 pl-3">
+                <div class="border-l-2 border-amber-500 pl-3">
                     <h2 class="text-base font-mono font-bold text-white tracking-wide">Estación de Simulación: Compresión Sincronizada</h2>
                     <p class="text-[11px] text-slate-400 mt-0.5">La maniobra de Heimlich no es veloz, requiere de un ciclo de compresión ascendente y descompresión completa.</p>
                 </div>
@@ -86,23 +79,22 @@
                         <!-- Línea de simulación de tráquea -->
                         <div class="absolute inset-y-0 w-1 bg-slate-800"></div>
                         <!-- Pulmones simulados con CSS -->
-                        <div id="pulmon-izq" class="absolute bottom-4 left-2 w-8 h-14 bg-orange-500/5 rounded-t-full border border-orange-500/20 transition-all duration-300"></div>
-                        <div id="pulmon-der" class="absolute bottom-4 right-2 w-8 h-14 bg-orange-500/5 rounded-t-full border border-orange-500/20 transition-all duration-300"></div>
+                        <div id="pulmon-izq" class="absolute bottom-4 left-2 w-8 h-14 bg-amber-500/5 rounded-t-full border border-amber-500/20 transition-all duration-300"></div>
+                        <div id="pulmon-der" class="absolute bottom-4 right-2 w-8 h-14 bg-amber-500/5 rounded-t-full border border-amber-500/20 transition-all duration-300"></div>
                         
-                        <!-- Cuerpo extraño -->
-                        <div id="objeto-obstructor" class="w-6 h-6 rounded-full bg-red-600 border-2 border-white shadow-[0_0_15px_rgba(239,68,68,0.8)] z-10 transition-all duration-300 transform translate-y-0"></div>
+                        <!-- Cuerpo extraño (Estilo núcleo de obstrucción) -->
+                        <div id="objeto-obstructor" class="w-6 h-6 rounded-full bg-orange-600 border-2 border-orange-200 shadow-[0_0_15px_rgba(234,88,12,0.8)] z-10 transition-all duration-300 transform translate-y-0"></div>
                     </div>
 
                     <!-- Indicador visual del punto de presión óptimo (Timing) -->
                     <div class="flex flex-col items-center space-y-3 w-1/2">
                         <span class="font-mono text-[10px] text-slate-400 uppercase tracking-widest">Zona de Sincronía</span>
-                        <!-- Zona de timing rítmico -->
                         <div class="w-full h-24 bg-slate-900 border border-slate-800 rounded-xl relative overflow-hidden flex items-center justify-center">
-                            <!-- Barra objetivo verde central -->
-                            <div class="absolute h-6 w-full bg-emerald-500/20 border-y border-emerald-500/40"></div>
+                            <!-- Barra objetivo esmeralda central -->
+                            <div class="absolute h-6 w-full bg-emerald-500/10 border-y border-emerald-500/30"></div>
                             <!-- Línea móvil de presión activa -->
-                            <div id="linea-indicadora" class="absolute w-full h-1 bg-orange-500 shadow-lg top-0 transition-all duration-75"></div>
-                            <span class="font-mono text-[9px] text-emerald-400/70 z-10 pointer-events-none">PUNTO DE IMPACTO</span>
+                            <div id="linea-indicadora" class="absolute w-full h-1 bg-amber-500 shadow-lg top-0 transition-all duration-75"></div>
+                            <span class="font-mono text-[9px] text-emerald-400/60 z-10 pointer-events-none">PUNTO DE IMPACTO</span>
                         </div>
                     </div>
                 </div>
@@ -116,7 +108,7 @@
             <!-- BOTÓN DE CONTROL TÁCTIL RÍTMICO -->
             <div class="mt-6">
                 <button id="btn-compresion" 
-                        class="w-full bg-gradient-to-b from-slate-900 to-slate-950 hover:from-orange-950/40 hover:to-slate-950 text-slate-400 hover:text-orange-400 border border-slate-800 hover:border-orange-500/40 font-mono text-xs font-bold py-4 rounded-xl transition-all tracking-widest select-none cursor-pointer"
+                        class="w-full bg-gradient-to-b from-slate-900 to-slate-950 hover:from-amber-950/30 hover:to-slate-950 text-slate-400 hover:text-amber-400 border border-slate-800 hover:border-amber-500/40 font-mono text-xs font-bold py-4 rounded-xl transition-all tracking-widest select-none cursor-pointer"
                         onmousedown="iniciarPresion()" 
                         onmouseup="liberarPresion()"
                         ontouchstart="iniciarPresion()"
@@ -134,9 +126,9 @@
         <section class="lg:col-span-6 flex flex-col gap-6">
             
             <div class="museum-pedestal museum-spotlight p-6 rounded-3xl space-y-6">
-                <!-- Selectores artísticos superiores de la pieza -->
+                <!-- Selectores superiores de la pieza -->
                 <div class="grid grid-cols-3 gap-2 border-b border-slate-900 pb-4">
-                    <button onclick="cambiarFicha('ficha-mecanica', this)" class="btn-ficha text-left font-mono p-2 border-l-2 border-orange-500 bg-orange-950/10 text-orange-400 text-[11px] font-bold transition cursor-pointer">
+                    <button onclick="cambiarFicha('ficha-mecanica', this)" class="btn-ficha text-left font-mono p-2 border-l-2 border-amber-500 bg-amber-950/10 text-amber-400 text-[11px] font-bold transition cursor-pointer">
                         Ficha 04.A<br><span class="text-white text-[10px] font-sans font-medium">Física de Fluidos</span>
                     </button>
                     <button onclick="cambiarFicha('ficha-casos', this)" class="btn-ficha text-left font-mono p-2 border-l-2 border-slate-800 text-slate-500 text-[11px] font-bold transition hover:text-slate-300 cursor-pointer">
@@ -166,14 +158,14 @@
                             En pacientes gestantes que cursan el segundo o tercer trimestre, o en individuos con obesidad mórbida severa, el vector de compresión abdominal clásico de Heimlich está estrictamente contraindicado debido al riesgo latente de daño orgánico interno.
                         </p>
                         <p>
-                            El protocolo dictamina migrar inmediatamente el punto de aplicación hacia el **tercio medio del esternón** (compresiones torácicas lineales), exprimiendo directamente la caja torácica sin alterar la presión de la cavidad peritoneal.
+                            El protocolo dictamina migrar inmediatamente el punto de aplicación hacia el <strong class="text-white font-medium">tercio medio del esternón</strong> (compresiones torácicas lineales), exprimiendo directamente la caja torácica sin alterar la presión de la cavidad peritoneal.
                         </p>
                     </div>
 
                     <!-- CONTENIDO C -->
                     <div id="ficha-paro" class="contenido-ficha hidden space-y-3">
                         <p>
-                            Si los vectores mecánicos fracasan y la hipoxia cerebral induce un síncope, el paciente colapsará cayendo al suelo inconsciente. En este milisegundo exacto, **la maniobra de Heimlich se suspende por completo** y el algoritmo muta de forma radical hacia un esquema de RCP modificado.
+                            Si los vectores mecánicos fracasan y la hipoxia cerebral induce un síncope, el paciente colapsará cayendo al suelo inconsciente. En este milisegundo exacto, <strong class="text-white font-medium">la maniobra de Heimlich se suspende por completo</strong> y el algoritmo muta de forma radical hacia un esquema de RCP modificado.
                         </p>
                         <p>
                             Se inicia inmediatamente el ciclo de 30 compresiones torácicas. La variante crítica exige que, antes de administrar cada ventilación de rescate, el reanimador realice una apertura forzada de la cavidad bucal para inspeccionar visualmente la faringe posterior.
@@ -183,10 +175,10 @@
                 </div>
             </div>
 
-            <!-- MARCO EXPOSITIVO DE MARCO GRÁFICO (RECUADRO PARA IMÁGENES FUTURAS) -->
+            <!-- MARCO EXPOSITIVO DE MARCO GRÁFICO -->
             <div class="museum-pedestal border-dashed p-6 rounded-2xl flex flex-col items-center justify-center min-h-[140px] text-center border-slate-800">
                 <div class="w-8 h-8 rounded border border-slate-800 flex items-center justify-center mb-3">
-                    <span class="text-slate-600 text-xs">📷</span>
+                    <span class="text-slate-500 text-xs">📷</span>
                 </div>
                 <span class="font-mono text-[10px] text-slate-500 uppercase tracking-widest block">Marco de Exhibición Visual Externa</span>
                 <p class="text-[10px] text-slate-600 font-light mt-1 max-w-sm">
@@ -199,20 +191,18 @@
     </main>
 
     <!-- PIE DE PÁGINA HISTÓRICO -->
-    <footer class="border-t border-slate-950 py-10 text-center text-[10px] text-slate-600 font-mono bg-[#05070f]">
+    <footer class="border-t border-slate-900 py-10 text-center text-[10px] text-slate-600 font-mono bg-[#060814]">
         UNIVERSIDAD CENTRAL DEL ECUADOR • REGISTRO ACADÉMICO DE SOPORTE VITAL V.2
     </footer>
 
     <!-- LÓGICA E INGENIERÍA DE LA EXHIBICIÓN -->
     <script>
-        // VARIABLES DEL SIMULADOR RÍTMICO DE PRESIÓN
         let timerPresion;
         let posicionLinea = 0;
         let direccionAbajo = true;
         let exitosSeguidos = 0;
         let simuladorActivo = true;
 
-        // Bucle continuo para mover el indicador de ritmo
         function actualizarCicloRitmo() {
             if (!simuladorActivo) return;
 
@@ -227,10 +217,8 @@
             document.getElementById('linea-indicadora').style.top = posicionLinea + '%';
             requestAnimationFrame(actualizarCicloRitmo);
         }
-        // Iniciar el ciclo visual
         requestAnimationFrame(actualizarCicloRitmo);
 
-        // Al presionar el botón: simula la entrada de fuerza en los pulmones
         function iniciarPresion() {
             if (!simuladorActivo) return;
             
@@ -238,17 +226,15 @@
             const pulmonDer = document.getElementById('pulmon-der');
             const consola = document.getElementById('consola-feedback');
 
-            // Efecto visual de pulmones comprimiéndose
             pulmonIzq.style.transform = "scaleX(0.5)";
             pulmonDer.style.transform = "scaleX(0.5)";
-            pulmonIzq.style.backgroundColor = "rgba(249, 115, 22, 0.3)";
-            pulmonDer.style.backgroundColor = "rgba(249, 115, 22, 0.3)";
+            pulmonIzq.style.backgroundColor = "rgba(245, 158, 11, 0.25)";
+            pulmonDer.style.backgroundColor = "rgba(245, 158, 11, 0.25)";
 
             consola.innerText = "⚡ PROCESANDO VECTOR DE COMPRESIÓN... ¡SUELTA EN LA ZONA VERDE!";
-            consola.className = "bg-slate-950 border border-slate-900 p-3 rounded-xl text-center font-mono text-[11px] text-orange-400 uppercase tracking-wide";
+            consola.className = "bg-slate-950 border border-slate-900 p-3 rounded-xl text-center font-mono text-[11px] text-amber-400 uppercase tracking-wide";
         }
 
-        // Al soltar el botón: evalúa si se soltó en el rango correcto (Sincronía)
         function liberarPresion() {
             if (!simuladorActivo) return;
 
@@ -258,18 +244,15 @@
             const objeto = document.getElementById('objeto-obstructor');
             const txtExitos = document.getElementById('txt-exitos');
 
-            // Regresar pulmones a su estado normal
             pulmonIzq.style.transform = "scaleX(1)";
             pulmonDer.style.transform = "scaleX(1)";
-            pulmonIzq.style.backgroundColor = "rgba(249, 115, 22, 0.05)";
-            pulmonDer.style.backgroundColor = "rgba(249, 115, 22, 0.05)";
+            pulmonIzq.style.backgroundColor = "rgba(245, 158, 11, 0.05)";
+            pulmonDer.style.backgroundColor = "rgba(245, 158, 11, 0.05)";
 
-            // Evaluar si la línea estaba dentro del rango óptimo (entre 38% y 62% del contenedor)
             if (posicionLinea >= 38 && posicionLinea <= 62) {
                 exitosSeguidos++;
                 txtExitos.innerText = `ÉXITOS: ${exitosSeguidos}/3`;
                 
-                // Mover el objeto hacia arriba temporalmente demostrando avance
                 let despla = exitosSeguidos * 25;
                 objeto.style.transform = `translateY(-${despla}px)`;
 
@@ -279,11 +262,10 @@
                     consola.innerText = "🎉 ¡ÉXITO DE MANIOBRA! OBJETO EYECTADO POR PRESIÓN NEUMÁTICA";
                     consola.className = "bg-emerald-950/40 border border-emerald-950 p-3 rounded-xl text-center font-mono text-[11px] text-emerald-400 uppercase tracking-wide animate-pulse";
                     
-                    // Resetear la pieza de museo después de unos segundos
                     setTimeout(() => {
                         exitosSeguidos = 0;
                         txtExitos.innerText = `ÉXITOS: 0/3`;
-                        objeto.className = "w-6 h-6 rounded-full bg-red-600 border-2 border-white shadow-[0_0_15px_rgba(239,68,68,0.8)] z-10 transform translate-y-0 transition-all duration-300";
+                        objeto.className = "w-6 h-6 rounded-full bg-orange-600 border-2 border-orange-200 shadow-[0_0_15px_rgba(234,88,12,0.8)] z-10 transform translate-y-0 transition-all duration-300";
                         consola.innerText = "⚠️ MANTÉN PRESIONADO EL BOTÓN PARA CARGAR COMPRESIÓN...";
                         consola.className = "bg-slate-950 border border-slate-900 p-3 rounded-xl text-center font-mono text-[11px] text-amber-500 uppercase tracking-wide";
                         simuladorActivo = true;
@@ -294,28 +276,25 @@
                     consola.className = "bg-slate-950 border border-slate-900 p-3 rounded-xl text-center font-mono text-[11px] text-emerald-400 uppercase tracking-wide";
                 }
             } else {
-                // Si falla pierdes el ritmo acumulado, simulando pérdida de presión real
                 exitosSeguidos = 0;
                 txtExitos.innerText = `ÉXITOS: 0/3`;
                 objeto.style.transform = "translateY(0px)";
                 consola.innerText = "❌ FALLA DE RITMO: PRESIÓN INSUFICIENTE O DESINCRONIZADA";
-                consola.className = "bg-slate-950 border border-slate-900 p-3 rounded-xl text-center font-mono text-[11px] text-red-500 uppercase tracking-wide";
+                consola.className = "bg-slate-950 border border-slate-900 p-3 rounded-xl text-center font-mono text-[11px] text-rose-500 uppercase tracking-wide";
             }
         }
 
-        // SISTEMA DE INTERCAMBIO DE FICHAS DE MUSEO (TABS)
         function cambiarFicha(idFicha, botonActivo) {
             document.querySelectorAll('.contenido-ficha').forEach(ficha => {
                 ficha.classList.add('hidden');
             });
             document.querySelectorAll('.btn-ficha').forEach(btn => {
                 btn.className = "btn-ficha text-left font-mono p-2 border-l-2 border-slate-800 text-slate-500 text-[11px] font-bold transition hover:text-slate-300 cursor-pointer";
-                // Resetear color de subtítulos internos en los inactivos
                 btn.querySelector('span').className = "text-slate-400 text-[10px] font-sans font-medium";
             });
 
             document.getElementById(idFicha).classList.remove('hidden');
-            botonActivo.className = "btn-ficha text-left font-mono p-2 border-l-2 border-orange-500 bg-orange-950/10 text-orange-400 text-[11px] font-bold transition cursor-pointer";
+            botonActivo.className = "btn-ficha text-left font-mono p-2 border-l-2 border-amber-500 bg-amber-950/10 text-amber-400 text-[11px] font-bold transition cursor-pointer";
             botonActivo.querySelector('span').className = "text-white text-[10px] font-sans font-medium";
         }
     </script>
