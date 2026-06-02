@@ -60,67 +60,55 @@
     <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 pb-32">
         
         <!-- PIEZA DE MUSEO 1: EL SIMULADOR DE SINCRONIZACIÓN RÍTMICA (6 COLS) -->
-        <section class="lg:col-span-6 museum-pedestal museum-spotlight p-6 rounded-3xl flex flex-col justify-between relative overflow-hidden group">
-            <div class="absolute top-4 right-4 font-mono text-[9px] text-amber-500/60 bg-amber-950/20 px-2 py-1 rounded border border-amber-950">
-                PIEZA #04 - ESTACIÓN DE TRACCIÓN
+        <section class="lg:col-span-6 museum-pedestal museum-spotlight p-6 rounded-3xl flex flex-col h-[520px] relative overflow-hidden group">
+    <div class="absolute top-4 right-4 font-mono text-[9px] text-amber-500/60 bg-amber-950/20 px-2 py-1 rounded border border-amber-950">
+        PIEZA #04 - ESTACIÓN DE TRACCIÓN
+    </div>
+
+    <div class="flex-grow flex flex-col space-y-4">
+        <div class="border-l-2 border-amber-500 pl-3">
+            <h2 class="text-base font-mono font-bold text-white tracking-wide">Estación de Simulación: Compresión Sincronizada</h2>
+            <p class="text-[11px] text-slate-400 mt-0.5">La maniobra de Heimlich no es veloz, requiere de un ciclo de compresión ascendente y descompresión completa.</p>
+        </div>
+
+        <div class="flex-grow flex items-center justify-around bg-slate-950/80 rounded-2xl border border-slate-900 p-4 relative">
+            <div class="w-24 h-40 border border-slate-800 rounded-2xl relative bg-slate-900/30 flex items-center justify-center">
+                <div class="absolute inset-y-0 w-1 bg-slate-800"></div>
+                <div id="pulmon-izq" class="absolute bottom-4 left-2 w-8 h-14 bg-amber-500/5 rounded-t-full border border-amber-500/20 transition-all duration-300"></div>
+                <div id="pulmon-der" class="absolute bottom-4 right-2 w-8 h-14 bg-amber-500/5 rounded-t-full border border-amber-500/20 transition-all duration-300"></div>
+                <div id="objeto-obstructor" class="w-6 h-6 rounded-full bg-orange-600 border-2 border-orange-200 shadow-[0_0_15px_rgba(234,88,12,0.8)] z-10 transition-all duration-300 transform translate-y-0"></div>
             </div>
 
-            <div class="space-y-4">
-                <div class="border-l-2 border-amber-500 pl-3">
-                    <h2 class="text-base font-mono font-bold text-white tracking-wide">Estación de Simulación: Compresión Sincronizada</h2>
-                    <p class="text-[11px] text-slate-400 mt-0.5">La maniobra de Heimlich no es veloz, requiere de un ciclo de compresión ascendente y descompresión completa.</p>
-                </div>
-
-                <!-- DIAGRAMA VISUAL DE LA TRÁQUEA ESTILO ARTE DIGITAL -->
-                <div class="h-56 bg-slate-950/80 rounded-2xl border border-slate-900 flex items-center justify-around p-4 relative">
-                    
-                    <!-- Contenedor del vector anatómico -->
-                    <div class="w-24 h-40 border border-slate-800 rounded-2xl relative bg-slate-900/30 flex items-center justify-center">
-                        <!-- Línea de simulación de tráquea -->
-                        <div class="absolute inset-y-0 w-1 bg-slate-800"></div>
-                        <!-- Pulmones simulados con CSS -->
-                        <div id="pulmon-izq" class="absolute bottom-4 left-2 w-8 h-14 bg-amber-500/5 rounded-t-full border border-amber-500/20 transition-all duration-300"></div>
-                        <div id="pulmon-der" class="absolute bottom-4 right-2 w-8 h-14 bg-amber-500/5 rounded-t-full border border-amber-500/20 transition-all duration-300"></div>
-                        
-                        <!-- Cuerpo extraño (Estilo núcleo de obstrucción) -->
-                        <div id="objeto-obstructor" class="w-6 h-6 rounded-full bg-orange-600 border-2 border-orange-200 shadow-[0_0_15px_rgba(234,88,12,0.8)] z-10 transition-all duration-300 transform translate-y-0"></div>
-                    </div>
-
-                    <!-- Indicador visual del punto de presión óptimo (Timing) -->
-                    <div class="flex flex-col items-center space-y-3 w-1/2">
-                        <span class="font-mono text-[10px] text-slate-400 uppercase tracking-widest">Zona de Sincronía</span>
-                        <div class="w-full h-24 bg-slate-900 border border-slate-800 rounded-xl relative overflow-hidden flex items-center justify-center">
-                            <!-- Barra objetivo esmeralda central -->
-                            <div class="absolute h-6 w-full bg-emerald-500/10 border-y border-emerald-500/30"></div>
-                            <!-- Línea móvil de presión activa -->
-                            <div id="linea-indicadora" class="absolute w-full h-1 bg-amber-500 shadow-lg top-0 transition-all duration-75"></div>
-                            <span class="font-mono text-[9px] text-emerald-400/60 z-10 pointer-events-none">PUNTO DE IMPACTO</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MENSAJES EN TIEMPO REAL DEL SIMULADOR -->
-                <div id="consola-feedback" class="bg-slate-950 border border-slate-900 p-3 rounded-xl text-center font-mono text-[11px] text-amber-500 uppercase tracking-wide">
-                    ⚠️ MANTÉN PRESIONADO EL BOTÓN PARA CARGAR COMPRESIÓN...
+            <div class="flex flex-col items-center space-y-3 w-1/2">
+                <span class="font-mono text-[10px] text-slate-400 uppercase tracking-widest">Zona de Sincronía</span>
+                <div class="w-full h-24 bg-slate-900 border border-slate-800 rounded-xl relative overflow-hidden flex items-center justify-center">
+                    <div class="absolute h-6 w-full bg-emerald-500/10 border-y border-emerald-500/30"></div>
+                    <div id="linea-indicadora" class="absolute w-full h-1 bg-amber-500 shadow-lg top-0 transition-all duration-75"></div>
+                    <span class="font-mono text-[9px] text-emerald-400/60 z-10 pointer-events-none">PUNTO DE IMPACTO</span>
                 </div>
             </div>
+        </div>
 
-            <!-- BOTÓN DE CONTROL TÁCTIL RÍTMICO -->
-            <div class="mt-6">
-                <button id="btn-compresion" 
-                        class="w-full bg-gradient-to-b from-slate-900 to-slate-950 hover:from-amber-950/30 hover:to-slate-950 text-slate-400 hover:text-amber-400 border border-slate-800 hover:border-amber-500/40 font-mono text-xs font-bold py-4 rounded-xl transition-all tracking-widest select-none cursor-pointer"
-                        onmousedown="iniciarPresion()" 
-                        onmouseup="liberarPresion()"
-                        ontouchstart="iniciarPresion()"
-                        ontouchend="liberarPresion()">
-                    [ MANTENER PRESIONADO PARA APRETAR EL DIAFRAGMA ]
-                </button>
-                <div class="flex justify-between font-mono text-[9px] text-slate-500 mt-2 px-1">
-                    <span>*SUELTA CUANDO LA LÍNEA CRUCE LA ZONA VERDE</span>
-                    <span id="txt-exitos">ÉXITOS: 0/3</span>
-                </div>
-            </div>
-        </section>
+        <div id="consola-feedback" class="bg-slate-950 border border-slate-900 p-3 rounded-xl text-center font-mono text-[11px] text-amber-500 uppercase tracking-wide">
+            ⚠️ MANTÉN PRESIONADO EL BOTÓN PARA CARGAR COMPRESIÓN...
+        </div>
+    </div>
+
+    <div class="mt-4 flex-shrink-0">
+        <button id="btn-compresion" 
+                class="w-full bg-gradient-to-b from-slate-900 to-slate-950 hover:from-amber-950/30 hover:to-slate-950 text-slate-400 hover:text-amber-400 border border-slate-800 hover:border-amber-500/40 font-mono text-xs font-bold py-4 rounded-xl transition-all tracking-widest select-none cursor-pointer"
+                onmousedown="iniciarPresion()" 
+                onmouseup="liberarPresion()"
+                ontouchstart="iniciarPresion()"
+                ontouchend="liberarPresion()">
+            [ MANTENER PRESIONADO PARA APRETAR EL DIAFRAGMA ]
+        </button>
+        <div class="flex justify-between font-mono text-[9px] text-slate-500 mt-2 px-1">
+            <span>*SUELTA CUANDO LA LÍNEA CRUCE LA ZONA VERDE</span>
+            <span id="txt-exitos">ÉXITOS: 0/3</span>
+        </div>
+    </div>
+</section>
 
         <!-- PIEZA DE MUSEO 2: GALERÍA MULTIPESTAÑA EXPOSITIVA (6 COLS) -->
         <section class="lg:col-span-6 flex flex-col gap-6">
