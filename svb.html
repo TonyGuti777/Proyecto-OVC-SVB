@@ -7,25 +7,34 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- NUEVAS FUENTES: Inter para textos limpios y Space Mono para el toque de monitor/instrumento -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #02040a; color: #f3f4f6; }
-        .bg-grid-dense {
-            background-image: 
-                linear-gradient(rgba(6, 182, 212, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
-            background-size: 15px 15px;
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #0c0809; /* Fondo negro rojizo profundo, muy orgánico */
+            color: #f4f2f2; 
         }
-        .neon-glow-cyan { text-shadow: 0 0 15px rgba(6, 182, 212, 0.6); }
-        .neon-glow-red { text-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
         
-        /* Simulación de GIF/Animación de flujo sanguíneo */
-        @keyframes pulse-blood {
-            0% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 12px #ef4444); }
-            100% { transform: scale(1); opacity: 0.3; }
+        /* Red de fondo en tono rosa clínico pastel muy sutil */
+        .bg-grid-medical {
+            background-image: 
+                linear-gradient(rgba(244, 63, 94, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(244, 63, 94, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
-        .gif-blood-cell { animation: pulse-blood 0.54s infinite; }
+        
+        /* Brillos pastel suaves en lugar de neones agresivos */
+        .pastel-glow-rose { text-shadow: 0 0 12px rgba(251, 113, 133, 0.4); }
+        .pastel-glow-emerald { text-shadow: 0 0 12px rgba(52, 211, 153, 0.4); }
+        
+        /* Animación suave de flujo sanguíneo (Pulso cardíaco) */
+        @keyframes pulse-blood {
+            0% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.06); opacity: 1; filter: drop-shadow(0 0 8px #f43f5e); }
+            100% { transform: scale(1); opacity: 0.4; }
+        }
+        .gif-blood-cell { animation: pulse-blood 0.6s infinite ease-in-out; }
 
         @keyframes scanline {
             0% { transform: translateY(-100%); }
@@ -33,26 +42,26 @@
         }
         .monitor-scan::after {
             content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, transparent, rgba(6, 182, 212, 0.1), transparent);
-            animation: scanline 3s linear infinite; pointer-events: none;
+            background: linear-gradient(to bottom, transparent, rgba(251, 113, 133, 0.05), transparent);
+            animation: scanline 4s linear infinite; pointer-events: none;
         }
     </style>
 </head>
-<body class="bg-grid-dense min-h-screen selection:bg-cyan-500 selection:text-black">
+<body class="bg-grid-medical min-h-screen selection:bg-rose-400 selection:text-black">
 
     <!-- BARRA DE CONTROL FLOTANTE -->
-    <div class="fixed top-0 left-0 w-full bg-slate-950/95 backdrop-blur-2xl border-b border-slate-900 z-50 px-6 py-4 flex justify-between items-center shadow-2xl">
+    <div class="fixed top-0 left-0 w-full bg-stone-950/90 backdrop-blur-2xl border-b border-rose-950/20 z-50 px-6 py-4 flex justify-between items-center shadow-md">
         <div class="flex items-center gap-4">
-            <span class="font-mono text-cyan-400 font-extrabold text-xs tracking-widest animate-pulse">● EXHIBICIÓN INTERACTIVA ACTIVA</span>
-            <div class="h-2 w-48 bg-slate-900 rounded-full overflow-hidden border border-slate-800 hidden sm:block">
-                <div id="lectura-progreso" class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 w-0 transition-all duration-100"></div>
+            <span class="font-mono text-rose-400 font-bold text-xs tracking-wider animate-pulse">● INTERFAZ CLÍNICA: PABELLÓN DE HEMODINÁMICA</span>
+            <div class="h-1.5 w-48 bg-stone-900 rounded-full overflow-hidden border border-stone-800 hidden sm:block">
+                <div id="lectura-progreso" class="h-full bg-gradient-to-r from-rose-400 to-rose-500 w-0 transition-all duration-100"></div>
             </div>
         </div>
         <div class="flex items-center gap-4">
-            <div class="font-mono text-[11px] text-red-400 bg-red-950/30 border border-red-900/50 px-3 py-1 rounded-md flex items-center gap-2">
-                <span class="gif-blood-cell text-xs">❤️</span> <span class="font-bold">SISTEMA BIO-MECÁNICO</span>
+            <div class="font-mono text-[11px] text-emerald-400 bg-emerald-950/20 border border-emerald-900/30 px-3 py-1 rounded-md flex items-center gap-2">
+                <span class="gif-blood-cell text-xs">❤️</span> <span class="font-bold">MONITOR SVB</span>
             </div>
-            <a href="index.html" class="text-xs font-mono font-bold text-slate-400 hover:text-white border border-slate-800 px-4 py-2 bg-slate-900/50 rounded-xl transition">
+            <a href="index.html" class="text-xs font-mono font-bold text-stone-400 hover:text-white border border-stone-800 px-4 py-2 bg-stone-900/40 rounded-xl transition">
                 ← VESTÍBULO
             </a>
         </div>
@@ -60,11 +69,11 @@
 
     <!-- HÉROE PRINCIPAL DE EXPOSICIÓN -->
     <header class="max-w-7xl mx-auto px-6 pt-28 pb-12 text-center relative">
-        <span class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/40 px-4 py-2 rounded-lg border border-cyan-900/50 mb-4 inline-block">
-            MÓDULO DE ALTA FIDELIDAD ANATÓMICA Y HEMODINÁMICA
+        <span class="text-xs font-mono font-bold tracking-widest text-rose-300 uppercase bg-rose-950/30 px-4 py-2 rounded-lg border border-rose-900/30 mb-4 inline-block">
+            Módulo II: Simulación de Alta Fidelidad en Paro Cardiorrespiratorio
         </span>
-        <h1 class="text-4xl md:text-7xl font-black font-mono tracking-tight text-white leading-none mt-2">
-            Compendio de <br><span class="text-cyan-400 neon-glow-cyan">Reanimación Cardiopulmonar</span>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-stone-100 leading-tight mt-2">
+            Compendio de <br><span class="text-rose-400 pastel-glow-rose font-mono">Reanimación Cardiopulmonar</span>
         </h1>
     </header>
 
@@ -76,45 +85,45 @@
             <div class="lg:sticky lg:top-24 space-y-6">
                 
                 <!-- MONITOR BIOMÉTRICO DINÁMICO -->
-                <div class="bg-slate-950 border border-slate-900 p-6 rounded-3xl shadow-2xl relative overflow-hidden monitor-scan">
-                    <h3 class="text-xs font-mono text-slate-400 font-bold uppercase tracking-wider mb-4 flex items-center gap-2">⏱️ Reloj Clínico de Anoxia Cerebral</h3>
+                <div class="bg-stone-950/80 border border-rose-950/20 p-6 rounded-3xl shadow-xl relative overflow-hidden monitor-scan">
+                    <h3 class="text-xs font-mono text-stone-400 font-bold uppercase tracking-wider mb-4 flex items-center gap-2">⏱️ Reloj Clínico de Anoxia Cerebral</h3>
                     
-                    <div class="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 text-center mb-4">
-                        <div class="text-3xl font-mono text-red-500 font-bold tracking-widest neon-glow-red" id="reloj-isquemia">00:00.00</div>
-                        <p class="text-[10px] text-slate-500 font-mono mt-1 uppercase">Cronómetro de muerte celular tisular</p>
+                    <div class="bg-stone-900/60 p-4 rounded-2xl border border-stone-800 text-center mb-4">
+                        <div class="text-3xl font-mono text-rose-400 font-bold tracking-wider pastel-glow-rose" id="reloj-isquemia">00:00.00</div>
+                        <p class="text-[10px] text-stone-500 font-mono mt-1 uppercase">Cronómetro de muerte celular tisular</p>
                     </div>
 
                     <!-- ESTADOS EVOLUTIVOS EN VIVO -->
                     <div class="space-y-2 font-mono text-[11px]" id="estados-reloj">
-                        <div id="st-1" class="p-2.5 rounded-xl bg-cyan-950/40 text-cyan-400 border border-cyan-800/50 flex justify-between transition-all">
+                        <div id="st-1" class="p-2.5 rounded-xl bg-rose-950/20 text-rose-300 border border-rose-900/30 flex justify-between transition-all">
                             <span>0-4 min: Fase Eléctrica</span> <span class="font-bold">VIABLE</span>
                         </div>
-                        <div id="st-2" class="p-2.5 rounded-xl bg-slate-900 text-slate-500 border border-slate-950 flex justify-between transition-all">
+                        <div id="st-2" class="p-2.5 rounded-xl bg-stone-900 text-stone-600 border border-stone-950 flex justify-between transition-all">
                             <span>4-10 min: Fase Circulatoria</span> <span class="font-bold">ISQUEMIA</span>
                         </div>
-                        <div id="st-3" class="p-2.5 rounded-xl bg-slate-900 text-slate-500 border border-slate-950 flex justify-between transition-all">
+                        <div id="st-3" class="p-2.5 rounded-xl bg-stone-900 text-stone-600 border border-stone-950 flex justify-between transition-all">
                             <span>10+ min: Fase Metabólica</span> <span class="font-bold">APOPTOSIS</span>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-2 gap-2 mt-4">
-                        <button onclick="controlarReloj('iniciar')" class="bg-cyan-500 text-slate-950 font-mono text-[11px] font-black uppercase py-3 rounded-xl hover:bg-cyan-400 transition cursor-pointer">Iniciar Paro</button>
-                        <button onclick="controlarReloj('reiniciar')" class="bg-slate-900 text-slate-400 border border-slate-800 font-mono text-[11px] font-bold uppercase py-3 rounded-xl hover:text-white transition cursor-pointer">Resetear</button>
+                        <button onclick="controlarReloj('iniciar')" class="bg-rose-400 text-stone-950 font-mono text-[11px] font-bold uppercase py-3 rounded-xl hover:bg-rose-300 transition cursor-pointer">Iniciar Paro</button>
+                        <button onclick="controlarReloj('reiniciar')" class="bg-stone-900 text-stone-400 border border-stone-800 font-mono text-[11px] font-bold uppercase py-3 rounded-xl hover:text-white transition cursor-pointer">Resetear</button>
                     </div>
                 </div>
 
                 <!-- CALCULADORA DE PRESIÓN ESTERNAL -->
-                <div class="bg-slate-950 border border-slate-900 p-6 rounded-3xl shadow-2xl">
-                    <h3 class="text-xs font-mono text-slate-400 font-bold uppercase tracking-wider mb-2">📐 Calibrador de Compresión Mecánica</h3>
-                    <p class="text-[11px] text-slate-500 font-light mb-4">Modifica la profundidad para evaluar el impacto en la bomba cardíaca del paciente.</p>
+                <div class="bg-stone-950/80 border border-rose-950/20 p-6 rounded-3xl shadow-xl">
+                    <h3 class="text-xs font-mono text-stone-400 font-bold uppercase tracking-wider mb-2">📐 Calibrador de Compresión Mecánica</h3>
+                    <p class="text-[11px] text-stone-400 font-light mb-4">Modifica la profundidad para evaluar el impacto en la bomba cardíaca del paciente.</p>
                     
                     <div class="space-y-4">
-                        <input type="range" id="slider-profundidad" min="1" max="8" step="0.5" value="2" class="w-full accent-cyan-400 bg-slate-900 h-2 rounded-lg cursor-pointer" oninput="calcularFuerza(this.value)">
+                        <input type="range" id="slider-profundidad" min="1" max="8" step="0.5" value="2" class="w-full accent-rose-400 bg-stone-900 h-1.5 rounded-lg cursor-pointer" oninput="calcularFuerza(this.value)">
                         
-                        <div class="p-4 rounded-xl text-center font-mono text-xs border bg-red-950/20 border-red-900/60 text-red-400" id="box-fuerza-feedback">
+                        <div class="p-4 rounded-xl text-center font-mono text-xs border bg-rose-950/10 border-rose-900/30 text-rose-300" id="box-fuerza-feedback">
                             <div>PROFUNDIDAD INDUCIDA: <span id="val-prof" class="text-white font-bold">2.0 cm</span></div>
-                            <div class="text-base font-bold mt-1 uppercase tracking-tight" id="txt-fuerza-status">INSUFICIENTE (INCOMPLETO)</div>
-                            <p class="text-[10px] font-light text-slate-400 mt-2 leading-relaxed" id="txt-fuerza-desc">La fuerza aplicada no logra colapsar el esternón sobre los ventrículos. El gasto de eyección arterial es del 0%.</p>
+                            <div class="text-sm font-bold mt-1 uppercase tracking-tight" id="txt-fuerza-status">INSUFICIENTE (INCOMPLETO)</div>
+                            <p class="text-[10px] font-light text-stone-400 mt-2 leading-relaxed" id="txt-fuerza-desc">La fuerza aplicada no logra colapsar el esternón sobre los ventrículos. El gasto de eyección arterial es del 0%.</p>
                         </div>
                     </div>
                 </div>
@@ -122,45 +131,43 @@
             </div>
         </div>
 
-        <!-- TEXTO MASIVO CON ELEMENTOS GRÁFICOS INTERACTIVOS (MUSEO VIRTUAL) -->
+        <!-- TEXTO MASIVO CON ELEMENTOS GRÁFICOS INTERACTIVOS -->
         <div class="lg:col-span-8 space-y-12">
             
-            <!-- SECCIÓN 1: CAPA FISIOLÓGICA CON GIF CONCEPTUAL EN VIVO -->
-            <section class="bg-slate-950 border border-slate-900 p-6 md:p-8 rounded-3xl space-y-6">
-                <div class="flex items-center gap-3 border-b border-slate-900 pb-4">
-                    <div class="w-3 h-6 bg-cyan-500 rounded-sm"></div>
-                    <h2 class="text-xl font-bold font-mono text-white">1.0 Cascada de Isquemia y Fisiopatología Orgánica Detallada</h2>
+            <!-- SECCIÓN 1: CAPA FISIOLÓGICA -->
+            <section class="bg-stone-950/40 border border-rose-950/10 p-6 md:p-8 rounded-3xl space-y-6">
+                <div class="flex items-center gap-3 border-b border-stone-900 pb-4">
+                    <div class="w-1 h-5 bg-rose-400 rounded-full"></div>
+                    <h2 class="text-lg font-bold text-stone-100">1.0 Cascada de Isquemia y Fisiopatología Orgánica Detallada</h2>
                 </div>
                 
-                <div class="text-xs text-slate-400 leading-relaxed font-light space-y-4">
+                <div class="text-sm text-stone-300 leading-relaxed font-light space-y-4">
                     <p>
                         Cuando se produce el cese abrupto de la actividad mecánica miocárdica, la entrega de oxígeno ($O_2$) y glucosa a los tejidos periféricos se interrumpe de inmediato de forma absoluta. El cerebro es incapaz de almacenar sustratos energéticos, por lo que su ventana de viabilidad funcional estructural es críticamente reducida.
                     </p>
 
-                    <!-- GIF CONCEPTUAL INTERACTIVO CONSTRUIDO EN VIVO -->
+                    <!-- SIMULACIONES VISUALES CON PALETA ROSA/CORAL PASTEL -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex flex-col justify-between items-center text-center relative overflow-hidden">
-                            <span class="absolute top-2 left-3 font-mono text-[9px] text-cyan-500 tracking-widest uppercase">GIF ANATOMÍA 01 // PULSO ACTIVO</span>
+                        <div class="bg-stone-900/40 border border-stone-800 p-4 rounded-2xl flex flex-col justify-between items-center text-center relative overflow-hidden">
+                            <span class="absolute top-2 left-3 font-mono text-[9px] text-rose-300 tracking-wider uppercase">DINÁMICA 01 // PERFUSIÓN</span>
                             
-                            <!-- Visualizador de Células en movimiento -->
-                            <div class="w-full h-28 bg-slate-950 rounded-xl my-4 border border-slate-900 flex items-center justify-center gap-3 relative overflow-hidden">
-                                <div class="w-6 h-6 rounded-full bg-red-600/80 gif-blood-cell flex items-center justify-center font-mono text-[10px] text-white font-bold shadow-lg">O2</div>
-                                <div class="w-6 h-6 rounded-full bg-red-600/80 gif-blood-cell flex items-center justify-center font-mono text-[10px] text-white font-bold shadow-lg" style="animation-delay: 0.2s">O2</div>
-                                <div class="w-6 h-6 rounded-full bg-red-600/80 gif-blood-cell flex items-center justify-center font-mono text-[10px] text-white font-bold shadow-lg" style="animation-delay: 0.4s">O2</div>
+                            <div class="w-full h-24 bg-stone-950 rounded-xl my-4 border border-stone-900 flex items-center justify-center gap-3 relative overflow-hidden">
+                                <div class="w-6 h-6 rounded-full bg-rose-400/80 gif-blood-cell flex items-center justify-center font-mono text-[10px] text-stone-950 font-bold shadow-md">O2</div>
+                                <div class="w-6 h-6 rounded-full bg-rose-400/80 gif-blood-cell flex items-center justify-center font-mono text-[10px] text-stone-950 font-bold shadow-md" style="animation-delay: 0.2s">O2</div>
+                                <div class="w-6 h-6 rounded-full bg-rose-400/80 gif-blood-cell flex items-center justify-center font-mono text-[10px] text-stone-950 font-bold shadow-md" style="animation-delay: 0.4s">O2</div>
                             </div>
-                            <p class="text-[10px] text-slate-500 font-mono">Simulador de flujo capilar eritrocitario bajo perfusión normal.</p>
+                            <p class="text-[10px] text-stone-400 font-mono">Simulador de flujo capilar eritrocitario bajo perfusión normal.</p>
                         </div>
 
-                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex flex-col justify-between items-center text-center relative overflow-hidden">
-                            <span class="absolute top-2 left-3 font-mono text-[9px] text-red-500 tracking-widest uppercase">GIF ANATOMÍA 02 // COLAPSO ISQUÉMICO</span>
+                        <div class="bg-stone-900/40 border border-stone-800 p-4 rounded-2xl flex flex-col justify-between items-center text-center relative overflow-hidden">
+                            <span class="absolute top-2 left-3 font-mono text-[9px] text-orange-300 tracking-wider uppercase">DINÁMICA 02 // ESTASIS</span>
                             
-                            <!-- Visualizador en Paro -->
-                            <div class="w-full h-28 bg-slate-950 rounded-xl my-4 border border-slate-900 flex items-center justify-center gap-2 relative">
-                                <div class="w-6 h-6 rounded-full bg-slate-800 border border-dashed border-slate-600 text-slate-500 font-mono text-[9px] flex items-center justify-center">CO2</div>
-                                <div class="w-6 h-6 rounded-full bg-slate-800 border border-dashed border-slate-600 text-slate-500 font-mono text-[9px] flex items-center justify-center">CO2</div>
-                                <div class="absolute inset-0 bg-red-950/20 flex items-center justify-center font-mono text-[10px] text-red-500 font-bold tracking-widest uppercase animate-pulse">¡ESTASIS SANGUÍNEA!</div>
+                            <div class="w-full h-24 bg-stone-950 rounded-xl my-4 border border-stone-900 flex items-center justify-center gap-2 relative">
+                                <div class="w-6 h-6 rounded-full bg-stone-800 border border-stone-700 text-stone-500 font-mono text-[9px] flex items-center justify-center">CO2</div>
+                                <div class="w-6 h-6 rounded-full bg-stone-800 border border-stone-700 text-stone-500 font-mono text-[9px] flex items-center justify-center">CO2</div>
+                                <div class="absolute inset-0 bg-rose-950/10 flex items-center justify-center font-mono text-[10px] text-rose-300 font-bold tracking-wide uppercase animate-pulse">¡ESTASIS SANGUÍNEA!</div>
                             </div>
-                            <p class="text-[10px] text-slate-500 font-mono">Detención microcirculatoria. Acumulación in situ de metabolitos ácidos terminales.</p>
+                            <p class="text-[10px] text-stone-400 font-mono">Detención microcirculatoria. Acumulación in situ de metabolitos.</p>
                         </div>
                     </div>
 
@@ -170,58 +177,57 @@
                 </div>
             </section>
 
-            <!-- SECCIÓN 2: ALGORITMO AHA REPARADO, CARGADO Y 100% OPERATIVO -->
-            <section class="bg-slate-950 border border-slate-900 p-6 md:p-8 rounded-3xl space-y-6">
-                <div class="flex items-center gap-3 border-b border-slate-900 pb-4">
-                    <div class="w-3 h-6 bg-cyan-500 rounded-sm"></div>
-                    <h2 class="text-xl font-bold font-mono text-white">2.0 Secuencia Operativa del Algoritmo AHA (Despliegue Dinámico)</h2>
+            <!-- SECCIÓN 2: ALGORITMO AHA -->
+            <section class="bg-stone-950/40 border border-rose-950/10 p-6 md:p-8 rounded-3xl space-y-6">
+                <div class="flex items-center gap-3 border-b border-stone-900 pb-4">
+                    <div class="w-1 h-5 bg-rose-400 rounded-full"></div>
+                    <h2 class="text-lg font-bold text-stone-100">2.0 Secuencia Operativa del Algoritmo AHA (Despliegue Dinámico)</h2>
                 </div>
-                <p class="text-xs text-slate-400 font-light leading-relaxed">
+                <p class="text-xs text-stone-400 font-light">
                     Hacé clic en los botones de expansión de abajo. El sistema inyectará la información académica oculta al instante abriendo las compuertas del bloque de forma segura.
                 </p>
 
-                <!-- CONTENEDOR DE ACORDEONES CORREGIDO CON LÓGICA DIRECTA -->
-                <div class="space-y-4">
-                    
+                <!-- ACORDEONES RE-ESTILIZADOS -->
+                <div class="space-y-3">
                     <!-- BLOQUE 1 -->
-                    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden">
-                        <button onclick="desplegarBloque('ac-1', 'btn-1')" class="w-full text-left p-4 bg-slate-900 hover:bg-slate-850 flex justify-between items-center font-mono text-xs font-bold text-white transition cursor-pointer">
+                    <div class="bg-stone-900/30 border border-stone-800 rounded-2xl overflow-hidden">
+                        <button onclick="desplegarBloque('ac-1', 'btn-1')" class="w-full text-left p-4 bg-stone-900/60 hover:bg-stone-900 flex justify-between items-center font-mono text-xs font-bold text-stone-200 transition cursor-pointer">
                             <span>FASE 01: EVALUACIÓN TRIDIMENSIONAL DEL ENTORNO</span>
-                            <span class="text-cyan-400 text-[10px] border border-cyan-900 bg-cyan-950/40 px-2 py-0.5 rounded" id="btn-1">EXPANDIR [+]</span>
+                            <span class="text-rose-300 text-[10px] border border-rose-900/40 bg-rose-950/20 px-2 py-0.5 rounded" id="btn-1">EXPANDIR [+]</span>
                         </button>
-                        <div id="ac-1" class="hidden p-5 text-xs text-slate-400 font-light space-y-3 border-t border-slate-950 leading-relaxed bg-slate-950/50">
+                        <div id="ac-1" class="hidden p-5 text-xs text-stone-400 font-light space-y-3 border-t border-stone-950 leading-relaxed bg-stone-950/20">
                             <p>
-                                La aproximación inicial prohíbe el contacto directo inmediato con la víctima. El rescatista debe realizar un escaneo analítico ambiental en tres ejes (X, Y, Z) buscando factores de riesgo biomecánicos, fugas de fluidos volátiles, cables conductores de alta tensión expuestos, o cinemática activa de tránsito vehicular en la periferia inmediata.
+                                La aproximación inicial prohíbe el contactó directo inmediato con la víctima. El rescatista debe realizar un escaneo analítico ambiental en tres ejes (X, Y, Z) buscando factores de riesgo biomecánicos, fugas de fluidos volátiles, cables conductores de alta tensión expuestos, o cinemática activa de tránsito vehicular en la periferia inmediata.
                             </p>
-                            <p class="border-l-2 border-cyan-500 pl-3 text-[11px] text-slate-300 font-mono">
+                            <p class="border-l-2 border-rose-400 pl-3 text-[11px] text-stone-300 font-mono">
                                 💡 <strong>Estándar Académico:</strong> La seguridad de la escena es un axioma absoluto. Si la zona representa una amenaza no controlada, la intervención se suspende hasta el arribo de personal logístico de rescate especializado.
                             </p>
                         </div>
                     </div>
 
                     <!-- BLOQUE 2 -->
-                    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden">
-                        <button onclick="desplegarBloque('ac-2', 'btn-2')" class="w-full text-left p-4 bg-slate-900 hover:bg-slate-850 flex justify-between items-center font-mono text-xs font-bold text-white transition cursor-pointer">
+                    <div class="bg-stone-900/30 border border-stone-800 rounded-2xl overflow-hidden">
+                        <button onclick="desplegarBloque('ac-2', 'btn-2')" class="w-full text-left p-4 bg-stone-900/60 hover:bg-stone-900 flex justify-between items-center font-mono text-xs font-bold text-stone-200 transition cursor-pointer">
                             <span>FASE 02: DIAGNÓSTICO CLÍNICO AGUDO DE PARO CARDÍACO</span>
-                            <span class="text-cyan-400 text-[10px] border border-cyan-900 bg-cyan-950/40 px-2 py-0.5 rounded" id="btn-2">EXPANDIR [+]</span>
+                            <span class="text-rose-300 text-[10px] border border-rose-900/40 bg-rose-950/20 px-2 py-0.5 rounded" id="btn-2">EXPANDIR [+]</span>
                         </button>
-                        <div id="ac-2" class="hidden p-5 text-xs text-slate-400 font-light space-y-3 border-t border-slate-950 leading-relaxed bg-slate-950/50">
+                        <div id="ac-2" class="hidden p-5 text-xs text-stone-400 font-light space-y-3 border-t border-stone-950 leading-relaxed bg-stone-950/20">
                             <p>
                                 Se debe aplicar un estímulo de compresión dolorosa bilateral sobre los músculos trapecios, acompañado de comandos auditivos directos a viva voz. Al mismo tiempo, se realiza la palpación digital del pulso carotídeo en el canal anatómico situado entre la tráquea y el músculo esternocleidomastoideo.
                             </p>
-                            <p class="border-l-2 border-red-500 pl-3 text-[11px] text-slate-300 font-mono">
-                                ⚠️ <strong>Alerta de Gaspiación:</strong> Si el sujeto no responde y solo presenta movimientos respiratorios ineficaces o bocanadas de aire espasmódicas (Gasping), esto constituye un signo patognomónico de actividad cerebral hipóxica terminal. Se debe iniciar RCP de inmediato.
+                            <p class="border-l-2 border-orange-400 pl-3 text-[11px] text-stone-300 font-mono">
+                                ⚠️ <strong>Alerta de Gasping:</strong> Si el sujeto no responde y solo presenta movimientos respiratorios ineficaces o bocanadas de aire espasmódicas (Gasping), esto constituye un signo patognomónico de actividad cerebral hipóxica terminal. Se debe iniciar RCP de inmediato.
                             </p>
                         </div>
                     </div>
 
                     <!-- BLOQUE 3 -->
-                    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden">
-                        <button onclick="desplegarBloque('ac-3', 'btn-3')" class="w-full text-left p-4 bg-slate-900 hover:bg-slate-850 flex justify-between items-center font-mono text-xs font-bold text-white transition cursor-pointer">
+                    <div class="bg-stone-900/30 border border-stone-800 rounded-2xl overflow-hidden">
+                        <button onclick="desplegarBloque('ac-3', 'btn-3')" class="w-full text-left p-4 bg-stone-900/60 hover:bg-stone-900 flex justify-between items-center font-mono text-xs font-bold text-stone-200 transition cursor-pointer">
                             <span>FASE 03: ACTIVACIÓN DE RECURSOS LOGÍSTICOS Y ADQUISICIÓN DEL DEA</span>
-                            <span class="text-cyan-400 text-[10px] border border-cyan-900 bg-cyan-950/40 px-2 py-0.5 rounded" id="btn-3">EXPANDIR [+]</span>
+                            <span class="text-rose-300 text-[10px] border border-rose-900/40 bg-rose-950/20 px-2 py-0.5 rounded" id="btn-3">EXPANDIR [+]</span>
                         </button>
-                        <div id="ac-3" class="hidden p-5 text-xs text-slate-400 font-light space-y-3 border-t border-slate-950 leading-relaxed bg-slate-950/50">
+                        <div id="ac-3" class="hidden p-5 text-xs text-stone-400 font-light space-y-3 border-t border-stone-950 leading-relaxed bg-stone-950/20">
                             <p>
                                 La comunicación al centro de despacho médico institucional (como el Servicio Integrado ECU-911) debe ser categórica y libre de ambigüedades informativas. Se debe delegar la tarea apuntando directamente a un observador, eliminando el sesgo de dilución de responsabilidad social.
                             </p>
@@ -230,45 +236,44 @@
                             </p>
                         </div>
                     </div>
-
                 </div>
             </section>
 
-            <!-- SECCIÓN 3: METRÓNOMO AUDIBLE E INTERACTIVO DE ALTA PRECISIÓN -->
-            <section class="bg-slate-950 border border-slate-900 p-6 md:p-8 rounded-3xl space-y-6">
-                <div class="flex items-center gap-3 border-b border-slate-900 pb-4">
-                    <div class="w-3 h-6 bg-cyan-500 rounded-sm"></div>
-                    <h2 class="text-xl font-bold font-mono text-white">3.0 Sincronización del Ritmo de Compresión e Impulso Acústico</h2>
+            <!-- SECCIÓN 3: METRÓNOMO AUDIBLE METAMORFOSEADO A TONO ESMERALDA QUIRÚRGICO -->
+            <section class="bg-stone-950/40 border border-rose-950/10 p-6 md:p-8 rounded-3xl space-y-6">
+                <div class="flex items-center gap-3 border-b border-stone-900 pb-4">
+                    <div class="w-1 h-5 bg-emerald-400 rounded-full"></div>
+                    <h2 class="text-lg font-bold text-stone-100">3.0 Sincronización del Ritmo de Compresión e Impulso Acústico</h2>
                 </div>
 
-                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl space-y-4">
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-slate-950 pb-4">
+                <div class="bg-stone-900/50 border border-stone-800 p-6 rounded-2xl space-y-4">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-stone-950 pb-4">
                         <div>
-                            <h4 class="text-white font-bold font-mono text-xs uppercase flex items-center gap-1">🔊 Controlador de Ritmo y Frecuencia de Rescate</h4>
-                            <p class="text-[10px] text-slate-500 font-light mt-0.5">Seleccioná un canal de pulso abajo. Al activarlo, el marcador visual destellará al compás de la guía sonora clínica.</p>
+                            <h4 class="text-stone-200 font-bold font-mono text-xs uppercase flex items-center gap-1">🔊 Controlador de Ritmo y Frecuencia de Rescate</h4>
+                            <p class="text-[10px] text-stone-400 font-light mt-0.5">Seleccioná un canal de pulso abajo. El marcador visual destellará en verde clínico al compás de la guía sonora.</p>
                         </div>
                         <div class="flex items-center gap-3">
-                            <div id="led-ritmo" class="w-4 h-4 rounded-full bg-slate-950 border border-slate-800 transition-all duration-700"></div>
-                            <span id="contador-compresiones" class="font-mono text-xs text-cyan-400 bg-slate-950 border border-slate-900 px-3 py-1 rounded">CONTEO: 0</span>
+                            <div id="led-ritmo" class="w-3 h-3 rounded-full bg-stone-950 border border-stone-800 transition-all duration-700"></div>
+                            <span id="contador-compresiones" class="font-mono text-xs text-emerald-400 bg-stone-950 border border-stone-900 px-3 py-1 rounded">CONTEO: 0</span>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-                        <button onclick="activarMetronomo(580)" class="w-full text-center py-3 rounded-xl bg-cyan-950/40 hover:bg-cyan-900/50 text-cyan-400 border border-cyan-800/40 font-mono text-[10px] font-bold uppercase transition cursor-pointer">Guía: "Stayin' Alive"</button>
-                        <button onclick="activarMetronomo(545)" class="w-full text-center py-3 rounded-xl bg-slate-900 hover:bg-slate-850 text-white border border-slate-800 font-mono text-[10px] font-bold uppercase transition cursor-pointer">Ritmo Target AHA (110 BPM)</button>
-                        <button onclick="apagarMetronomo()" class="w-full text-center py-3 rounded-xl bg-red-950/20 hover:bg-red-900/30 text-red-400 border border-red-900/40 font-mono text-[10px] font-bold uppercase transition cursor-pointer">Detener Audio</button>
+                        <button onclick="activarMetronomo(580)" class="w-full text-center py-3 rounded-xl bg-stone-900 hover:bg-stone-850 text-stone-300 border border-stone-800 font-mono text-[10px] font-bold uppercase transition cursor-pointer">Guía: "Stayin' Alive"</button>
+                        <button onclick="activarMetronomo(545)" class="w-full text-center py-3 rounded-xl bg-emerald-950/20 hover:bg-emerald-900/30 text-emerald-400 border border-emerald-900/40 font-mono text-[10px] font-bold uppercase transition cursor-pointer">Ritmo Target AHA (110 BPM)</button>
+                        <button onclick="apagarMetronomo()" class="w-full text-center py-3 rounded-xl bg-rose-950/20 hover:bg-rose-900/30 text-rose-400 border border-rose-900/40 font-mono text-[10px] font-bold uppercase transition cursor-pointer">Detener Audio</button>
                     </div>
                 </div>
             </section>
 
             <!-- AVANCE EXTREMO MULTIPÁGINA -->
-            <div class="bg-gradient-to-br from-slate-950 to-slate-900 border border-slate-900 p-8 rounded-3xl text-center space-y-4">
-                <span class="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest block">Siguiente Pabellón de Anatomía Crítica</span>
-                <h4 class="text-white font-bold text-lg font-mono">¿Pasamos a la resolución del colapso respiratorio por oclusión?</h4>
-                <p class="text-xs text-slate-400 font-light max-w-lg mx-auto">
+            <div class="bg-gradient-to-br from-stone-950 to-stone-900 border border-stone-900 p-8 rounded-3xl text-center space-y-4">
+                <span class="text-[10px] font-mono font-bold text-stone-500 uppercase tracking-wider block">Siguiente Pabellón de Anatomía Crítica</span>
+                <h4 class="text-stone-200 font-bold text-base">¿Pasamos a la resolución del colapso respiratorio por oclusión?</h4>
+                <p class="text-xs text-stone-400 font-light max-w-lg mx-auto">
                     Cuando un cuerpo extraño bloquea mecánicamente la tráquea, la RCP no sirve si no se descomprime la vía aérea mediante vectores físicos de presión intratorácica retrógrada.
                 </p>
-                <a href="ovace.html" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono font-black text-xs uppercase px-12 py-5 rounded-2xl shadow-xl hover:scale-[1.02] transition-all tracking-widest border border-cyan-400/20">
+                <a href="ovace.html" class="inline-block bg-gradient-to-r from-rose-500 to-orange-500 text-stone-950 font-bold font-mono text-xs uppercase px-10 py-4 rounded-xl shadow-lg hover:opacity-90 transition-all tracking-wide">
                     AVANZAR AL PABELLÓN OVACE EXTENDIDO →
                 </a>
             </div>
@@ -276,11 +281,11 @@
         </div>
     </main>
 
-    <footer class="border-t border-slate-950 py-8 text-center text-[10px] text-slate-600 font-mono bg-[#02040a]">
+    <footer class="border-t border-stone-950 py-8 text-center text-[10px] text-stone-600 font-mono bg-stone-950">
         UNIVERSIDAD CENTRAL DEL ECUADOR • FACULTAD DE CIENCIAS MÉDICAS • TRATADO INTERACTIVO MULTIPÁGINA
     </footer>
 
-    <!-- INTERACCIONES COMPLEJAS JAVASCRIPT CORREGIDAS AL 100% -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         // BARRA DE PROGRESO DE LECTURA DE PANTALLA
         window.addEventListener('scroll', () => {
@@ -289,7 +294,7 @@
             document.getElementById('lectura-progreso').style.width = percent + '%';
         });
 
-        // LÓGICA DE CONTROL DE LOS ACORDEONES REPARADA
+        // LÓGICA DE CONTROL DE LOS ACORDEONES
         function desplegarBloque(idAcordeon, idBoton) {
             const bloque = document.getElementById(idAcordeon);
             const boton = document.getElementById(idBoton);
@@ -297,11 +302,11 @@
             if (bloque.classList.contains('hidden')) {
                 bloque.classList.remove('hidden');
                 boton.textContent = 'REPLEGAR [-]';
-                boton.classList.replace('text-cyan-400', 'text-amber-400');
+                boton.classList.replace('text-rose-300', 'text-amber-300');
             } else {
                 bloque.classList.add('hidden');
                 boton.textContent = 'EXPANDIR [+]';
-                boton.classList.replace('text-amber-400', 'text-cyan-400');
+                boton.classList.replace('text-amber-300', 'text-rose-300');
             }
         }
 
@@ -319,17 +324,16 @@
                         document.getElementById('reloj-isquemia').textContent = 
                             `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}.${c < 10 ? '0' : ''}${c}`;
                         
-                        // Mutación dinámica de los estados visuales en base al tiempo transcurrido
                         const st1 = document.getElementById('st-1');
                         const st2 = document.getElementById('st-2');
                         const st3 = document.getElementById('st-3');
 
                         if (m >= 1 && m < 4) {
-                            st1.className = "p-2.5 rounded-xl bg-slate-900 text-slate-600 border border-slate-950 flex justify-between";
-                            st2.className = "p-2.5 rounded-xl bg-amber-950/40 text-amber-400 border border-amber-800/50 flex justify-between animate-pulse";
+                            st1.className = "p-2.5 rounded-xl bg-stone-900 text-stone-600 border border-stone-950 flex justify-between";
+                            st2.className = "p-2.5 rounded-xl bg-amber-950/20 text-amber-300 border border-amber-900/30 flex justify-between animate-pulse";
                         } else if (m >= 4) {
-                            st2.className = "p-2.5 rounded-xl bg-slate-900 text-slate-600 border border-slate-950 flex justify-between";
-                            st3.className = "p-2.5 rounded-xl bg-red-950/40 text-red-400 border border-red-800/50 flex justify-between animate-pulse";
+                            st2.className = "p-2.5 rounded-xl bg-stone-900 text-stone-600 border border-stone-950 flex justify-between";
+                            st3.className = "p-2.5 rounded-xl bg-rose-950/20 text-rose-300 border border-rose-900/30 flex justify-between animate-pulse";
                         }
                     }, 100);
                 }
@@ -338,9 +342,9 @@
                 relojActivo = false;
                 centisegundos = 0;
                 document.getElementById('reloj-isquemia').textContent = "00:00.00";
-                document.getElementById('st-1').className = "p-2.5 rounded-xl bg-cyan-950/40 text-cyan-400 border border-cyan-800/50 flex justify-between";
-                document.getElementById('st-2').className = "p-2.5 rounded-xl bg-slate-900 text-slate-500 border border-slate-950 flex justify-between";
-                document.getElementById('st-3').className = "p-2.5 rounded-xl bg-slate-900 text-slate-500 border border-slate-950 flex justify-between";
+                document.getElementById('st-1').className = "p-2.5 rounded-xl bg-rose-950/20 text-rose-300 border border-rose-900/30 flex justify-between";
+                document.getElementById('st-2').className = "p-2.5 rounded-xl bg-stone-900 text-stone-500 border border-stone-950 flex justify-between";
+                document.getElementById('st-3').className = "p-2.5 rounded-xl bg-stone-900 text-stone-500 border border-stone-950 flex justify-between";
             }
         }
 
@@ -354,21 +358,21 @@
             panel.className = "p-4 rounded-xl text-center font-mono text-xs border transition-all duration-300";
 
             if (cm < 5) {
-                panel.classList.add('bg-red-950/20', 'border-red-900/60', 'text-red-400');
+                panel.classList.add('bg-rose-950/10', 'border-rose-900/30', 'text-rose-300');
                 status.textContent = "INSUFICIENTE (INCOMPLETO)";
                 desc.textContent = "La fuerza aplicada no logra colapsar el esternón sobre los ventrículos. El gasto de eyección arterial es del 0%.";
             } else if (cm >= 5 && cm <= 6) {
-                panel.classList.add('bg-emerald-950/30', 'border-emerald-500/40', 'text-emerald-400');
+                panel.classList.add('bg-emerald-950/20', 'border-emerald-500/30', 'text-emerald-300');
                 status.textContent = "¡RANGO DE ALTA CALIDAD TERAPÉUTICA!";
                 desc.textContent = "Profundidad perfecta. Logra exprimir al 100% las cámaras ventriculares contra la columna vertebral, forzando la circulación cerebral artificial.";
             } else {
-                panel.classList.add('bg-amber-950/30', 'border-amber-500/40', 'text-amber-400');
+                panel.classList.add('bg-amber-950/20', 'border-amber-500/30', 'text-amber-300');
                 status.textContent = "PELIGRO: EXCESO DE COMPRESIÓN MECÁNICA";
-                desc.textContent = "Fuerza desmedida destructiva. Altísimo riesgo latente de inducir fracturas costales múltiples, laceración cardíaca interna o neumotórax traumático masivo.";
+                desc.textContent = "Fuerza desmedida destructiva. Altísimo riesgo latente de inducir fracturas costales múltiples o laceración cardíaca interna.";
             }
         }
 
-        // INTERACCIÓN AVANZADA DEL METRÓNOMO DE RESCATE
+        // METRÓNOMO DE RESCATE CON DESTELLO VERDE CLÍNICO (EMERALD)
         let loopMetronomo, conteoCompresiones = 0, audioContext;
         const led = document.getElementById('led-ritmo');
         const txtConteo = document.getElementById('contador-compresiones');
@@ -376,13 +380,12 @@
         function emitirBeepClinico() {
             if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
             
-            // Generador de oscilación de audio puro para evitar archivos externos rotos
             let oscilador = audioContext.createOscillator();
             let ganancia = audioContext.createGain();
             
             oscilador.type = 'sine';
-            oscilador.frequency.setValueAtTime(880, audioContext.currentTime); // Tono médico limpio
-            ganancia.gain.setValueAtTime(0.1, audioContext.currentTime);
+            oscilador.frequency.setValueAtTime(950, audioContext.currentTime); // Tono médico ligeramente más agudo y limpio
+            ganancia.gain.setValueAtTime(0.08, audioContext.currentTime);
             ganancia.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.04);
             
             oscilador.connect(ganancia);
@@ -390,10 +393,10 @@
             oscilador.start();
             oscilador.stop(audioContext.currentTime + 0.04);
 
-            // Destello visual reactivo de museo en el LED
-            led.className = "w-4 h-4 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/80 transition-all duration-300";
+            // Cambiado a destello verde/esmeralda pastel quirúrgico
+            led.className = "w-3 h-3 rounded-full bg-emerald-400 shadow-md shadow-emerald-400/80 transition-all duration-300";
             setTimeout(() => {
-                led.className = "w-4 h-4 rounded-full bg-slate-950 border border-slate-800 transition-all duration-700";
+                led.className = "w-3 h-3 rounded-full bg-stone-950 border border-stone-800 transition-all duration-700";
             }, 60);
 
             conteoCompresiones++;
@@ -410,7 +413,7 @@
             clearInterval(loopMetronomo);
             conteoCompresiones = 0;
             txtConteo.textContent = "CONTEO: 0";
-            led.className = "w-4 h-4 rounded-full bg-slate-950 border border-slate-800 transition-all";
+            led.className = "w-3 h-3 rounded-full bg-stone-950 border border-stone-800 transition-all";
         }
     </script>
 </body>
