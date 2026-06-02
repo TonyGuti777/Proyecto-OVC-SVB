@@ -3,204 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Museo Virtual: Soporte Vital Básico & OVACE</title>
-    <!-- Tailwind CSS para diseño moderno rápido -->
+    <title>Museo Virtual de Emergencias: SVB & OVACE</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0b0f19;
+            background-color: #050811;
             color: #f3f4f6;
             scroll-behavior: smooth;
         }
-        /* Efecto Neón Médico */
-        .neon-blue { text-shadow: 0 0 10px rgba(6, 182, 212, 0.7), 0 0 20px rgba(6, 182, 212, 0.4); }
-        .neon-red { text-shadow: 0 0 10px rgba(239, 68, 68, 0.7), 0 0 20px rgba(239, 68, 68, 0.4); }
-        .border-neon { border-color: rgba(6, 182, 212, 0.5); box-shadow: 0 0 15px rgba(6, 182, 212, 0.2); }
-        .border-neon-red { border-color: rgba(239, 68, 68, 0.5); box-shadow: 0 0 15px rgba(239, 68, 68, 0.2); }
         
-        /* Tarjetas Giratorias (Card Flip) */
-        .flip-card { background-color: transparent; perspective: 1000px; height: 250px; }
+        /* TEXTURA DE FONDO MUSEO: Cuadrícula ciber-médica + Estrellas de fondo */
+        .bg-museum-texture {
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Luces de atmósfera de fondo que dan profundidad */
+        .ambient-glow-1 { background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 65%); }
+        .ambient-glow-2 { background: radial-gradient(circle, rgba(239,68,68,0.12) 0%, transparent 65%); }
+        .ambient-glow-3 { background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 60%); }
+
+        /* Efectos Neón Avanzados */
+        .neon-blue { text-shadow: 0 0 12px rgba(6, 182, 212, 0.8), 0 0 25px rgba(6, 182, 212, 0.4); }
+        .neon-red { text-shadow: 0 0 12px rgba(239, 68, 68, 0.8), 0 0 25px rgba(239, 68, 68, 0.4); }
+        .border-neon { border-color: rgba(6, 182, 212, 0.4); box-shadow: 0 0 20px rgba(6, 182, 212, 0.15); }
+        .border-neon-red { border-color: rgba(239, 68, 68, 0.4); box-shadow: 0 0 20px rgba(239, 68, 68, 0.15); }
+
+        /* Tarjetas Giratorias 3D */
+        .flip-card { background-color: transparent; perspective: 1000px; height: 280px; }
         .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.5rem; }
-        .flip-card-front { background-color: #1e293b; border: 1px solid rgba(255,255,255,0.1); }
-        .flip-card-back { background-color: #0f172a; transform: rotateY(180deg); border: 1px solid rgba(6, 182, 212, 0.4); }
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 1.25rem; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 1.75rem; }
+        .flip-card-front { background: linear-gradient(135deg, #0f172a, #1e293b); border: 1px solid rgba(255,255,255,0.08); }
+        .flip-card-back { background: linear-gradient(135deg, #090d16, #0f172a); transform: rotateY(180deg); border: 1px solid rgba(239, 68, 68, 0.4); }
 
-        /* Animación del Metrónomo */
+        /* Metrónomo interactivo */
         @keyframes pulse-cyan {
             0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
-            50% { transform: scale(1.08); box-shadow: 0 0 30px rgba(6, 182, 212, 0.8); background-color: #06b6d4; }
+            50% { transform: scale(1.08); box-shadow: 0 0 35px rgba(6, 182, 212, 0.9); background-color: #06b6d4; }
         }
-        .pulse-active { animation: pulse-cyan 0.545s infinite; } /* ~110 BPM */
+        .pulse-active { animation: pulse-cyan 0.545s infinite; }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden bg-museum-texture relative">
 
-    <!-- BARRA DE NAVEGACIÓN (Menú del Museo) -->
-    <nav class="fixed top-0 left-0 w-full z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-gray-800 px-6 py-4 flex justify-between items-center">
-        <div class="font-extrabold text-xl tracking-wider text-cyan-400">MED<span class="text-white">MUSEUM</span></div>
-        <div class="space-x-6 text-sm font-semibold">
-            <a href="#inicio" class="hover:text-cyan-400 transition">Vestíbulo</a>
-            <a href="#sala1" class="hover:text-cyan-400 transition">Sala SVB</a>
-            <a href="#sala2" class="hover:text-red-400 transition">Sala OVACE</a>
-            <a href="#trivia" class="bg-cyan-500 text-slate-900 px-4 py-2 rounded-full hover:bg-cyan-400 transition">Laboratorio / Trivia</a>
+    <!-- LUCES AMBIENTALES DE TEXTURA (Glows flotando en el fondo del museo) -->
+    <div class="absolute top-0 left-1/4 w-[600px] h-[600px] ambient-glow-1 pointer-events-none z-0"></div>
+    <div class="absolute top-[1200px] right-1/4 w-[700px] h-[700px] ambient-glow-2 pointer-events-none z-0"></div>
+    <div class="absolute top-[2400px] left-1/3 w-[600px] h-[600px] ambient-glow-3 pointer-events-none z-0"></div>
+
+    <!-- MENÚ SUPERIOR -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#050811]/90 backdrop-blur-xl border-b border-slate-900 px-6 py-4 flex justify-between items-center">
+        <div class="font-extrabold text-2xl tracking-wider text-cyan-400">MED<span class="text-white">MUSEUM</span></div>
+        <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-wider">
+            <a href="#inicio" class="hover:text-cyan-400 transition-colors">Vestíbulo</a>
+            <a href="#sala1" class="hover:text-cyan-400 transition-colors">Pabellón SVB</a>
+            <a href="#sala2" class="hover:text-red-400 transition-colors">Pabellón OVACE</a>
+            <a href="#trivia" class="bg-cyan-500/10 text-cyan-400 px-4 py-2 rounded-lg border border-cyan-500/30 hover:bg-cyan-500 hover:text-slate-950 transition-all">Laboratorio Evaluativo</a>
         </div>
     </nav>
 
-    <!-- VESTÍBULO DE BIENVENIDA -->
-    <header id="inicio" class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-16 relative">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(6,182,212,0.15),transparent_60%)]"></div>
-        <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/50 px-4 py-1.5 rounded-full border border-cyan-800/50 mb-6">Exhibición Académica Virtual</span>
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 tracking-tight">Pabellón de <br><span class="text-cyan-400 neon-blue">Emergencias Médicas</span></h1>
-        <p class="text-gray-400 max-w-2xl text-lg mb-8">Un recorrido interactivo guiado sobre las dos maniobras críticas que salvan vidas: Soporte Vital Básico (SVB) y Desobstrucción de la Vía Aérea (OVACE).</p>
+    <!-- VESTÍBULO PRINCIPAL -->
+    <header id="inicio" class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-20 relative z-10">
+        <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/60 px-4 py-2 rounded-full border border-cyan-800/60 mb-6">Sala de Exhibición Crítica Internacional</span>
+        <h1 class="text-5xl md:text-8xl font-extrabold mb-4 tracking-tight leading-none">Pabellón de <br><span class="text-cyan-400 neon-blue">Urgencias Médicas</span></h1>
+        <p class="text-gray-400 max-w-3xl text-base md:text-xl mb-10 leading-relaxed font-light">Explore las metodologías científicas de intervención inmediata ante colapsos respiratorios y paros cardiorrespiratorios. Diseñado bajo protocolos estrictos de medicina de emergencia.</p>
         
-        <!-- Contador en vivo interactivo -->
-        <div class="bg-slate-900/80 border border-gray-800 p-4 rounded-xl mb-10 max-w-md backdrop-blur">
-            <p class="text-xs text-gray-500 uppercase font-bold tracking-wider">Tiempo Crítico Cerebral</p>
-            <div class="text-2xl font-mono text-red-400 font-bold my-1" id="timer-cerebral">04:00.00</div>
-            <p class="text-xs text-gray-400">A partir de los 4 minutos sin oxígeno, el daño cerebral irreversible comienza de forma inmediata.</p>
+        <!-- Indicador de Tiempo Crítico -->
+        <div class="bg-slate-950/90 border-2 border-red-950 p-6 rounded-2xl mb-10 max-w-xl shadow-2xl backdrop-blur">
+            <p class="text-xs text-red-400 uppercase font-mono tracking-widest font-bold">⏱️ MONITOR DE DEGRADACIÓN ISQUÉMICA</p>
+            <div class="text-4xl font-mono text-red-500 font-bold my-2 tracking-widest" id="timer-cerebral">04:00.00</div>
+            <p class="text-xs text-gray-400 leading-relaxed">Sin maniobras de reanimación, las neuronas del córtex cerebral comienzan a morir exponencialmente al agotarse las reservas de ATP tras 240 segundos de isquemia.</p>
         </div>
 
-        <a href="#sala1" class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 transition transform duration-300">Iniciar Recorrido 🏛️</a>
+        <a href="#sala1" class="bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 text-white font-extrabold px-10 py-5 rounded-2xl shadow-xl shadow-cyan-500/10 hover:shadow-cyan-500/30 hover:scale-105 transition-all duration-300 tracking-wider uppercase text-xs">Comenzar Recorrido Guiado 🏛️</a>
     </header>
 
-    <!-- SALA 1: SOPORTE VITAL BÁSICO -->
-    <section id="sala1" class="min-h-screen py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-gray-900">
-        <div class="flex flex-col md:flex-row gap-12 items-start">
-            <div class="w-full md:w-1/3 sticky top-24">
-                <span class="text-xs font-bold text-cyan-400 uppercase">Sala de Exhibición 01</span>
-                <h2 class="text-4xl font-extrabold text-white mt-2 mb-4">Soporte Vital Básico <br><span class="text-cyan-400">(SVB)</span></h2>
-                <p class="text-gray-400 leading-relaxed mb-6">El soporte vital comprende la atención inicial ante un paro cardiorrespiratorio. Actuar bajo el protocolo de la American Heart Association (AHA) eleva exponencialmente la supervivencia de la víctima.</p>
+    <!-- SECCIÓN INTERMEDIA: MAPA GENERAL DEL MUSEO -->
+    <section class="max-w-7xl mx-auto px-6 py-12 relative z-10">
+        <div class="bg-slate-950/60 border border-slate-900 rounded-3xl p-8 backdrop-blur-md grid grid-cols-1 md:grid-cols-3 gap-6 text-center font-mono text-xs text-gray-500">
+            <div>📍 UBICACIÓN: ALA NORTE</div>
+            <div class="border-y md:border-y-0 md:border-x border-slate-900 py-2 md:py-0">🌐 PROTOCOLO INTL: AHA 2026</div>
+            <div>🏛️ INFRAESTRUCTURA: ENTORNO INTERACTIVO</div>
+        </div>
+    </section>
+
+    <!-- SALA 1: SOPORTE VITAL BÁSICO (SVB) -->
+    <section id="sala1" class="min-h-screen py-24 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col lg:flex-row gap-12 items-start">
+            
+            <!-- Panel Técnico de Sala Fijo -->
+            <div class="w-full lg:w-1/3 lg:sticky lg:top-28 bg-slate-950/80 p-8 rounded-3xl border border-slate-900 shadow-2xl backdrop-blur">
+                <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest">EXHIBICIÓN METÓDICA 01</span>
+                <h2 class="text-4xl font-extrabold text-white mt-2 mb-4 leading-tight">Soporte Vital <br>Básico <span class="text-cyan-400 font-mono text-3xl">(SVB)</span></h2>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Conjunto de maniobras no invasivas destinadas a mantener la perfusión de órganos diana (cerebro y corazón) cuando la bomba cardíaca natural ha fallado por completo.</p>
                 
-                <!-- CAJA DE DATO VITAL -->
-                <div class="bg-cyan-950/30 border border-cyan-800/40 p-4 rounded-xl">
-                    <h4 class="text-cyan-400 font-bold text-sm flex items-center gap-2">⚠️ DATO VITAL DE SALA</h4>
-                    <p class="text-sm text-gray-300 mt-1">Por cada minuto que se retrasa el inicio de la RCP, la probabilidad de supervivencia del paciente disminuye entre un <b>7% y un 10%</b>.</p>
+                <div class="bg-cyan-950/30 border border-cyan-500/20 p-5 rounded-2xl space-y-3">
+                    <h4 class="text-cyan-400 font-bold text-xs font-mono tracking-wider">📊 FACTOR TIEMPO / EFECTIVIDAD</h4>
+                    <p class="text-xs text-gray-300 leading-relaxed">Cada ciclo de compresiones de alta calidad reemplaza mecánicamente hasta un 30% del gasto cardíaco fisiológico basal, ganando valioso tiempo hasta el arribo del DEA.</p>
                 </div>
             </div>
 
-            <!-- VITRINAS Y CONTENIDO INTERACTIVO -->
-            <div class="w-full md:w-2/3 space-y-12">
-                <!-- Vitrina 1: Secuencia de Pasos -->
-                <div class="bg-slate-900/60 p-8 rounded-2xl border border-gray-800 backdrop-blur">
-                    <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                        <span class="bg-cyan-500/10 text-cyan-400 w-8 h-8 rounded-full flex items-center justify-center text-sm border border-cyan-500/30">1</span>
-                        Protocolo de Acción Inicial PAS
+            <!-- Bloque de Contenido Expandido -->
+            <div class="w-full lg:w-2/3 space-y-8">
+                
+                <!-- Vitrina 1.1: El Algoritmo Universal -->
+                <div class="bg-slate-950/80 p-8 rounded-3xl border border-slate-900 shadow-xl">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        <span class="w-3 h-6 bg-cyan-500 rounded-sm inline-block"></span>
+                        Algoritmo Estricto de Reanimación (AHA)
                     </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="p-4 bg-slate-800/40 rounded-xl border border-gray-700/50">
-                            <span class="font-bold text-cyan-400 block mb-1">1. Proteger</span>
-                            <p class="text-xs text-gray-400">Asegura que la escena sea segura para ti, el paciente y los testigos. Evita convertirte en otra víctima.</p>
-                        </div>
-                        <div class="p-4 bg-slate-800/40 rounded-xl border border-gray-700/50">
-                            <span class="font-bold text-cyan-400 block mb-1">2. Avisar</span>
-                            <p class="text-xs text-gray-400">Evalúa respuesta (¿Señor está bien?) y respiración. Si no responde ni respira con normalidad, llama inmediatamente a emergencias.</p>
-                        </div>
-                        <div class="p-4 bg-slate-800/40 rounded-xl border border-gray-700/50">
-                            <span class="font-bold text-cyan-400 block mb-1">3. Socorrer</span>
-                            <p class="text-xs text-gray-400">Inicia de inmediato las maniobras de reanimación cardiopulmonar (RCP) de alta calidad en el centro del pecho.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Vitrina 2: El Simulador de Compresiones -->
-                <div class="bg-gradient-to-br from-slate-900 to-slate-950 p-8 rounded-2xl border-2 border-neon backdrop-blur">
-                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">🕹️ Exhibición Interactiva: Simulador de Ritmo RCP</h3>
-                    <p class="text-xs text-gray-400 mb-6">La AHA determina que la frecuencia correcta de compresión debe ser de <b>100 a 120 compresiones por minuto</b>. Presiona el botón para sincronizar tu cerebro con el ritmo real.</p>
                     
-                    <div class="flex flex-col items-center justify-center py-6 bg-black/40 rounded-xl border border-gray-800">
-                        <div id="metronome-visual" class="w-20 h-20 rounded-full bg-cyan-950 border-2 border-cyan-500 flex items-center justify-center transition-all duration-100 mb-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                    <div class="space-y-6">
+                        <!-- Paso 1 -->
+                        <div class="flex gap-4 p-4 bg-slate-900/40 border-l-4 border-cyan-500 rounded-r-xl">
+                            <div class="font-mono font-bold text-cyan-400 text-lg">01</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Evaluación Cinemática de la Escena</h4>
+                                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Asegure las variables externas (fuego, cables, tráfico). Posteriormente, aplique estímulos dolorosos y verbales en los hombros del paciente para confirmar estado comatoso o de inconsciencia.</p>
+                            </div>
                         </div>
-                        <button id="btn-metronomo" class="bg-cyan-500 text-slate-900 font-extrabold px-6 py-2.5 rounded-lg hover:bg-cyan-400 transition cursor-pointer">ACTIVAR METRÓNOMO (110 BPM)</button>
-                        <p class="text-[10px] text-gray-500 mt-2">Ritmo basado en la guía médica oficial y la métrica de 'Stayin' Alive'</p>
+                        <!-- Paso 2 -->
+                        <div class="flex gap-4 p-4 bg-slate-900/40 border-l-4 border-cyan-500 rounded-r-xl">
+                            <div class="font-mono font-bold text-cyan-400 text-lg">02</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Monitoreo Ventilatorio (Maniobra Frente-Mentón)</h4>
+                                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Abra la vía aérea hiperextendiendo el cuello. Observe la caja torácica durante un rango estricto de 5 a 10 segundos. Si no expande o solo existe 'jadeo/boqueo' (respiración agónica), se declara paro respiratorio.</p>
+                            </div>
+                        </div>
+                        <!-- Paso 3 -->
+                        <div class="flex gap-4 p-4 bg-slate-900/40 border-l-4 border-cyan-500 rounded-r-xl">
+                            <div class="font-mono font-bold text-cyan-400 text-lg">03</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Activación de Alertas y Despiche Clínico</h4>
+                                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Señale firmemente a un testigo directo: 'Usted, llame al servicio de emergencias y exija un Desfibrilador Externo Automático (DEA)'. Si está solo, active el altavoz de su dispositivo móvil.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Vitrina 3: Espacio para GIF e Información Técnica -->
+                <!-- Vitrina 1.2: El Simulador Háptico/Visual -->
+                <div class="bg-gradient-to-br from-slate-950 to-slate-900 p-8 rounded-3xl border-2 border-neon shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 font-mono text-[9px] text-cyan-500/40">SIMULADOR VER. 2.6</div>
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">🕹️ Dispositivo Mecánico: Sincronizador de Compresión</h3>
+                    <p class="text-xs text-gray-400 mb-6">Para mantener la elasticidad del miocardio y perfundir las arterias coronarias, mantenga este pulso constante en el tercio inferior del esternón.</p>
+                    
+                    <div class="flex flex-col items-center justify-center py-8 bg-black/50 rounded-2xl border border-slate-900">
+                        <div id="metronome-visual" class="w-24 h-24 rounded-full bg-cyan-950/50 border-4 border-cyan-500 flex items-center justify-center transition-all duration-100 mb-6 shadow-lg shadow-cyan-500/10">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                        </div>
+                        <button id="btn-metronomo" class="bg-cyan-500 text-slate-950 font-black px-8 py-4 rounded-xl hover:bg-cyan-400 transition transform hover:scale-105 cursor-pointer text-xs uppercase tracking-wider">ACTIVAR METRÓNOMO CLÍNICO (110 BPM)</button>
+                        <p class="text-[10px] text-gray-500 font-mono mt-3">Métrica: 110 Pulsos por Minuto | Frecuencia Cardíaca de Emergencia</p>
+                    </div>
+                </div>
+
+                <!-- Vitrina 1.3: Bloque de Profundidad Técnica e Imagen Dinámica -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-slate-900/60 p-6 rounded-2xl border border-gray-800 flex flex-col justify-between">
+                    <div class="bg-slate-950/80 p-6 rounded-3xl border border-slate-900 flex flex-col justify-between">
                         <div>
-                            <h4 class="font-bold text-white mb-2">Técnica de Compresión Eficaz</h4>
-                            <ul class="text-xs text-gray-400 space-y-2 list-disc list-inside">
-                                <li>Coloca el talón de una mano en el centro del pecho (mitad inferior del esternón).</li>
-                                <li>Coloca la otra mano encima entrelazando los dedos.</li>
-                                <li>Mantén los brazos completamente rectos sin doblar codos.</li>
-                                <li>Deprime el esternón entre <b>5 y 6 cm</b> de profundidad.</li>
-                                <li>Permite la descompresión torácica completa tras cada impacto.</li>
+                            <h4 class="font-bold text-white mb-4 text-base flex items-center gap-2">📐 Parámetros Biomecánicos</h4>
+                            <ul class="text-xs text-gray-400 space-y-3 font-light">
+                                <li class="flex items-start gap-2">🔹 <span class="text-gray-200"><b>Profundidad:</b> Exceder los 5 cm pero jamás sobrepasar los 6 cm para evitar laceraciones hepáticas o fracturas costales severas.</span></li>
+                                <li class="flex items-start gap-2">🔹 <span class="text-gray-200"><b>Descompresión:</b> Permita que el tórax regrese a su posición original al 100%. No deje las manos apoyadas con peso muerto.</span></li>
+                                <li class="flex items-start gap-2">🔹 <span class="text-gray-200"><b>Interrupciones:</b> Reduzca al mínimo absoluto las pausas (máximo 10 segundos para dar ventilaciones o analizar el ritmo).</span></li>
                             </ul>
                         </div>
                     </div>
-                    <!-- CONTENEDOR PARA TU GIF DE RCP -->
-                    <div class="bg-slate-950 border border-dashed border-gray-700 rounded-2xl flex flex-col items-center justify-center p-4 min-h-[220px] text-center">
-                        <span class="text-cyan-400 text-2xl mb-2">🖼️</span>
-                        <span class="text-xs font-bold text-gray-400">Sugerencia de GIF Animado</span>
-                        <p class="text-[11px] text-gray-500 max-w-[200px] mt-1">Inserta aquí un GIF de animación 2D/3D que muestre la postura de los brazos y el pecho comprimiéndose.</p>
-                        <!-- Ejemplo si tienes el enlace: <img src="URL_TU_GIF" class="w-full h-full object-cover rounded-xl"> -->
+                    <!-- CONTENEDOR MULTIMEDIA DE EXHIBICIÓN -->
+                    <div class="bg-black/40 border-2 border-dashed border-slate-800 rounded-3xl flex flex-col items-center justify-center p-6 text-center min-h-[250px] relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <span class="text-cyan-400 text-3xl mb-2">🖼️</span>
+                        <span class="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">Pantalla de Animación SVB</span>
+                        <p class="text-[11px] text-gray-500 max-w-[220px] mt-2 leading-relaxed">Inserta el GIF animado de la postura de reanimación para que el visitante observe el ángulo recto de 90° de los hombros.</p>
+                        <!-- Reemplazo para tu GIF directo: <img src="URL" class="absolute inset-0 w-full h-full object-cover"> -->
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- SALA 2: OVACE -->
-    <section id="sala2" class="min-h-screen py-24 bg-gradient-to-b from-transparent to-[#0e1322] px-6 md:px-12">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row-reverse gap-12 items-start">
-            <div class="w-full md:w-1/3 sticky top-24">
-                <span class="text-xs font-bold text-red-400 uppercase">Sala de Exhibición 02</span>
-                <h2 class="text-4xl font-extrabold text-white mt-2 mb-4">OVACE <br><span class="text-red-400">(Atragantamiento)</span></h2>
-                <p class="text-gray-400 leading-relaxed mb-6">La Obstrucción de la Vía Aérea por Cuerpo Extraño es una emergencia médica súbita. Identificar de inmediato el tipo de obstrucción evita que la persona caiga en un estado de inconsciencia por asfixia.</p>
+    <!-- SALA 2: OVACE (ATRAGANTAMIENTO CRÍTICO) -->
+    <section id="sala2" class="min-h-screen py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-slate-900 relative z-10">
+        <div class="flex flex-col lg:flex-row-reverse gap-12 items-start">
+            
+            <!-- Panel Técnico OVACE Fijo -->
+            <div class="w-full lg:w-1/3 lg:sticky lg:top-28 bg-slate-950/80 p-8 rounded-3xl border border-slate-900 shadow-2xl backdrop-blur">
+                <span class="text-xs font-mono font-bold text-red-400 uppercase tracking-widest">EXHIBICIÓN METÓDICA 02</span>
+                <h2 class="text-4xl font-extrabold text-white mt-2 mb-4 leading-tight">Manejo de <br>OVACE <span class="text-red-400 font-mono text-3xl">(Asfixia)</span></h2>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">La Obstrucción de la Vía Aérea por Cuerpo Extraño genera hipoxia severa en cuestión de segundos. El reconocimiento clínico temprano es vital para evitar el colapso vegetativo.</p>
                 
-                <!-- CAJA DE ALERTA DE MITOS -->
-                <div class="bg-red-950/30 border border-red-800/40 p-4 rounded-xl">
-                    <h4 class="text-red-400 font-bold text-sm flex items-center gap-2">❌ ERROR COMÚN CRÍTICO</h4>
-                    <p class="text-sm text-gray-300 mt-1">Nunca des golpes en la espalda a alguien con obstrucción parcial. Puedes provocar que el objeto se desplace hacia el fondo y obstruya la vía por completo.</p>
+                <div class="bg-red-950/30 border border-red-500/20 p-5 rounded-2xl space-y-3">
+                    <h4 class="text-red-400 font-bold text-xs font-mono tracking-wider">🚨 REFLEJO FISIOLÓGICO</h4>
+                    <p class="text-xs text-gray-300 leading-relaxed">La tos es el compresor de aire biológico más potente del organismo. Mientras el paciente logre emitir sonido o toser, el uso de fuerzas externas está estrictamente contraindicado.</p>
                 </div>
             </div>
 
-            <!-- COMPONENTES VISUALES -->
-            <div class="w-full md:w-2/3 space-y-12">
-                <!-- Clasificación Interactiva: Vitrinas Comparativas -->
+            <!-- Bloque de Contenido Expandido -->
+            <div class="w-full lg:w-2/3 space-y-12">
+                
+                <!-- Diagnóstico Diferencial de Vitrina -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-6 bg-slate-900/60 rounded-2xl border border-gray-800 hover:border-cyan-500/30 transition">
-                        <span class="text-xs font-bold text-cyan-400 bg-cyan-950 px-2.5 py-1 rounded-md">Caso A: Obstrucción Parcial</span>
-                        <h4 class="text-lg font-bold text-white mt-3 mb-2">La víctima puede toser y hablar</h4>
-                        <p class="text-xs text-gray-400 leading-relaxed mb-4">El paso de aire aún existe. El cuerpo está usando su mecanismo de defensa más efectivo: la tos.</p>
-                        <div class="bg-slate-800/50 p-3 rounded-lg text-xs font-semibold text-cyan-300 border-l-4 border-cyan-500">
-                            ACCIÓN: Solo anima a toser energéticamente. Monitorea de cerca.
+                    <div class="p-6 bg-slate-950/80 rounded-2xl border border-slate-900 hover:border-cyan-500/20 transition-all">
+                        <span class="text-[10px] font-mono font-bold text-cyan-400 bg-cyan-950/60 px-3 py-1 rounded-md uppercase tracking-wider">Estado: Obstrucción Parcial</span>
+                        <h4 class="text-xl font-bold text-white mt-4 mb-2">Preservación del Flujo Gaseoso</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4">El estrechamiento de la luz laringotraqueal es incompleto. El paciente se encuentra consciente, agitado y tosiendo mecánicamente.</p>
+                        <div class="bg-slate-900 p-4 rounded-xl text-xs font-bold text-cyan-400 border-l-4 border-cyan-500 font-mono">
+                            🛠️ ACCIÓN: Estimular tos vigorosa. No golpear la espalda.
                         </div>
                     </div>
 
-                    <div class="p-6 bg-slate-900/60 rounded-2xl border border-gray-800 hover:border-red-500/30 transition">
-                        <span class="text-xs font-bold text-red-400 bg-red-950 px-2.5 py-1 rounded-md">Caso B: Obstrucción Total</span>
-                        <h4 class="text-lg font-bold text-white mt-3 mb-2">Signo Universal de Atragantamiento</h4>
-                        <p class="text-xs text-gray-400 leading-relaxed mb-4">La víctima no puede hablar, no emite sonido, su rostro cambia de color (cianosis) y se lleva las manos al cuello de forma instintiva.</p>
-                        <div class="bg-slate-800/50 p-3 rounded-lg text-xs font-semibold text-red-300 border-l-4 border-red-500">
-                            ACCIÓN: Ejecuta de inmediato la Maniobra de Heimlich.
+                    <div class="p-6 bg-slate-950/80 rounded-2xl border border-slate-900 hover:border-red-500/20 transition-all">
+                        <span class="text-[10px] font-mono font-bold text-red-400 bg-red-950/60 px-3 py-1 rounded-md uppercase tracking-wider">Estado: Obstrucción Total</span>
+                        <h4 class="text-xl font-bold text-white mt-4 mb-2">Signo Universal de Asfixia</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed mb-4">Bloqueo total. Incapacidad absoluta para fonar o respirar. El paciente se lleva desesperadamente ambas manos a la garganta. Comienza la cianosis en labios y uñas.</p>
+                        <div class="bg-slate-900 p-4 rounded-xl text-xs font-bold text-red-400 border-l-4 border-red-500 font-mono">
+                            ⚠️ ACCIÓN: Aplicar Maniobra de Heimlich de forma inmediata.
                         </div>
                     </div>
                 </div>
 
-                <!-- Tarjetas de Mitos: Interacción 3D -->
+                <!-- Galería Interactiva de Mitos 3D -->
                 <div>
-                    <h3 class="text-xl font-bold text-white mb-4">Interactúa: Galería de Mitos vs Realidades</h3>
-                    <p class="text-xs text-gray-400 mb-6">Pasa el puntero por encima de cada cuadro de exhibición para revelar la verdad científica de los mitos populares.</p>
+                    <h3 class="text-2xl font-bold text-white mb-2 flex items-center gap-3">
+                        <span class="w-3 h-6 bg-red-500 rounded-sm inline-block"></span>
+                        Evidencia Médica vs. Prácticas Empíricas
+                    </h3>
+                    <p class="text-xs text-gray-400 mb-6">Pase el puntero sobre los módulos del museo para analizar la justificación patológica detrás de los errores comunes.</p>
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <span class="text-red-400 text-2xl mb-2">🤔</span>
-                                    <h4 class="font-bold text-white text-sm">¿Dar un vaso de agua o migas de pan?</h4>
-                                    <p class="text-[11px] text-gray-500 mt-2">Pasa el mouse para ver la evaluación científica</p>
+                                    <span class="text-red-400 text-3xl mb-3">❌</span>
+                                    <h4 class="font-bold text-white text-base">Ingesta de alimentos blandos o agua</h4>
+                                    <p class="text-[10px] text-cyan-400 font-mono mt-4 uppercase tracking-widest">Girar para analizar →</p>
                                 </div>
                                 <div class="flip-card-back">
-                                    <h4 class="text-red-400 font-bold text-sm mb-2">¡FALSO Y PELIGROSO!</h4>
-                                    <p class="text-xs text-gray-300">Añadir sólidos o líquidos a una vía aérea colapsada empeora la obstrucción física o puede generar una neumonía por aspiración.</p>
+                                    <h4 class="text-red-400 font-bold text-sm mb-2">IMPACTACIÓN MECÁNICA CRÍTICA</h4>
+                                    <p class="text-xs text-gray-300 leading-relaxed">Introducir bolos alimenticios o fluidos en una vía colapsada añade volumen hidrodinámico a la obstrucción, desplazando el objeto hacia la tráquea profunda o induciendo una broncoaspiración letal.</p>
                                 </div>
                             </div>
                         </div>
@@ -208,142 +258,122 @@
                         <div class="flip-card">
                             <div class="flip-card-inner">
                                 <div class="flip-card-front">
-                                    <span class="text-red-400 text-2xl mb-2">🤔</span>
-                                    <h4 class="font-bold text-white text-sm">¿Qué hacer si la víctima queda inconsciente?</h4>
-                                    <p class="text-[11px] text-gray-500 mt-2">Pasa el mouse para ver el protocolo de emergencia</p>
+                                    <span class="text-red-400 text-3xl mb-3">❌</span>
+                                    <h4 class="font-bold text-white text-base">Golpes dorsales en obstrucciones parciales</h4>
+                                    <p class="text-[10px] text-cyan-400 font-mono mt-4 uppercase tracking-widest">Girar para analizar →</p>
                                 </div>
                                 <div class="flip-card-back">
-                                    <h4 class="text-cyan-400 font-bold text-sm mb-2">REALIDAD PROTOCOLAR</h4>
-                                    <p class="text-xs text-gray-300">Si colapsa y no responde, tiéndela suavemente en el piso y **comienza de inmediato con el protocolo de RCP (Sala 1)**. Cada vez que abras la boca para ventilar, busca el objeto.</p>
+                                    <h4 class="text-red-500 font-bold text-sm mb-2">DESPLAZAMIENTO POR GRAVEDAD</h4>
+                                    <p class="text-xs text-gray-300 leading-relaxed">Los impactos interescapulares verticales rompen el flujo continuo de la tos y, debido a la vibración cinética, pueden hacer caer el objeto suelto directo a las cuerdas vocales, cerrando la vía por completo.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Vitrina Técnica: Maniobra de Heimlich + Espacio para GIF -->
-                <div class="bg-slate-900/60 p-8 rounded-2xl border border-gray-800 flex flex-col md:flex-row gap-6 items-center">
-                    <div class="w-full md:w-1/2">
-                        <h4 class="font-bold text-white mb-3 text-lg border-b border-gray-800 pb-2">Maniobra de Heimlich Paso a Paso</h4>
-                        <ol class="text-xs text-gray-400 space-y-3 list-decimal list-inside">
-                            <li>Colócate detrás de la persona y rodéala con tus brazos por la cintura.</li>
-                            <li>Haz un puño con una mano y coloca el lado del pulgar **justo por encima del ombligo de la víctima y bien abajo del esternón**.</li>
-                            <li>Sujeta tu puño firmemente con la otra mano.</li>
-                            <li>Presiona con fuerza hacia adentro y hacia arriba del abdomen mediante **movimientos rápidos en forma de "J"**.</li>
-                            <li>Repite hasta que el objeto sea expulsado o la víctima colapse.</li>
+                <!-- Vitrina Expandida Heimlich + Espacio Multimedia -->
+                <div class="bg-slate-950/80 p-8 rounded-3xl border border-slate-900 flex flex-col md:flex-row gap-8 items-center shadow-2xl">
+                    <div class="w-full md:w-1/2 space-y-4">
+                        <h4 class="font-bold text-white text-xl border-b border-slate-900 pb-3">La Maniobra de Heimlich (Mecánica de Fluidos)</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">El objetivo fundamental es elevar la presión intratorácica de manera artificial. Al presionar el diafragma, los pulmones expulsan el aire residual como un pistón neumático neumático, eyectando el cuerpo extraño.</p>
+                        <ol class="text-xs text-gray-300 space-y-2 list-decimal list-inside font-light">
+                            <li>Rodée al paciente por la cintura desde la parte posterior.</li>
+                            <li>Posicione el puño arriba del ombligo y abajo de la punta del esternón.</li>
+                            <li>Efectúe compresiones de tracción en <b class="text-red-400 font-mono">forma de "J"</b> (hacia adentro y hacia arriba).</li>
                         </ol>
                     </div>
-                    <!-- CONTENEDOR PARA TU GIF DE HEIMLICH -->
-                    <div class="w-full md:w-1/2 bg-slate-950 border border-dashed border-gray-700 rounded-xl flex flex-col items-center justify-center p-6 text-center min-h-[220px]">
-                        <span class="text-red-400 text-2xl mb-2">🖼️</span>
-                        <span class="text-xs font-bold text-gray-400">Sugerencia de GIF Animado</span>
-                        <p class="text-[11px] text-gray-500 max-w-[200px] mt-1">Ubica aquí una imagen en movimiento que demuestre de forma exacta la dirección de empuje hacia adentro y hacia arriba en "J".</p>
+                    <!-- CONTENEDOR MULTIMEDIA HEIMLICH -->
+                    <div class="w-full md:w-1/2 bg-black/40 border-2 border-dashed border-slate-800 rounded-2xl flex flex-col items-center justify-center p-6 text-center min-h-[240px] relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <span class="text-red-400 text-3xl mb-2">🖼️</span>
+                        <span class="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">Pantalla de Animación OVACE</span>
+                        <p class="text-[11px] text-gray-500 max-w-[220px] mt-2 leading-relaxed">Ubica en esta zona el GIF animado que demuestre la vectorización de la fuerza en J aplicada al diafragma.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- LAB DE EVALUACIÓN: TRIVIA INTERACTIVA -->
-    <section id="trivia" class="min-h-screen py-24 px-6 max-w-3xl mx-auto flex flex-col justify-center">
-        <div class="text-center mb-10">
-            <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Zona de Simulación Avanzada</span>
-            <h2 class="text-4xl font-extrabold text-white mt-2">Laboratorio de Evaluación</h2>
-            <p class="text-gray-400 text-xs mt-2">Pon a prueba los conocimientos adquiridos en las salas de exhibición del museo.</p>
+    <!-- TRIVIA INTERACTIVA (LABORATORIO CLÍNICO VIRTUAL) -->
+    <section id="trivia" class="min-h-screen py-24 px-6 max-w-3xl mx-auto flex flex-col justify-center relative z-10">
+        <div class="text-center mb-12">
+            <span class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-widest bg-cyan-950/40 px-4 py-2 rounded-full border border-cyan-800/40">SIMULACIÓN DE ENTORNO VIVO</span>
+            <h2 class="text-4xl font-extrabold text-white mt-4">Laboratorio Clínico Evaluativo</h2>
+            <p class="text-gray-400 text-sm mt-2 font-light">Resuelva los casos médicos bajo la perspectiva de un primer respondiente calificado.</p>
         </div>
 
-        <!-- CONTENEDOR DE LA TRIVIA DINÁMICA -->
-        <div class="bg-slate-900 border border-gray-800 p-8 rounded-2xl shadow-2xl relative" id="trivia-box">
+        <div class="bg-slate-950 border border-slate-900 p-8 rounded-3xl shadow-2xl relative" id="trivia-box">
             <div id="pantalla-pregunta">
-                <div class="flex justify-between items-center mb-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                    <span>Evaluación Médica Virtual</span>
+                <div class="flex justify-between items-center mb-6 text-[10px] font-mono font-bold text-gray-500 uppercase tracking-widest">
+                    <span>Cuestionario Automatizado</span>
                     <span id="num-pregunta">Pregunta 1 de 3</span>
                 </div>
-                <h3 id="texto-pregunta" class="text-lg font-bold text-white mb-6">¿Cuál es la frecuencia de compresión torácica recomendada por la AHA en adultos?</h3>
+                <h3 id="texto-pregunta" class="text-xl font-bold text-white mb-6 leading-snug">¿Cuál es la frecuencia de compresión torácica recomendada por la AHA en adultos?</h3>
                 
-                <div class="space-y-3" id="contenedor-opciones">
-                    <!-- Opciones inyectadas dinámicamente por JS -->
-                </div>
+                <div class="space-y-3" id="contenedor-opciones"></div>
             </div>
 
-            <div id="pantalla-feedback" class="hidden mt-6 p-4 rounded-xl text-xs font-semibold"></div>
+            <div id="pantalla-feedback" class="hidden mt-6 p-4 rounded-xl text-xs font-mono font-semibold"></div>
 
             <div class="mt-8 flex justify-end">
-                <button id="btn-siguiente" class="hidden bg-cyan-500 text-slate-900 font-bold px-6 py-2 rounded-lg hover:bg-cyan-400 transition cursor-pointer">Siguiente Caso ➡️</button>
+                <button id="btn-siguiente" class="hidden bg-cyan-500 text-slate-950 font-bold px-6 py-3 rounded-xl hover:bg-cyan-400 transition cursor-pointer text-xs uppercase tracking-wider">Siguiente Módulo ➡️</button>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-gray-900 py-8 text-center text-xs text-gray-600">
-        <p>&copy; 2026 Pabellón de Emergencias Médicas Virtual. Diseñado con fines educativos de primer respondiente.</p>
+    <!-- FOOTER DEL MUSEO -->
+    <footer class="border-t border-slate-900 py-10 text-center text-xs text-gray-600 font-mono relative z-10">
+        <p>&copy; 2026 Pabellón de Emergencias Médicas Virtual. Diseñado con fines de excelencia académica y concientización social.</p>
     </footer>
 
-    <!-- LÓGICA DE INTERACTIVIDAD EN JAVASCRIPT -->
+    <!-- LÓGICA DE PROGRAMACIÓN INTERACTIVA -->
     <script>
-        // --- 1. LÓGICA DEL CONTADOR CEREBRAL ---
+        // 1. RELOJ DE ISQUEMIA CEREBRAL
         let totalCentisegundos = 4 * 60 * 100;
         const timerElement = document.getElementById('timer-cerebral');
-        
         function actualizarContador() {
-            if (totalCentisegundos > 0) {
-                totalCentisegundos--;
-            } else {
-                totalCentisegundos = 4 * 60 * 100; // Resetea automático estilo bucle de museo
-            }
-            let minutos = Math.floor(totalCentisegundos / 6000);
-            let segundos = Math.floor((totalCentisegundos % 6000) / 100);
-            let centisegundos = totalCentisegundos % 100;
-            
-            timerElement.textContent = 
-                (minutos < 10 ? '0' : '') + minutos + ':' + 
-                (segundos < 10 ? '0' : '') + segundos + '.' + 
-                (centisegundos < 10 ? '0' : '') + centisegundos;
+            if (totalCentisegundos > 0) totalCentisegundos--;
+            else totalCentisegundos = 4 * 60 * 100;
+            let mins = Math.floor(totalCentisegundos / 6000);
+            let segs = Math.floor((totalCentisegundos % 6000) / 100);
+            let centis = totalCentisegundos % 100;
+            timerElement.textContent = `${mins < 10 ? '0' : ''}${mins}:${segs < 10 ? '0' : ''}${segs}.${centis < 10 ? '0' : ''}${centis}`;
         }
         setInterval(actualizarContador, 10);
 
-        // --- 2. LÓGICA DEL SIMULADOR METRÓNOMO CON AUDIO GENERADO ---
+        // 2. SIMULADOR AUDIBLE DE RCP (METRÓNOMO INTERACTIVO)
         const btnMetronomo = document.getElementById('btn-metronomo');
         const visualMetronome = document.getElementById('metronome-visual');
-        let metronomoActivo = false;
-        let metronomeInterval;
-        let audioCtx;
+        let metronomoActivo = false, metronomeInterval, audioCtx;
 
         function reproducirClick() {
             if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            let osc = audioCtx.createOscillator();
-            let gain = audioCtx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(800, audioCtx.currentTime); // Sonido tipo pito médico seco
-            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.05);
+            let osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+            osc.type = 'sine'; osc.frequency.setValueAtTime(900, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(); osc.stop(audioCtx.currentTime + 0.04);
         }
 
         btnMetronomo.addEventListener('click', () => {
             if (!metronomoActivo) {
                 metronomoActivo = true;
-                btnMetronomo.textContent = "DETENER SIMULADOR";
+                btnMetronomo.textContent = "DETENER DISPOSITIVO";
                 btnMetronomo.classList.replace('bg-cyan-500', 'bg-red-500');
                 visualMetronome.classList.add('pulse-active');
-                
-                // 110 comp por minuto son aprox 545 milisegundos por pulsación
-                metronomeInterval = setInterval(() => {
-                    reproducirClick();
-                }, 545);
+                metronomeInterval = setInterval(reproducirClick, 545); // ~110 BPM
             } else {
                 metronomoActivo = false;
-                btnMetronomo.textContent = "ACTIVAR METRÓNOMO (110 BPM)";
+                btnMetronomo.textContent = "ACTIVAR METRÓNOMO CLÍNICO (110 BPM)";
                 btnMetronomo.classList.replace('bg-red-500', 'bg-cyan-500');
                 visualMetronome.classList.remove('pulse-active');
                 clearInterval(metronomeInterval);
             }
         });
 
-        // --- 3. LÓGICA DE LA TRIVIA INTERACTIVA ---
+        // 3. ENTRADAS DE LA TRIVIA MÉDICA
         const preguntas = [
             {
                 q: "¿Cuál es la frecuencia de compresión torácica recomendada por la AHA en adultos?",
@@ -365,73 +395,53 @@
             }
         ];
 
-        let indicePregunta = 0;
-        let puntaje = 0;
-
-        const textoPregunta = document.getElementById('texto-pregunta');
-        const contenedorOpciones = document.getElementById('contenedor-opciones');
-        const numPregunta = document.getElementById('num-pregunta');
-        const pantallaFeedback = document.getElementById('pantalla-feedback');
-        const btnSiguiente = document.getElementById('btn-siguiente');
+        let indicePregunta = 0, puntaje = 0;
+        const textoPregunta = document.getElementById('texto-pregunta'), contenedorOpciones = document.getElementById('contenedor-opciones');
+        const numPregunta = document.getElementById('num-pregunta'), pantallaFeedback = document.getElementById('pantalla-feedback'), btnSiguiente = document.getElementById('btn-siguiente');
 
         function cargarPregunta() {
-            pantallaFeedback.classList.add('hidden');
-            btnSiguiente.classList.add('hidden');
-            
+            pantallaFeedback.classList.add('hidden'); btnSiguiente.classList.add('hidden');
             if (indicePregunta < preguntas.length) {
                 let pActual = preguntas[indicePregunta];
                 numPregunta.textContent = `Pregunta ${indicePregunta + 1} de ${preguntas.length}`;
                 textoPregunta.textContent = pActual.q;
                 contenedorOpciones.innerHTML = '';
-                
                 pActual.opciones.forEach((opcion, idx) => {
                     let btn = document.createElement('button');
-                    btn.className = "w-full text-left p-4 bg-slate-800 rounded-xl hover:bg-slate-700/80 border border-gray-700/60 transition text-sm font-medium cursor-pointer";
-                    btn.textContent = opcion;
-                    btn.onclick = () => verificarRespuesta(idx);
+                    btn.className = "w-full text-left p-4 bg-slate-900 rounded-xl hover:bg-slate-800 border border-slate-800 transition text-xs font-semibold cursor-pointer";
+                    btn.textContent = opcion; btn.onclick = () => verificarRespuesta(idx);
                     contenedorOpciones.appendChild(btn);
                 });
             } else {
-                // Pantalla final del museo - Entrega del Certificado
                 document.getElementById('pantalla-pregunta').innerHTML = `
-                    <div class="text-center py-6">
-                        <span class="text-4xl">🎓</span>
-                        <h3 class="text-2xl font-extrabold text-cyan-400 mt-4">¡Recorrido Completado!</h3>
-                        <p class="text-xs text-gray-300 mt-2">Has completado con éxito la evaluación interactiva del Pabellón de Emergencias Médicas.</p>
-                        <div class="mt-6 p-4 bg-cyan-950/40 border border-cyan-800/60 rounded-xl inline-block">
-                            <span class="text-xs font-mono text-gray-400 block">Puntuación Final</span>
-                            <span class="text-3xl font-extrabold text-white">${puntaje} / ${preguntas.length} Aciertos</span>
+                    <div class="text-center py-6 font-mono">
+                        <span class="text-5xl">🎓</span>
+                        <h3 class="text-2xl font-extrabold text-cyan-400 mt-6">Acreditación del Recorrido</h3>
+                        <p class="text-xs text-gray-400 mt-2">Evaluación del bloque interactivo de emergencias médicas completada.</p>
+                        <div class="mt-6 p-6 bg-cyan-950/30 border border-cyan-800/40 rounded-2xl inline-block">
+                            <span class="text-[10px] text-gray-500 block uppercase tracking-widest">Rendimiento Técnico</span>
+                            <span class="text-4xl font-black text-white">${puntaje} / ${preguntas.length} MATRICULADOS</span>
                         </div>
-                        <p class="text-[11px] text-gray-500 mt-6">Certificado Virtual de Primer Respondiente Otorgado.</p>
-                    </div>
-                `;
-                btnSiguiente.classList.add('hidden');
+                    </div>`;
             }
         }
 
         function verificarRespuesta(idxSeleccionado) {
             let pActual = preguntas[indicePregunta];
-            // Deshabilitar más clics en esta pregunta
             Array.from(contenedorOpciones.children).forEach(btn => btn.disabled = true);
-            
             pantallaFeedback.classList.remove('hidden');
             if (idxSeleccionado === pActual.correcta) {
                 puntaje++;
-                pantallaFeedback.className = "mt-6 p-4 rounded-xl text-xs font-semibold bg-emerald-950/60 border border-emerald-800 text-emerald-300";
-                pantallaFeedback.innerHTML = `🎉 <b>¡Correcto!</b> ${pActual.explicacion}`;
+                pantallaFeedback.className = "mt-6 p-4 rounded-xl text-xs bg-emerald-950/50 border border-emerald-800 text-emerald-400";
+                pantallaFeedback.innerHTML = `🎉 <b>Correcto:</b> ${pActual.explicacion}`;
             } else {
-                pantallaFeedback.className = "mt-6 p-4 rounded-xl text-xs font-semibold bg-red-950/60 border border-red-800 text-red-300";
-                pantallaFeedback.innerHTML = `❌ <b>Incorrecto.</b> ${pActual.explicacion}`;
+                pantallaFeedback.className = "mt-6 p-4 rounded-xl text-xs bg-red-950/50 border border-red-800 text-red-400";
+                pantallaFeedback.innerHTML = `❌ <b>Evaluación:</b> ${pActual.explicacion}`;
             }
             btnSiguiente.classList.remove('hidden');
         }
 
-        btnSiguiente.addEventListener('click', () => {
-            indicePregunta++;
-            cargarPregunta();
-        });
-
-        // Inicializar Trivia
+        btnSiguiente.addEventListener('click', () => { indicePregunta++; cargarPregunta(); });
         cargarPregunta();
     </script>
 </body>
