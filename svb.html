@@ -3,192 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVB - Panel Avanzado Multitarea UCI</title>
+    <title>MEDMUSEUM - Tratado Completo de Soporte Vital Básico</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #03060f; color: #f3f4f6; }
-        .bg-monitor-lines {
-            background-image: linear-gradient(rgba(16, 185, 129, 0.02) 1px, transparent 1px);
-            background-size: 100% 4px;
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #02040a; color: #f3f4f6; }
+        .bg-grid-dense {
+            background-image: 
+                linear-gradient(rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+            background-size: 15px 15px;
         }
-        .neon-text-green { text-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
+        .neon-glow-cyan { text-shadow: 0 0 15px rgba(6, 182, 212, 0.6); }
+        .neon-glow-red { text-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
+        .pulse-heart { animation: beat 0.545s infinite; }
+        @keyframes beat {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(239,68,68,0.4)); }
+            50% { transform: scale(1.12); filter: drop-shadow(0 0 15px rgba(239,68,68,0.8)); }
+        }
+        .fluid-flow { background: linear-gradient(90deg, #06b6d4, #3b82f6); background-size: 200% 200%; animation: moveGradient 2s linear infinite; }
+        @keyframes moveGradient { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
     </style>
 </head>
-<body class="bg-monitor-lines min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
+<body class="bg-grid-dense min-h-screen selection:bg-cyan-500 selection:text-black">
 
-    <!-- HEADER DE INTERFAZ INTELIGENTE -->
-    <header class="w-full bg-slate-950 border-b border-slate-900 px-6 py-4 flex justify-between items-center relative z-50">
-        <div class="flex items-center gap-3">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="font-mono text-xs font-bold tracking-widest text-emerald-400 uppercase neon-text-green">MONITOR TÁCTICO DE SIMULACIÓN MULTITAREA // SIM-CORE v1.2</span>
+    <div class="fixed top-0 left-0 w-full bg-slate-950/95 backdrop-blur-2xl border-b border-slate-900 z-50 px-6 py-4 flex justify-between items-center shadow-2xl">
+        <div class="flex items-center gap-4">
+            <span class="font-mono text-cyan-400 font-extrabold text-xs tracking-widest animate-pulse">● EXPOSICIÓN CRÍTICA ACTIVA</span>
+            <div class="h-2 w-48 bg-slate-900 rounded-full overflow-hidden border border-slate-800 hidden sm:block">
+                <div id="lectura-progreso" class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 w-0 transition-all duration-100"></div>
+            </div>
         </div>
-        <a href="index.html" class="text-[10px] font-mono text-slate-500 hover:text-white border border-slate-800 px-3 py-1.5 rounded-lg bg-slate-900/20">
-            ← SALIR AL VESTÍBULO
-        </a>
+        <div class="flex items-center gap-4">
+            <div id="live-cardio" class="font-mono text-[11px] text-red-400 bg-red-950/30 border border-red-900/50 px-3 py-1 rounded-md flex items-center gap-2">
+                <span class="pulse-heart text-xs">❤️</span> <span class="font-bold">F.C: 110 BPM (TARGET)</span>
+            </div>
+            <a href="index.html" class="text-xs font-mono font-bold text-slate-400 hover:text-white border border-slate-800 px-4 py-2 bg-slate-900/50 rounded-xl transition">
+                ← VESTÍBULO
+            </a>
+        </div>
+    </div>
+
+    <header class="max-w-7xl mx-auto px-6 pt-28 pb-12 text-center relative">
+        <span class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/40 px-4 py-2 rounded-lg border border-cyan-900/50 mb-4 inline-block">
+            MANUAL DE ENTRENAMIENTO DE ALTA FIDELIDAD ACADÉMICA
+        </span>
+        <h1 class="text-4xl md:text-7xl font-black font-mono tracking-tight text-white leading-none mt-2">
+            Compendio de <br><span class="text-cyan-400 neon-glow-cyan">Reanimación Cardiopulmonar</span>
+        </h1>
+        <p class="text-slate-400 text-sm md:text-base max-w-3xl mx-auto mt-6 font-light leading-relaxed">
+            Un desglose enciclopédico interactivo de la biomecánica circulatoria, la cascada isquémica celular y los algoritmos internacionales dictados por el Comité de Enlace Internacional sobre Reanimación (ILCOR).
+        </p>
     </header>
 
-    <!-- ÁREA COMPLEJA DE LA INTERFAZ CENTRAL -->
-    <main class="max-w-7xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-6 my-6 flex-grow relative z-10">
+    <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 pb-32">
         
-        <!-- MENÚ DE SELECCIÓN DE CANAL DE EXPLORACIÓN (4 COLS) -->
-        <div class="lg:col-span-4 space-y-3">
-            <span class="text-[9px] font-mono font-black text-slate-500 tracking-wider block uppercase">Canales de Datos Académicos</span>
-            
-            <button onclick="activarCanal('canal-teoria')" id="btn-canal-teoria" class="w-full text-left p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/10 text-emerald-400 font-mono text-xs font-bold transition cursor-pointer flex justify-between items-center shadow-lg">
-                <span>⚡ CH 01: FISIOPATOLOGÍA DEL COLAPSO</span>
-                <span class="text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded">ONLINE</span>
-            </button>
+        <div class="lg:col-span-4 space-y-6">
+            <div class="lg:sticky lg:top-24 space-y-6">
+                
+                <div class="bg-slate-950 border border-slate-900 p-6 rounded-3xl shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-cyan-950 text-cyan-400 font-mono text-[9px] px-3 py-1 uppercase rounded-bl tracking-widest border-l border-b border-cyan-900/50">Simulador V.1</div>
+                    <h3 class="text-xs font-mono text-slate-400 font-bold uppercase tracking-wider mb-4 flex items-center gap-2">⏱️ Reloj de Isquemia Tisular</h3>
+                    
+                    <div class="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 text-center relative overflow-hidden">
+                        <div class="text-3xl font-mono text-red-500 font-bold tracking-widest neon-glow-red" id="reloj-isquemia">00:00.00</div>
+                        <p class="text-[10px] text-slate-500 font-mono mt-1 uppercase">Tiempo transcurrido en anoxia total</p>
+                    </div>
 
-            <button onclick="activarCanal('canal-simulador')" id="btn-canal-simulador" class="w-full text-left p-4 rounded-xl border border-slate-900 bg-slate-950/80 text-slate-400 font-mono text-xs font-bold transition cursor-pointer flex justify-between items-center hover:border-slate-800">
-                <span>🕹️ CH 02: SIMULADOR DE TOMA DE DECISIONES</span>
-                <span class="text-[10px] bg-slate-900 px-2 py-0.5 rounded">INTERACTIVE</span>
-            </button>
+                    <div class="mt-4 space-y-2 font-mono text-[11px]" id="estados-reloj">
+                        <div id="st-1" class="p-2.5 rounded-xl bg-cyan-950/40 text-cyan-400 border border-cyan-800/50 flex justify-between">
+                            <span>0-4 min: Fase Eléctrica</span> <span class="font-bold">VIABLE</span>
+                        </div>
+                        <div id="st-2" class="p-2.5 rounded-xl bg-slate-900 text-slate-500 border border-slate-900 flex justify-between">
+                            <span>4-10 min: Fase Circulatoria</span> <span class="font-bold">RIESGO</span>
+                        </div>
+                        <div id="st-3" class="p-2.5 rounded-xl bg-slate-900 text-slate-500 border border-slate-900 flex justify-between">
+                            <span>10+ min: Fase Metabólica</span> <span class="font-bold">APOPTOSIS</span>
+                        </div>
+                    </div>
 
-            <button onclick="activarCanal('canal-farmacos')" id="btn-canal-farmacos" class="w-full text-left p-4 rounded-xl border border-slate-900 bg-slate-950/80 text-slate-400 font-mono text-xs font-bold transition cursor-pointer flex justify-between items-center hover:border-slate-800">
-                <span>💊 CH 03: APOYO FARMACOLÓGICO / DEA</span>
-                <span class="text-[10px] bg-slate-900 px-2 py-0.5 rounded">ADVANCED</span>
-            </button>
+                    <div class="grid grid-cols-2 gap-2 mt-4">
+                        <button onclick="controlarReloj('iniciar')" class="bg-cyan-500 text-slate-950 font-mono text-[10px] font-black uppercase py-2.5 rounded-xl hover:bg-cyan-400 transition cursor-pointer">Iniciar Paro</button>
+                        <button onclick="controlarReloj('reiniciar')" class="bg-slate-900 text-slate-400 border border-slate-800 font-mono text-[10px] font-bold uppercase py-2.5 rounded-xl hover:text-white transition cursor-pointer">Resetear</button>
+                    </div>
+                </div>
 
-            <!-- CARD DE MONITOREO AMBIENTAL INTEGRADA -->
-            <div class="bg-slate-950 border border-slate-900 p-5 rounded-2xl space-y-3 font-mono text-[10px] text-slate-500">
-                <span class="font-bold text-slate-400 block border-b border-slate-900 pb-1.5 uppercase">📈 Status del Módulo Técnico</span>
-                <div>• PERFUSIÓN ENCEFÁLICA ESTIMADA: <span class="text-red-500 font-bold">0% CRÍTICO</span></div>
-                <div>• PRECARGA MIOCÁRDICA POST-PARO: <span class="text-amber-500 font-bold">DEPLETADA</span></div>
-                <div>• RITMO ASOCIADO BASE: <span class="text-emerald-400 font-bold animate-pulse">FV GRUESA</span></div>
+                <div class="bg-slate-950 border border-slate-900 p-6 rounded-3xl shadow-2xl">
+                    <h3 class="text-xs font-mono text-slate-400 font-bold uppercase tracking-wider mb-2">📐 Calibrador de Compresión Esternal</h3>
+                    <p class="text-[11px] text-slate-500 font-light mb-4">Mueva el deslizador para simular la profundidad física de la maniobra de reanimación.</p>
+                    
+                    <div class="space-y-4">
+                        <input type="range" id="slider-profundidad" min="1" max="8" step="0.5" value="2" class="w-full accent-cyan-400 bg-slate-900 h-2 rounded-lg cursor-pointer" oninput="calcularFuerza(this.value)">
+                        
+                        <div class="p-4 rounded-xl text-center font-mono text-xs border" id="box-fuerza-feedback">
+                            <div class="text-slate-500">PROFUNDIDAD EVALUADA: <span id="val-prof" class="text-white font-bold">2.0 cm</span></div>
+                            <div class="text-xl font-bold mt-1 text-red-400" id="txt-fuerza-status">INSUFICIENTE (INCOMPLETO)</div>
+                            <p class="text-[10px] font-light text-slate-500 mt-1.5 leading-relaxed" id="txt-fuerza-desc">La fuerza aplicada no logra exprimir el ventrículo. El gasto cardíaco inducido es del 0%.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- MONITOR DINÁMICO DE VISUALIZACIÓN DE CONTENIDO (8 COLS) -->
-        <div class="lg:col-span-8 bg-slate-950/90 border border-slate-900 rounded-3xl p-6 md:p-8 flex flex-col justify-between shadow-2xl relative min-h-[500px]">
+        <div class="lg:col-span-8 space-y-12">
             
-            <!-- CANAL 1: TEORÍA AVANZADA -->
-            <div id="cont-canal-teoria" class="space-y-6">
-                <div class="border-b border-slate-900 pb-4">
-                    <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-900 px-2.5 py-1 rounded">COMPENDIO TEÓRICO COMPLETO</span>
-                    <h3 class="text-xl font-bold text-white mt-3 font-mono">Fisiopatología Molecular del Síndrome Post Paro</h3>
-                </div>
-                <div class="text-xs text-slate-400 leading-relaxed font-light space-y-4">
-                    <p>
-                        El cese abrupto del gasto cardíaco detiene instantáneamente la entrega de macroergios y sustratos metabólicos al parénquima celular. A nivel mitocondrial, la falta de oxígeno detiene la <strong class="text-white font-semibold">Fosforilación Oxidativa</strong>. Esto paraliza la producción de Trifosfato de Adenosina (ATP), obligando a las células a activar la vía anaeróbica como un mecanismo desesperado de compensación.
-                    </p>
-                    <p>
-                        Esta vía alternativa genera una acumulación masiva de iones de hidrógeno ($H^+$) y lactato, induciendo una intensa acidosis intracelular. Como consecuencia directa, las bombas iónicas dependientes de energía sufren una falla estructural masiva, permitiendo una entrada descontrolada de Sodio y Calcio hacia el citosol celular. Este aumento drástico en la concentración de calcio citosólico activa enzimas degradativas como las caspasas y calpaínas, las cuales inician la digestión irreversible del citoesqueleto celular y la membrana celular, sentando las bases de la necrosis tisular.
-                    </p>
-                </div>
-            </div>
-
-            <!-- CANAL 2: SIMULADOR INTERACTIVO DE DECISIONES DE ALTA COMPLEJIDAD -->
-            <div id="cont-canal-simulador" class="space-y-6 hidden">
-                <div class="border-b border-slate-900 pb-4">
-                    <span class="text-[10px] font-mono text-amber-400 bg-amber-950/40 border border-amber-900 px-2.5 py-1 rounded">SIMULACIÓN VIRTUAL AGUDA</span>
-                    <h3 class="text-xl font-bold text-white mt-3 font-mono">Caso Operativo Extra-Hospitalario</h3>
+            <section class="bg-slate-950 border border-slate-900 p-6 md:p-8 rounded-3xl space-y-6">
+                <div class="flex items-center gap-3 border-b border-slate-900 pb-4">
+                    <div class="w-3 h-6 bg-cyan-500 rounded-sm"></div>
+                    <h2 class="text-xl font-bold font-mono text-white">1.0 Fisiopatología Detallada de la Isquemia Miocárdica y Encefálica</h2>
                 </div>
                 
-                <div id="panel-pregunta" class="space-y-4 text-xs font-light text-slate-400 leading-relaxed">
-                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 text-slate-300 font-mono">
-                        📖 <b>ESCENARIO CLÍNICO:</b> Masculino de 48 años colapsa bruscamente en el centro de una terminal de transportes. Usted se aproxima al punto cero. El individuo se encuentra inmóvil en decúbito supino. ¿Cuál es la primera acción protocolar estricta según las directrices de la AHA?
-                    </div>
+                <div class="text-xs text-slate-400 leading-relaxed font-light space-y-4">
+                    <p>
+                        Cuando el automatismo del nodo sinusal se interrumpe abruptamente debido a una taquiarritmia letal o asistolia, se suspende instantáneamente el volumen de eyección sistólica. El cerebro, que representa apenas el 2% del peso corporal total pero consume el 20% del oxígeno del organismo, es el primer órgano diana en sufrir los estragos de la detención hemodinámica.
+                    </p>
                     
-                    <div class="grid grid-cols-1 gap-2 font-mono text-[11px]">
-                        <button onclick="evaluarRespuesta(false, '¡ERROR DE BI0SEGURIDAD! Acercarse ciegamente a una víctima sin inspeccionar el entorno pone en riesgo su vida. Podría haber un cable de alta tensión expuesto o emanaciones de monóxido de carbono.')" class="w-full text-left p-3.5 bg-slate-900 hover:bg-slate-800/80 text-slate-300 rounded-xl border border-slate-800 transition cursor-pointer">
-                            A) Iniciar inmediatamente ciclos de 30 compresiones mecánicas esternales.
-                        </button>
-                        <button onclick="evaluarRespuesta(true, '¡EXCELENTE PROTOCOLO! La evaluación de la seguridad cinemática de la escena es el pilar cero de toda maniobra de salvamento para garantizar que el reanimador no se convierta en una víctima adicional.')" class="w-full text-left p-3.5 bg-slate-900 hover:bg-slate-800/80 text-slate-300 rounded-xl border border-slate-800 transition cursor-pointer">
-                            B) Inspeccionar visualmente el entorno tridimensional para verificar la seguridad de la escena.
-                        </button>
-                        <button onclick="evaluarRespuesta(false, '¡ERROR CRÍTICO! Aplicar ventilaciones de rescate de forma aislada sin evaluar el patrón respiratorio basal ni asegurar la cinemática de la escena es ineficaz y contraproducente.')" class="w-full text-left p-3.5 bg-slate-900 hover:bg-slate-800/80 text-slate-300 rounded-xl border border-slate-800 transition cursor-pointer">
-                            C) Colocar la mascarilla de bolsillo y entregar dos insuflaciones de rescate directas.
-                        </button>
+                    <div class="p-6 bg-slate-900/60 rounded-2xl border border-slate-800 flex flex-col md:flex-row items-center gap-6 my-4">
+                        <div class="w-24 h-24 bg-slate-950 border-2 border-dashed border-red-900 rounded-full flex items-center justify-center relative flex-shrink-0">
+                            <div class="w-12 h-12 bg-red-950/60 border border-red-500 rounded-xl flex items-center justify-center text-xl font-mono text-red-400 shadow-inner" id="corazon-grafico">⚡</div>
+                            <div class="absolute inset-2 border border-cyan-900/30 rounded-full animate-spin"></div>
+                        </div>
+                        <div class="space-y-1 text-left">
+                            <span class="text-[10px] font-mono text-amber-400 font-bold block uppercase">Visualizador de Estado Orgánico:</span>
+                            <h4 class="text-white font-bold text-sm font-mono" id="grafico-titulo">Fibrilación Ventricular Inducida</h4>
+                            <p class="text-[11px] text-slate-500 font-light" id="grafico-desc">El tejido miocárdico tiembla a una frecuencia incontrolable superior a los 300 bpm. No existe contracción efectiva de la pared ventricular; la presión aórtica cae a cero de forma inmediata.</p>
+                        </div>
                     </div>
+
+                    <p>
+                        A nivel microscópico, la privación de sustrato energético detiene la respiración celular aeróbica en menos de 10 segundos. Al agotarse el ATP, las bombas iónicas activas de las membranas neuronales colapsan. Esto desencadena un fenómeno catastrófico conocido como <strong class="text-white font-semibold">despolarización anóxica masiva</strong>. Los gradientes electroquímicos se pierden por completo, provocando una entrada masiva de fluidos al espacio intracelular (edema citotóxico) y liberando cantidades masivas de glutamato, un neurotransmisor que en concentraciones extremas actúa como una potente neurotoxina, destruyendo las conexiones sinápticas de la corteza cerebral de forma irreversible.
+                    </p>
                 </div>
 
-                <!-- ALERTA EMERGENTE DEL FEEDBACK DEL SIMULADOR -->
-                <div id="alerta-simulador" class="hidden p-4 rounded-xl text-xs font-mono border leading-relaxed"></div>
-            </div>
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-[11px] text-slate-400">
+                    <div>
+                        <span class="text-cyan-400 font-bold block mb-1">■ Presión de Perfusión Coronaria (PPC):</span>
+                        Para lograr el Retorno a la Circulación Espontánea (RCE), las maniobras mecánicas deben generar una PPC mínima de <span class="text-white font-bold">15 mmHg</span> de forma sostenida.
+                    </div>
+                    <div>
+                        <span class="text-cyan-400 font-bold block mb-1">■ Gasto Cardíaco Inducido por RCP:</span>
+                        Incluso ejecutando una RCP instrumental o manual perfecta de alta calidad, solo se logra sustituir entre el <span class="text-white font-bold">25% y el 30%</span> del gasto cardíaco basal del individuo.
+                    </div>
+                </div>
+            </section>
 
-            <!-- CANAL 3: FARMACOLOGÍA DE SOPORTE AVANZADO -->
-            <div id="cont-canal-farmacos" class="space-y-6 hidden">
-                <div class="border-b border-slate-900 pb-4">
-                    <span class="text-[10px] font-mono text-purple-400 bg-purple-950/40 border border-purple-900 px-2.5 py-1 rounded">PROTOCOLOS AVANZADOS ACC</span>
-                    <h3 class="text-xl font-bold text-white mt-3 font-mono">Administración y Dosificación Crítica</h3>
+            <section class="bg-slate-950 border border-slate-900 p-6 md:p-8 rounded-3xl space-y-6">
+                <div class="flex items-center gap-3 border-b border-slate-900 pb-4">
+                    <div class="w-3 h-6 bg-cyan-500 rounded-sm"></div>
+                    <h2 class="text-xl font-bold font-mono text-white">2.0 Secuencia de Intervención Sistemática del Algoritmo AHA</h2>
+                </div>
+                <p class="text-xs text-slate-400 font-light leading-relaxed">
+                    Haga clic de forma ordenada en las fases operativas inferiores para desglosar la carga teórica oculta de cada paso crítico del protocolo de rescate.
+                </p>
+
+                <div class="space-y-3">
+                    
+                    <div class="bg-slate-900/50 border border-slate-900 rounded-2xl overflow-hidden">
+                        <button onclick="toggleAcordion('ac-1')" class="w-full text-left p-4 bg-slate-900 flex justify-between items-center font-mono text-xs font-bold text-white hover:bg-slate-850 transition cursor-pointer">
+                            <span>FASE 01: EVALUACIÓN CINEMÁTICA Y SEGURIDAD TRIDIMENSIONAL</span>
+                            <span class="text-cyan-400" id="icon-ac-1">[+] EXPANDIR</span>
+                        </button>
+                        <div id="ac-1" class="hidden p-5 text-xs text-slate-400 font-light space-y-3 border-t border-slate-950 leading-relaxed bg-black/20">
+                            <p>
+                                La aproximación al punto crítico exige la verificación estricta del entorno circundante. El reanimador debe ejecutar un paneo visual buscando riesgos latentes divididos en categorías físicas: amenazas eléctricas (cables caídos, humedad conductiva), amenazas químicas (gases densos, combustibles derramados), cinemática vehicular o peligro inminente de derrumbe estructural.
+                            </p>
+                            <p>
+                                <strong>Regla de Oro Académica:</strong> Bajo ninguna circunstancia se debe iniciar la atención si la escena es insegura. El ingreso precipitado duplica el índice de siniestralidad y agota los recursos de respuesta médica de emergencia.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 border border-slate-900 rounded-2xl overflow-hidden">
+                        <button onclick="toggleAcordion('ac-2')" class="w-full text-left p-4 bg-slate-900 flex justify-between items-center font-mono text-xs font-bold text-white hover:bg-slate-850 transition cursor-pointer">
+                            <span>FASE 02: VALORACIÓN COMPUESTA DE CONSCIENCIA Y RESPIRACIÓN</span>
+                            <span class="text-cyan-400" id="icon-ac-2">[+] EXPANDIR</span>
+                        </button>
+                        <div id="ac-2" class="hidden p-5 text-xs text-slate-400 font-light space-y-3 border-t border-slate-950 leading-relaxed bg-black/20">
+                            <p>
+                                Se debe aplicar un estímulo nociceptivo firme sujetando y presionando ambos músculos trapecios de la víctima mientras se emite un comando verbal de alta intensidad acústica: <em>"¡Señor! ¿Se encuentra bien? ¡Respóndame!"</em>. 
+                            </p>
+                            <p>
+                                Simultáneamente, se realiza una inspección visual del relieve costal por un intervalo estricto de <strong class="text-white">5 a 10 segundos</strong>. Si no hay respuesta motora ni fonación, y el tórax permanece inmóvil o exhibe únicamente respiración agónica (Gasping / Boqueo), se confirma clínicamente el estado de Paro Cardiorrespiratorio. El gasping es un reflejo troncal encefálico ineficaz y debe tratarse inmediatamente como un paro total.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 border border-slate-900 rounded-2xl overflow-hidden">
+                        <button onclick="toggleAcordion('ac-3')" class="w-full text-left p-4 bg-slate-900 flex justify-between items-center font-mono text-xs font-bold text-white hover:bg-slate-850 transition cursor-pointer">
+                            <span>FASE 03: ACTIVACIÓN DEL SEM Y GESTIÓN LOGÍSTICA DEL DEA</span>
+                            <span class="text-cyan-400" id="icon-ac-3">[+] EXPANDIR</span>
+                        </button>
+                        <div id="ac-3" class="hidden p-5 text-xs text-slate-400 font-light space-y-3 border-t border-slate-950 leading-relaxed bg-black/20">
+                            <p>
+                                La delegación de funciones debe ser unívoca, directa y asertiva para evitar el efecto espectador. El reanimador debe apuntar con el dedo a un individuo específico del entorno: <em>"Usted, la persona de camiseta roja, llame inmediatamente al ECU-911, reporte que tenemos un adulto en paro cardiorrespiratorio y traiga de inmediato un Desfibrilador Externo Automático (DEA)"</em>. 
+                            </p>
+                            <p>
+                                Si el reanimador se encuentra completamente solo, activará su terminal móvil en altavoz, entablando comunicación con el despachador de emergencias mientras inicia de forma simultánea los ciclos de compresión mecánica sin perder un solo segundo.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section class="bg-slate-950 border border-slate-900 p-6 md:p-8 rounded-3xl space-y-6">
+                <div class="flex items-center gap-3 border-b border-slate-900 pb-4">
+                    <div class="w-3 h-6 bg-cyan-500 rounded-sm"></div>
+                    <h2 class="text-xl font-bold font-mono text-white">3.0 Biomecánica Avanzada de la Compresión Torácica</h2>
                 </div>
                 <div class="text-xs text-slate-400 leading-relaxed font-light space-y-4">
                     <p>
-                        Aunque el Soporte Vital Básico se centra de forma prioritaria en la optimización de las compresiones torácicas y la ventilación mecánica básica, la interconexión con el soporte avanzado es fundamental para estabilizar los ritmos de paro.
+                        La compresión esternal efectiva actúa bajo la teoría de la <strong class="text-white font-semibold">Bomba Cardíaca y Bomba Torácica</strong>. Al deprimir la pared torácica anterior, se eleva drásticamente la presión intratorácica global, forzando la salida de sangre de las cámaras cardíacas y el lecho vascular pulmonar hacia el sistema arterial sistémico. Durante la fase de descompresión o retroceso elástico total, se genera una presión intratorácica negativa que succiona la sangre de las venas cavas, recargando las aurículas y ventrículos (fase de llenado pasivo esencial para la perfusión coronaria diastólica).
                     </p>
-                    <div class="space-y-3 font-mono text-[11px]">
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <span class="text-purple-400 font-bold block mb-1">🧪 Adrenalina (Epinefrina):</span>
-                            Dosis estricta de 1 mg por vía intravenosa o intraósea (IV/IO), administrada cada 3 a 5 minutos. Su acción de potente agonista alfa-1 adrenérgico induce una intensa vasoconstricción periférica, elevando la presión diastólica aórtica para redirigir el flujo hemático residual hacia las arterias coronarias y cerebrales.
+
+                    <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl space-y-4">
+                        <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-slate-950 pb-4">
+                            <div>
+                                <h4 class="text-white font-bold font-mono text-xs uppercase flex items-center gap-1">🔊 Sincronizador Acústico de Compresión Target</h4>
+                                <p class="text-[10px] text-slate-500 font-light mt-0.5">Frecuencia indexada a 110 compresiones por minuto para optimizar la hemodinámica capilar.</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div id="led-ritmo" class="w-4 h-4 rounded-full bg-slate-950 border border-slate-800 transition-all duration-100"></div>
+                                <span id="contador-ciclos" class="font-mono text-xs text-cyan-400 bg-slate-950 border border-slate-900 px-3 py-1 rounded">COMPRESIONES: 0</span>
+                            </div>
                         </div>
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <span class="text-purple-400 font-bold block mb-1">🧪 Amiodarona (Antiarrítmico de Elección):</span>
-                            Indicada de forma estricta en casos de Fibrilación Ventricular o Taquicardia Ventricular sin pulso refractarias a las descargas eléctricas. Se administra un bolo inicial de 300 mg tras la tercera descarga del DEA, seguido de una dosis complementaria de 150 mg después de la quinta descarga. Su mecanismo bloquea los canales de potasio, prolongando la fase de repolarización del tejido cardíaco colapsado.
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                            <button onclick="manejarMetronomo('stayin')" class="w-full text-center py-2.5 rounded-xl bg-cyan-950/40 hover:bg-cyan-900/50 text-cyan-400 border border-cyan-800/40 font-mono text-[10px] font-bold uppercase transition cursor-pointer">Ritmo "Stayin' Alive"</button>
+                            <button onclick="manejarMetronomo('110')" class="w-full text-center py-2.5 rounded-xl bg-slate-900 hover:bg-slate-850 text-white border border-slate-800 font-mono text-[10px] font-bold uppercase transition cursor-pointer">Ritmo Clínico 110 BPM</button>
+                            <button onclick="manejarMetronomo('apagar')" class="w-full text-center py-2.5 rounded-xl bg-red-950/20 hover:bg-red-900/30 text-red-400 border border-red-900/40 font-mono text-[10px] font-bold uppercase transition cursor-pointer">Apagar Impulso</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- BOTÓN CRÍTICO DE TRANSICIÓN INTEGRADO EN EL MONITOR -->
-            <div class="mt-8 pt-4 border-t border-slate-900 flex justify-end">
-                <a href="ovace.html" class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-mono font-bold text-xs uppercase px-8 py-3.5 rounded-xl shadow-lg hover:scale-[1.02] transition-all tracking-wider">
-                    Siguiente Sección: Canal OVACE →
+            <div class="bg-gradient-to-br from-slate-950 to-slate-900 border border-slate-900 p-8 rounded-3xl text-center space-y-4">
+                <span class="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest block">Tratado de Simulación Médica Completa</span>
+                <h4 class="text-white font-bold text-lg font-mono">¿Listo para analizar el colapso de la vía aérea?</h4>
+                <p class="text-xs text-slate-400 font-light max-w-lg mx-auto">
+                    Una vez dominada la mecánica circulatoria del SVB, el siguiente paso crítico es comprender la dinámica de gases respiratorios ante una oclusión física laringotraqueal severa.
+                </p>
+                <a href="ovace.html" class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono font-black text-xs uppercase px-12 py-5 rounded-2xl shadow-xl hover:scale-[1.02] transition-all tracking-widest border border-cyan-400/20">
+                    AVANZAR AL PABELLÓN OVACE EXTENDIDO →
                 </a>
             </div>
 
         </div>
     </main>
 
-    <!-- FOOTER CLÍNICO -->
-    <footer class="border-t border-slate-900 py-4 text-center text-[10px] text-slate-600 font-mono bg-slate-950">
-        MEDMUSEUM MONITOREO MULTIPÁGINA • SIMULACIÓN UNIVERSITARIA DE ALTO VOLUMEN INFORMATIVO
+    <footer class="border-t border-slate-950 py-8 text-center text-[10px] text-slate-600 font-mono bg-[#02040a]">
+        UNIVERSIDAD CENTRAL DEL ECUADOR • FACULTAD DE CIENCIAS MÉDICAS • EDICIÓN COMPLETA INTERACTIVA MULTIPÁGINA
     </footer>
 
-    <!-- LOGICA DE CONTROL DE LA INTERFAZ UCI -->
     <script>
-        function activarCanal(idCanal) {
-            // Contenedores
-            document.getElementById('cont-canal-teoria').classList.add('hidden');
-            document.getElementById('cont-canal-simulador').classList.add('hidden');
-            document.getElementById('cont-canal-farmacos').classList.add('hidden');
-            
-            // Botones
-            document.getElementById('btn-canal-teoria').className = "w-full text-left p-4 rounded-xl border border-slate-900 bg-slate-950/80 text-slate-400 font-mono text-xs font-bold transition cursor-pointer flex justify-between items-center hover:border-slate-800";
-            document.getElementById('btn-canal-simulador').className = "w-full text-left p-4 rounded-xl border border-slate-900 bg-slate-950/80 text-slate-400 font-mono text-xs font-bold transition cursor-pointer flex justify-between items-center hover:border-slate-800";
-            document.getElementById('btn-canal-farmacos').className = "w-full text-left p-4 rounded-xl border border-slate-900 bg-slate-950/80 text-slate-400 font-mono text-xs font-bold transition cursor-pointer flex justify-between items-center hover:border-slate-800";
+        // BARRA DE LECTURA PROGRESO
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement, b = document.body, st = 'scrollTop', sh = 'scrollHeight';
+            const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+            document.getElementById('lectura-progreso').style.width = percent + '%';
+        });
 
-            // Mostrar el contenedor seleccionado
-            document.getElementById('cont-' + idCanal).classList.remove('hidden');
+        // CONTROL DEL RELOJ DE ISQUEMIA TISULAR
+        let timerIsquemia, totalCentisegundos = 0, relojCorriendo = false;
+        function controlarReloj(accion) {
+            if(accion === 'iniciar') {
+                if(!relojCorriendo) {
+                    relojCorriendo = true;
+                    timerIsquemia = setInterval(() => {
+                        totalCentisegundos++;
+                        let mins = Math.floor(totalCentisegundos / 6000);
+                        let segs = Math.floor((totalCentisegundos % 6000) / 100);
+                        let centis = totalCentisegundos % 100;
+                        document.getElementById('reloj-isquemia').textContent = 
+                            `${mins < 10 ? '0' : ''}${mins}:${segs < 10 ? '0' : ''}${segs}.${centis < 10 ? '0' : ''}${centis}`;
+                        
+                        // Mutar estados anatómicos dinámicamente según el tiempo real
+                        const st1 = document.getElementById('st-1');
+                        const st2 = document.getElementById('st-2');
+                        const st3 = document.getElementById('st-3');
+                        const corazonG = document.getElementById('corazon-grafico');
+                        const tituloG = document.getElementById('grafico-titulo');
+                        const descG = document.getElementById('grafico-desc');
 
-            // Dar estilo al botón activo
-            const btnActivo = document.getElementById('btn-' + idCanal);
-            if(idCanal === 'canal-teoria') {
-                btnActivo.className = "w-full text-left p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/10 text-emerald-400 font-mono text-xs font-bold transition cursor-pointer flex justify-between items-center shadow-lg";
-            } else if(idCanal === 'canal-simulador') {
-                btnActivo.className = "w-full text-left p-4 rounded-xl border border-amber-500/30 bg-amber-950/10 text-amber-400 font-mono text-xs font-bold transition cursor-pointer flex justify-between items-center shadow-lg";
+                        if(mins < 1) {
+                            st1.className = "p-2.5 rounded-xl bg-cyan-950/40 text-cyan-400 border border-cyan-800/50 flex justify-between";
+                        } else if(mins >= 1 && mins < 4) {
+                            st1.className = "p-2.5 rounded-xl bg-slate-900 text-slate-500 border border-slate-900 flex justify-between";
+                            st2.className = "p-2.5 rounded-xl bg-amber-950/40 text-amber-400 border border-amber-800/50 flex justify-between animate-pulse";
+                            corazonG.className = "w-12 h-12 bg-amber-950/60 border border-amber-500 rounded-xl flex items-center justify-center text-xl font-mono text-amber-400 shadow-inner";
+                            tituloG.textContent = "Fase Circulatoria Activa";
+                            descG.textContent = "Las reservas de ATP caen por debajo del 40%. La contracción sin RCP previa es metabólicamente inviable.";
+                        } else {
+                            st2.className = "p-2.5 rounded-xl bg-slate-900 text-slate-500 border border-slate-900 flex justify-between";
+                            st3.className = "p-2.5 rounded-xl bg-red-950/40 text-red-400 border border-red-800/50 flex justify-between animate-pulse";
+                            corazonG.className = "w-12 h-12 bg-black border border-red-600 rounded-xl flex items-center justify-center text-xl font-mono text-red-600 shadow-inner";
+                            tituloG.className = "text-red-500 font-bold text-sm font-mono";
+                            tituloG.textContent = "Muerte Encefálica / Necrosis Celular";
+                            descG.textContent = "Apoptosis neuronal generalizada por edema citotóxico e influjo incontrolable de calcio extracelular.";
+                        }
+                    }, 100);
+                }
             } else {
-                btnActivo.className = "w-full text-left p-4 rounded-xl border border-purple-500/30 bg-purple-950/10 text-purple-400 font-mono text-xs font-bold transition cursor-pointer flex justify-between items-center shadow-lg";
+                clearInterval(timerIsquemia);
+                relojCorriendo = false;
+                totalCentisegundos = 0;
+                document.getElementById('reloj-isquemia').textContent = "00:00.00";
+                document.getElementById('st-1').className = "p-2.5 rounded-xl bg-cyan-950/40 text-cyan-400 border border-cyan-800/50 flex justify-between";
+                document.getElementById('st-2').className = "p-2.5 rounded-xl bg-slate-900 text-slate-500 border border-slate-900 flex justify-between";
+                document.getElementById('st-3').className = "p-2.5 rounded-xl bg-slate-900 text-slate-500 border border-slate-900 flex justify-between";
             }
-            
-            // Ocultar alerta de simulador al cambiar de canal
-            document.getElementById('alerta-simulador').classList.add('hidden');
         }
 
-        function evaluarRespuesta(esCorrecto, mensaje) {
-            const alerta = document.getElementById('alerta-simulador');
-            alerta.classList.remove('hidden', 'bg-emerald-950/30', 'border-emerald-500/40', 'text-emerald-400', 'bg-red-950/30', 'border-red-500/40', 'text-red-400');
-            
-            if(esCorrecto) {
-                alerta.classList.add('bg-emerald-950/30', 'border-emerald-500/40', 'text-emerald-400');
-                alerta.innerHTML = "<b>✓ APROBADO:</b> " + mensaje;
-            } else {
-                alerta.classList.add('bg-red-950/30', 'border-red-500/40', 'text-red-400');
-                alerta.innerHTML = "<b>🚨 ALERTA DE ERROR CLÍNICO:</b> " + mensaje;
-            }
-        }
-    </script>
-</body>
-</html>
+        // INTERACCIÓN DE LA CALCULADORA DE FUERZA DE COMPRESIÓN
+        function calcularFuerza(val) {
+            document.getElementById('val-prof').textContent = parseFloat(val).toFixed(1) + " cm";
+            const box = document.getElementById('box-fuerza-feedback');
+            const txtStatus = document.getElementById('txt-fuerza-status');
+            const txtDesc = document.getElementById('txt-fuerza-desc');
+
+            box.className = "p-4 rounded-xl text-center font-mono text-xs border transition-all duration-300";
+
+            if(val < 5) {
+                box.classList.add('bg-red-9
