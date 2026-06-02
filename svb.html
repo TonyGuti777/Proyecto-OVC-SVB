@@ -3,133 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pabellón de Soporte Vital Básico (SVB)</title>
+    <title>Pabellón de Especialización SVB</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050811; color: #f3f4f6; }
-        .bg-museum-texture {
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #f3f4f6; }
+        .bg-grid-medical {
             background-image: 
-                linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
-            background-size: 30px 30px;
+                linear-gradient(rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
-        .ambient-glow { background: radial-gradient(circle, rgba(6,182,212,0.18) 0%, transparent 65%); }
+        .glow-cyan { background: radial-gradient(circle, rgba(6,182,212,0.2) 0%, transparent 65%); }
         @keyframes pulse-cyan {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(6, 182, 212, 0.4); }
-            50% { transform: scale(1.06); box-shadow: 0 0 35px rgba(6, 182, 212, 0.9); background-color: #06b6d4; }
+            0%, 100% { transform: scale(1); box-shadow: 0 0 15px rgba(6, 182, 212, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 0 35px rgba(6, 182, 212, 0.8); background-color: #06b6d4; }
         }
         .pulse-active { animation: pulse-cyan 0.545s infinite; }
     </style>
 </head>
-<body class="bg-museum-texture min-h-screen p-6 md:p-12 relative overflow-x-hidden">
+<body class="bg-grid-medical min-h-screen p-6 md:p-12 relative overflow-x-hidden">
 
-    <div class="absolute top-1/4 right-1/4 w-[600px] h-[600px] ambient-glow pointer-events-none z-0"></div>
+    <div class="absolute top-1/4 right-1/4 w-[700px] h-[700px] glow-cyan pointer-events-none z-0"></div>
 
-    <!-- ENCABEZADO DE SALA -->
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center mb-12 border-b border-slate-900 pb-6 relative z-10 gap-4">
+    <!-- HEADER SÓLIDO -->
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center mb-12 border-b border-slate-900 pb-6 relative z-10 gap-4">
         <div>
-            <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest bg-cyan-950/60 px-3 py-1 rounded border border-cyan-900/50">Sala de Simulación 01</span>
-            <h1 class="text-3xl font-black text-white mt-2">Pabellón Avanzado: Soporte Vital Básico</h1>
+            <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-widest bg-cyan-950/50 px-3 py-1.5 rounded-md border border-cyan-800/40">SALA DE EXPOSICIÓN CLÍNICA A-1</span>
+            <h1 class="text-3xl md:text-4xl font-black text-white mt-2 font-mono">CIENCIA DEL SOPORTE VITAL BÁSICO</h1>
         </div>
-        <a href="index.html" class="text-xs font-bold text-gray-400 hover:text-white border border-slate-800 px-4 py-2 rounded-xl bg-slate-950/50 transition">
-            ← Salir al Vestíbulo
+        <a href="index.html" class="text-xs font-mono font-bold text-slate-400 hover:text-white border border-slate-800 px-4 py-2.5 rounded-xl bg-slate-950/60 backdrop-blur transition">
+            ← RETORNAR AL VESTÍBULO
         </a>
     </div>
 
-    <!-- CONTENIDO EXPANDIDO DE LA EXHIBICIÓN -->
-    <main class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+    <!-- GRID INMENSURABLE DE CONTENIDO -->
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
         
-        <!-- SECCIÓN IZQUIERDA: DATOS IMPORTANTES CLÍNICOS -->
+        <!-- COLUMNA 1: TRATADO CLÍNICO Y COMPENDIO DE DATOS -->
         <div class="space-y-6 lg:col-span-1">
-            <div class="bg-slate-950/90 p-6 rounded-2xl border border-slate-900 shadow-xl">
-                <h3 class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider mb-3">📍 Datos Clínicos Vitales</h3>
-                <div class="space-y-4 text-xs font-light text-gray-400">
+            
+            <div class="bg-slate-950 border border-slate-900 p-6 rounded-2xl shadow-xl">
+                <h3 class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider mb-4 flex items-center gap-2">📑 Parámetros de Alta Calidad</h3>
+                <div class="space-y-5 text-xs text-slate-400 leading-relaxed font-light">
                     <div>
-                        <b class="text-white block font-semibold">Profundidad Estricta:</b>
-                        Compresión constante de entre 5 cm a 6 cm máximo para evitar daños estructurales en las costillas.
+                        <strong class="text-white block font-semibold mb-1">1. Compresión Esternal Precisa:</strong>
+                        Se debe aplicar fuerza mecánica perpendicular sobre el tercio inferior del esternón, logrando un desplazamiento vertical de <b class="text-cyan-400">exactamente 5 cm (máximo 6 cm)</b>. Esto exprime las cavidades ventriculares contra la columna vertebral.
                     </div>
                     <div>
-                        <b class="text-white block font-semibold">Frecuencia de Reemplazo:</b>
-                        Cada 2 minutos (5 ciclos de 30:2) se debe cambiar de reanimador para evitar que la fatiga reduzca la calidad de la perfusión.
+                        <strong class="text-white block font-semibold mb-1">2. Retroceso Torácico Total:</strong>
+                        Es imperativo permitir la reexpansión pasiva completa del tórax al finalizar cada compresión. No hacerlo eleva la presión intratorácica residual, impidiendo el retorno venoso y disminuyendo drásticamente la precarga cardíaca.
+                    </div>
+                    <div>
+                        <strong class="text-white block font-semibold mb-1">3. Minimización de Pausas:</strong>
+                        Las interrupciones en las compresiones deben limitarse a <b class="text-cyan-400">menos de 10 segundos</b> (solo para análisis de ritmo con DEA o entrega de ventilaciones), ya que la presión de perfusión coronaria decae a cero inmediatamente al detenerse.
                     </div>
                 </div>
             </div>
 
-            <!-- BOTÓN QUE REVELA INFORMACIÓN OCULTA (MODAL) -->
-            <div class="bg-gradient-to-br from-slate-950 to-slate-900 p-6 rounded-2xl border border-cyan-900/40 text-center">
-                <h4 class="text-white font-bold text-xs mb-3 font-mono">🔍 INVESTIGACIÓN OCULTA</h4>
-                <p class="text-[11px] text-gray-400 mb-4 font-light">Examine las excepciones del algoritmo internacional AHA para casos pediátricos o ahogamiento.</p>
-                <button onclick="document.getElementById('modal-info').classList.remove('hidden')" class="w-full bg-cyan-500/10 text-cyan-400 font-bold text-xs uppercase py-3 rounded-xl border border-cyan-500/30 hover:bg-cyan-500 hover:text-slate-950 transition cursor-pointer">
-                    Desbloquear Archivos Médicos
+            <!-- BOTONES INTERACTIVOS PARA EXPANDIR DATOS OCULTOS -->
+            <div class="bg-slate-950 border border-slate-900 p-6 rounded-2xl space-y-3 text-center">
+                <h4 class="text-white font-bold text-xs font-mono tracking-wider uppercase">🗂️ Archivos Clínicos Ocultos</h4>
+                <p class="text-[11px] text-slate-500 font-light mb-3">Haga clic en las tarjetas científicas para proyectar las directrices avanzadas de reanimación.</p>
+                
+                <button onclick="mostrarCaja('archivo-pediatrico')" class="w-full bg-slate-900 text-cyan-400 text-xs font-mono font-bold py-3 px-4 rounded-xl border border-slate-800 hover:border-cyan-500/40 transition cursor-pointer text-left flex justify-between items-center">
+                    <span>1. Variaciones Pediátricas</span> <span class="text-slate-600">👁️</span>
+                </button>
+                <button onclick="mostrarCaja('archivo-neonatal')" class="w-full bg-slate-900 text-cyan-400 text-xs font-mono font-bold py-3 px-4 rounded-xl border border-slate-800 hover:border-cyan-500/40 transition cursor-pointer text-left flex justify-between items-center">
+                    <span>2. Paro por Asfixia/Inmersión</span> <span class="text-slate-600">👁️</span>
                 </button>
             </div>
+
+            <!-- CAJAS DE DATOS EXTENDIDOS DINÁMICOS -->
+            <div id="archivo-pediatrico" class="hidden bg-cyan-950/20 border border-cyan-500/30 p-5 rounded-2xl text-xs text-slate-400 font-light space-y-2">
+                <h5 class="font-bold text-cyan-400 font-mono text-[11px]">DIFERENCIACIÓN PEDIÁTRICA:</h5>
+                <p>En niños y lactantes, el paro suele ser respiratorio secundario. Si hay un solo reanimador, se usa la relación estándar de 30:2. Al ingresar un segundo operador entrenado, la relación cambia estrictamente a <b class="text-white">15 compresiones por 2 ventilaciones</b> para mitigar la hipoxemia severa de base.</p>
+            </div>
+            <div id="archivo-neonatal" class="hidden bg-amber-950/20 border border-amber-500/30 p-5 rounded-2xl text-xs text-slate-400 font-light space-y-2">
+                <h5 class="font-bold text-amber-400 font-mono text-[11px]">PROTOCOLO DE INMERSIÓN / ASFIXIA:</h5>
+                <p>A diferencia del colapso de origen cardíaco puro, las víctimas de ahogamiento presentan hipoxia tisular extrema antes de la asistolia. El algoritmo exige iniciar con <b class="text-white">5 ventilaciones de rescate primarias</b> antes de proceder con el ciclo estándar de compresiones mecánicas.</p>
+            </div>
+
         </div>
 
-        <!-- SECCIÓN CENTRAL Y DERECHA: EXPOSITOR GRANDE, GIFS Y SIMULADOR -->
+        <!-- COLUMNA 2 Y 3: ALGORITMO INTEGRAL, MULTIMEDIA Y SIMULADORES -->
         <div class="lg:col-span-2 space-y-8">
             
-            <!-- Algoritmo Extendido -->
-            <div class="bg-slate-950/80 p-8 rounded-3xl border border-slate-900">
-                <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-                    <span class="w-2 h-4 bg-cyan-500 rounded-sm"></span>
-                    Secuencia Detallada de Supervivencia Cardíaca
+            <!-- EXPOSITOR DETALLADO: PASO A PASO ACADÉMICO -->
+            <div class="bg-slate-950 border border-slate-900 p-8 rounded-3xl">
+                <h3 class="text-xl font-bold text-white mb-6 font-mono flex items-center gap-3">
+                    <span class="w-3 h-5 bg-cyan-500 rounded-sm"></span>
+                    Secuencia Operativa de Reanimación Cardiopulmonar Adulta
                 </h3>
-                <div class="space-y-4 text-xs leading-relaxed text-gray-400 font-light">
-                    <p><strong class="text-cyan-400 font-mono">Fase 1: Cinética de Escena.</strong> Inspección ocular de riesgos eléctricos, químicos o colapsos estructurales en menos de 5 segundos.</p>
-                    <p><strong class="text-cyan-400 font-mono">Fase 2: Estímulo y Ventilación.</strong> Aplicación de compresión dolorosa en los trapecios. Ejecución de la maniobra frente-mentón para alinear los ejes laríngeo y faríngeo.</p>
-                    <p><strong class="text-cyan-400 font-mono">Fase 3: Ejecución de Compresión.</strong> Posicionamiento del talón de la mano dominante exactamente sobre la línea intermamaria (mitad inferior del esternón), entrelazando la segunda mano por encima.</p>
+                
+                <div class="space-y-6">
+                    <div class="p-5 bg-slate-900/40 border-l-4 border-cyan-500 rounded-r-2xl font-light text-xs text-slate-400">
+                        <h4 class="font-bold text-white text-sm mb-1 font-mono">Fase I: Análisis de Seguridad Cinemática</h4>
+                        <p>Evaluación tridimensional del entorno inmediato del colapso. Se deben identificar amenazas latentes (corrientes eléctricas activas, emanaciones gaseosas, inestabilidad de estructuras o tránsito vehicular) para evitar la duplicación del número de víctimas en la escena.</p>
+                    </div>
+
+                    <div class="p-5 bg-slate-900/40 border-l-4 border-cyan-500 rounded-r-2xl font-light text-xs text-slate-400">
+                        <h4 class="font-bold text-white text-sm mb-1 font-mono">Fase II: Valoración de Consciencia y Patrón Ventilatorio</h4>
+                        <p>Estimulación mecánica bilateral mediante presión firme en los músculos trapecios complementada con interpelación verbal enérgica. Simultáneamente, se realiza la maniobra frente-mentón para abrir la vía aérea y se evalúa la expansión torácica por un lapso no menor a 5 ni mayor a 10 segundos. Si el paciente no responde y no respira (o solo presenta "boqueo/gasping"), se decreta Paro Cardiorrespiratorio.</p>
+                    </div>
+
+                    <div class="p-5 bg-slate-900/40 border-l-4 border-cyan-500 rounded-r-2xl font-light text-xs text-slate-400">
+                        <h4 class="font-bold text-white text-sm mb-1 font-mono">Fase III: Activación del Sistema de Despacho Médico y DEA</h4>
+                        <p>Señalamiento unívoco a una persona específica en el entorno: "Usted, llame inmediatamente al servicio de emergencias y consiga un Desfibrilador Externo Automático (DEA)". En caso de aislamiento absoluto, se activa el terminal móvil en modo manos libres para iniciar el tratamiento sin demora.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- CONTENEDOR DE PANTALLA MULTIMEDIA PARA GIF -->
+            <!-- CONTENEDORES MULTIMEDIA DENSOS + FOTOS/GIFS -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-black/40 border-2 border-dashed border-slate-800 rounded-3xl flex flex-col items-center justify-center p-6 text-center min-h-[220px] relative overflow-hidden group">
+                
+                <!-- ESPACIO GIF ANIMADO 1 -->
+                <div class="bg-black/60 border-2 border-dashed border-slate-800 rounded-3xl p-6 text-center flex flex-col justify-center items-center relative group min-h-[250px]">
                     <div class="absolute inset-0 bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <span class="text-cyan-400 text-3xl mb-1">🖼️</span>
-                    <span class="text-xs font-mono font-bold text-gray-400 uppercase tracking-wider">GIF: Vector de Postura Correcta</span>
-                    <p class="text-[10px] text-gray-500 max-w-[200px] mt-2 leading-relaxed">Inserta aquí tu animación de los brazos a 90° bloqueados para usar el peso corporal en la compresión.</p>
+                    <span class="text-3xl mb-2">🖼️</span>
+                    <h5 class="text-xs font-mono font-bold text-slate-300 uppercase">MÓDULO MULTIMEDIA: VECTOR AXIAL</h5>
+                    <p class="text-[11px] text-slate-500 max-w-[240px] mt-2 leading-relaxed">
+                        Colocá acá la imagen o GIF animado que expone la alineación anatómica de los brazos a 90° con respecto al esternón de la víctima. El eje hombro-codo-muñeca debe mantenerse rígido.
+                    </p>
+                    <!-- Reemplazar con tag real cuando tengas el recurso: <img src="URL" class="absolute inset-0 w-full h-full object-cover rounded-3xl"> -->
                 </div>
 
-                <!-- Simulador de Ritmo Auditivo -->
+                <!-- SIMULADOR AUDIBLE RÍTMICO -->
                 <div class="bg-slate-950 border border-slate-900 p-6 rounded-3xl flex flex-col justify-between">
                     <div>
-                        <h4 class="text-sm font-bold text-white mb-2">Simulador Auditivo Sincronizado</h4>
-                        <p class="text-[11px] text-gray-400 leading-relaxed font-light">Haga clic abajo para sintonizar su memoria auditiva con los 110 latidos por minuto requeridos mecánicamente.</p>
+                        <span class="text-[10px] font-mono text-cyan-400 bg-cyan-950/40 border border-cyan-800/60 px-2 py-0.5 rounded">HERRAMIENTA AUDIBLE</span>
+                        <h4 class="text-sm font-bold text-white mt-3 mb-1">Sincronizador Isócrono de Compresión</h4>
+                        <p class="text-[11px] text-slate-400 font-light leading-relaxed">
+                            Las guías internacionales exigen mantener un compás constante de 110 compresiones por minuto para optimizar la hemodinámica de eyección ventricular. Active el oscilador clínico.
+                        </p>
                     </div>
-                    <div class="flex items-center gap-4 mt-4">
-                        <div id="metronome-visual" class="w-12 h-12 rounded-full bg-cyan-950 border-2 border-cyan-500 flex items-center justify-center transition-all duration-100"></div>
-                        <button id="btn-metronomo" class="bg-cyan-500 text-slate-950 font-bold text-[10px] uppercase px-4 py-3 rounded-lg hover:bg-cyan-400 transition cursor-pointer tracking-wider">Activar Pulso</button>
+                    
+                    <div class="flex items-center gap-4 mt-4 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+                        <div id="metronome-visual" class="w-12 h-12 rounded-full bg-slate-950 border-2 border-cyan-500 flex items-center justify-center transition-all duration-700">
+                            <div class="w-3 h-3 bg-cyan-400 rounded-full"></div>
+                        </div>
+                        <button id="btn-metronomo" class="flex-1 bg-cyan-500 text-slate-950 font-mono font-bold text-[10px] uppercase py-3 rounded-lg hover:bg-cyan-400 transition tracking-wider cursor-pointer text-center">
+                            INICIAR OSCILADOR (110 BPM)
+                        </button>
                     </div>
                 </div>
+
             </div>
 
-            <!-- BOTÓN CRÍTICO DE TRÁNSITO AL SIGUIENTE TEMA -->
+            <!-- ENLACE TRÁNSITO CONTINUO -->
             <div class="flex justify-end pt-6 border-t border-slate-900">
-                <a href="ovace.html" class="bg-gradient-to-r from-red-500 to-amber-600 text-white font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-red-500/10 hover:scale-105 transition-all duration-300 text-xs uppercase tracking-wider">
-                    Avanzar al Pabellón OVACE (Asfixia) →
+                <a href="ovace.html" class="bg-gradient-to-r from-red-600 to-amber-600 text-white font-extrabold px-10 py-5 rounded-2xl shadow-xl shadow-red-600/10 hover:scale-105 transition-all duration-300 text-xs uppercase tracking-widest border border-red-500/20">
+                    AVANZAR AL PABELLÓN OVACE (ASFIXIA) →
                 </a>
             </div>
+
         </div>
     </main>
 
-    <!-- VENTANA DE INFORMACIÓN INTERACTIVA OCULTA (MODAL) -->
-    <div id="modal-info" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="bg-slate-950 border border-slate-800 p-8 rounded-3xl max-w-lg w-full relative">
-            <h4 class="text-lg font-bold text-cyan-400 mb-4 font-mono">📑 PROTOCOLOS ESPECIALES (AHA)</h4>
-            <div class="space-y-3 text-xs text-gray-400 leading-relaxed font-light">
-                <p>🔹 <b>Lactantes y Niños:</b> Si se encuentra un solo reanimador, la relación pasa a ser de 30 compresiones por 2 ventilaciones. Si hay dos reanimadores entrenados, cambia a 15:2.</p>
-                <p>🔹 <b>Ahogamiento / Causas Asfícticas:</b> A diferencia del paro de origen cardíaco súbito, en situaciones de inmersión se debe priorizar la apertura de la vía aérea e iniciar con 5 ventilaciones de rescate antes de las compresiones.</p>
-            </div>
-            <button onclick="document.getElementById('modal-info').classList.add('hidden')" class="mt-6 bg-slate-900 text-white border border-slate-800 text-xs uppercase font-bold py-2.5 px-4 rounded-xl hover:bg-slate-800 transition w-full cursor-pointer">
-                Cerrar Expediente
-            </button>
-        </div>
-    </div>
-
     <script>
+        function mostrarCaja(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
         const btnMetronomo = document.getElementById('btn-metronomo');
         const visualMetronome = document.getElementById('metronome-visual');
         let metronomoActivo = false, metronomeInterval, audioCtx;
@@ -137,8 +175,8 @@
         function reproducirClick() {
             if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             let osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
-            osc.type = 'sine'; osc.frequency.setValueAtTime(900, audioCtx.currentTime);
-            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            osc.type = 'sine'; osc.frequency.setValueAtTime(880, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.04);
             osc.connect(gain); gain.connect(audioCtx.destination);
             osc.start(); osc.stop(audioCtx.currentTime + 0.04);
@@ -147,13 +185,13 @@
         btnMetronomo.addEventListener('click', () => {
             if (!metronomoActivo) {
                 metronomoActivo = true;
-                btnMetronomo.textContent = "DETENER";
+                btnMetronomo.textContent = "DETENER OSCILADOR DE RITMO";
                 btnMetronomo.classList.replace('bg-cyan-500', 'bg-red-500');
                 visualMetronome.classList.add('pulse-active');
                 metronomeInterval = setInterval(reproducirClick, 545);
             } else {
                 metronomoActivo = false;
-                btnMetronomo.textContent = "ACTIVAR PULSO";
+                btnMetronomo.textContent = "INICIAR OSCILADOR (110 BPM)";
                 btnMetronomo.classList.replace('bg-red-500', 'bg-cyan-500');
                 visualMetronome.classList.remove('pulse-active');
                 clearInterval(metronomeInterval);
