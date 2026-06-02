@@ -3,76 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEDMUSEUM - Vestíbulo Central Interactiva</title>
+    <title>MEDMUSEUM - Centro Nacional de Simulación Clínica</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050811; color: #f3f4f6; }
-        .bg-museum-texture {
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030712; color: #f3f4f6; }
+        .bg-grid-medical {
             background-image: 
-                linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
-            background-size: 30px 30px;
+                linear-gradient(rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
-        .ambient-glow-1 { background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 65%); }
-        .ambient-glow-2 { background: radial-gradient(circle, rgba(239,68,68,0.12) 0%, transparent 65%); }
-        .neon-blue { text-shadow: 0 0 12px rgba(6, 182, 212, 0.8), 0 0 25px rgba(6, 182, 212, 0.4); }
+        .glow-cyan { background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%); }
+        .glow-red { background: radial-gradient(circle, rgba(239,68,68,0.12) 0%, transparent 70%); }
+        .neon-title { text-shadow: 0 0 15px rgba(6, 182, 212, 0.6), 0 0 30px rgba(6, 182, 212, 0.2); }
     </style>
 </head>
-<body class="bg-museum-texture min-h-screen overflow-x-hidden relative flex flex-col justify-between">
+<body class="bg-grid-medical min-h-screen overflow-x-hidden relative flex flex-col justify-between">
 
-    <div class="absolute top-0 left-1/4 w-[600px] h-[600px] ambient-glow-1 pointer-events-none z-0"></div>
-    <div class="absolute bottom-10 right-1/4 w-[500px] h-[500px] ambient-glow-2 pointer-events-none z-0"></div>
+    <div class="absolute top-0 left-1/4 w-[700px] h-[700px] glow-cyan pointer-events-none z-0"></div>
+    <div class="absolute bottom-0 right-1/4 w-[600px] h-[600px] glow-red pointer-events-none z-0"></div>
 
-    <!-- MENÚ -->
-    <nav class="w-full bg-[#050811]/90 backdrop-blur-xl border-b border-slate-900 px-6 py-4 flex justify-between items-center relative z-10">
-        <div class="font-extrabold text-2xl tracking-wider text-cyan-400">MED<span class="text-white">MUSEUM</span></div>
-        <span class="text-[10px] font-mono text-slate-500 tracking-widest border border-slate-800 px-3 py-1 rounded-md">RECEPCIÓN DE URGENCIAS</span>
+    <!-- NAVBAR ACADÉMICA -->
+    <nav class="w-full bg-[#030712]/90 backdrop-blur-2xl border-b border-slate-900 px-8 py-5 flex justify-between items-center relative z-10">
+        <div class="flex items-center gap-3">
+            <div class="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
+            <div class="font-extrabold text-2xl tracking-wider text-cyan-400 font-mono">MED<span class="text-white">MUSEUM</span></div>
+        </div>
+        <div class="text-[10px] font-mono text-cyan-500 bg-cyan-950/40 border border-cyan-800/50 px-3 py-1.5 rounded-md tracking-widest">
+            EDICIÓN ACADÉMICA AVANZADA • 2026
+        </div>
     </nav>
 
-    <!-- FACHADA PRINCIPAL -->
-    <header class="text-center px-4 pt-16 pb-12 relative z-10 flex flex-col items-center">
-        <span class="text-xs font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/60 px-4 py-2 rounded-full border border-cyan-800/60 mb-6">Exhibición Crítica e Instructiva de Emergencias</span>
-        <h1 class="text-5xl md:text-8xl font-extrabold mb-4 tracking-tight leading-none">Pabellón de <br><span class="text-cyan-400 neon-blue">Urgencias Médicas</span></h1>
-        <p class="text-gray-400 max-w-3xl text-sm md:text-base mb-8 leading-relaxed font-light">Un entorno diseñado para dominar las maniobras de Soporte Vital Básico y el protocolo de desobstrucción OVACE. Explore la síntesis y active los pabellones avanzados de profundidad.</p>
+    <!-- FACHADA CIENTÍFICA -->
+    <header class="max-w-6xl mx-auto px-6 text-center pt-16 pb-12 relative z-10 flex flex-col items-center">
+        <span class="text-xs font-mono font-bold tracking-widest text-cyan-400 uppercase bg-cyan-950/50 px-4 py-2 rounded-lg border border-cyan-800/40 mb-6">
+            🔬 Plataforma de Especialización en Soporte Vital e Intervención de Emergencia
+        </span>
+        <h1 class="text-5xl md:text-8xl font-black mb-6 tracking-tight leading-none text-white">
+            Pabellón de <br><span class="text-cyan-400 neon-title">Urgencias Médicas</span>
+        </h1>
+        <p class="text-slate-400 max-w-4xl text-sm md:text-base mb-10 leading-relaxed font-light">
+            Bienvenido al entorno de simulación anatómica y protocolar de alta fidelidad. Este espacio ha sido estructurado bajo los lineamientos de la ciencia de la reanimación internacional, desglosando la biomecánica circulatoria y la dinámica de fluidos respiratorios en situaciones de colapso agudo.
+        </p>
         
-        <!-- Monitor Crítico Fijo en Vestíbulo -->
-        <div class="bg-slate-950/90 border-2 border-red-950 p-5 rounded-2xl max-w-lg shadow-2xl backdrop-blur mb-6">
-            <p class="text-[10px] text-red-400 uppercase font-mono tracking-widest font-bold">⏱️ MONITOR DE DEGRADACIÓN ISQUÉMICA</p>
-            <div class="text-4xl font-mono text-red-500 font-bold my-1 tracking-widest" id="timer-cerebral">04:00.00</div>
-            <p class="text-[11px] text-gray-500 leading-relaxed">Sin RCP, las neuronas de la corteza cerebral sufren daños irreversibles tras 240 segundos de isquemia total.</p>
+        <!-- Monitor Clínico Multivariable -->
+        <div class="bg-slate-950 border-2 border-red-900/60 p-6 rounded-3xl max-w-2xl w-full shadow-2xl backdrop-blur relative overflow-hidden mb-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <div class="absolute top-0 right-0 bg-red-900/20 text-red-400 font-mono text-[9px] px-3 py-1 uppercase rounded-bl">Isquemia Crítica</div>
+            <div class="md:col-span-2 border-b md:border-b-0 md:border-r border-slate-900 pb-4 md:pb-0 md:pr-4">
+                <p class="text-[10px] text-red-400 uppercase font-mono tracking-widest font-bold flex items-center gap-1">⏱️ Reloj de Viabilidad Encefálica</p>
+                <div class="text-4xl font-mono text-red-500 font-bold my-2 tracking-widest" id="timer-cerebral">04:00.00</div>
+                <p class="text-[11px] text-slate-500 leading-relaxed">Las reservas corporales de oxígeno disuelto se agotan por completo a los 240 segundos de asistolia. La depleción de ATP celular desencadena la apoptosis neuronal irreversible.</p>
+            </div>
+            <div class="flex flex-col justify-center space-y-2 font-mono text-[10px]">
+                <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><span class="text-slate-500">MORTALIDAD / MIN:</span> <span class="text-red-400 font-bold">+10%</span></div>
+                <div class="bg-slate-900 p-2 rounded-lg border border-slate-800"><span class="text-slate-500">FLUJO CEREBRAL:</span> <span class="text-cyan-400 font-bold">0% BASAL</span></div>
+            </div>
         </div>
 
-        <a href="svb.html" class="bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 text-white font-extrabold px-12 py-5 rounded-2xl shadow-xl shadow-cyan-500/20 hover:scale-105 transition-all duration-300 tracking-wider uppercase text-xs">
-            Cruzar Puertas e Iniciar Recorrido Completo 🏛️
+        <!-- GRAN BOTÓN ACCESO -->
+        <a href="svb.html" class="bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 text-white font-extrabold px-16 py-6 rounded-2xl shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300 tracking-widest uppercase text-xs border border-cyan-400/30">
+            Cruzar Umbral e Iniciar Recorrido Completo 🏛️
         </a>
     </header>
 
-    <!-- VISTA RÁPIDA DE LOS DOS GRANDES TEMAS (El gancho visual del vestíbulo) -->
-    <section class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6 pb-16 relative z-10 w-full">
-        <div class="bg-slate-950/70 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
-            <div class="flex justify-between items-center mb-3">
-                <span class="text-cyan-400 text-xs font-mono font-bold">ALA NORTE // BLOQUE 01</span>
-                <span class="text-xs bg-cyan-500/10 text-cyan-400 px-2 py-1 rounded border border-cyan-500/20">100-120 lpm</span>
+    <!-- DATOS EPIDEMIOLÓGICOS Y SÍNTESIS DEL VESTÍBULO -->
+    <section class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 pb-20 relative z-10 w-full">
+        
+        <!-- Bloque SVB Informativo -->
+        <div class="bg-slate-950/80 border border-slate-900 p-8 rounded-3xl relative overflow-hidden group hover:border-cyan-500/30 transition-all">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-cyan-500/5 rounded-bl-full pointer-events-none"></div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-cyan-500 text-xs font-mono font-bold tracking-widest">SALA NORTE • CORPUS I</span>
+                <span class="text-[10px] bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded font-mono border border-cyan-500/20">AHA 2026 COMPLIANT</span>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">Soporte Vital Básico (SVB)</h3>
-            <p class="text-xs text-gray-400 leading-relaxed font-light">Estudio y simulación del bombeo mecánico artificial del miocardio mediante compresiones externas de alta calidad.</p>
+            <h3 class="text-xl font-bold text-white mb-3">Soporte Vital Básico (SVB)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed font-light mb-6">
+                Estudio crítico de la reanimación cardiopulmonar (RCP). Comprensión sistémica del miocardio como bomba hidromecánica rudimentaria y sustitución del automatismo cardíaco mediante fuerzas compresivas externas indexadas.
+            </p>
+            <div class="grid grid-cols-2 gap-4 border-t border-slate-900 pt-4 font-mono text-[11px]">
+                <div><span class="text-slate-500 block">Vía de Acceso:</span> Esternal Inferior</div>
+                <div><span class="text-slate-500 block">Frecuencia Target:</span> 100 - 120 bpm</div>
+            </div>
         </div>
 
-        <div class="bg-slate-950/70 border border-slate-900 p-6 rounded-2xl backdrop-blur-md">
-            <div class="flex justify-between items-center mb-3">
-                <span class="text-red-400 text-xs font-mono font-bold">ALA SUR // BLOQUE 02</span>
-                <span class="text-xs bg-red-500/10 text-red-400 px-2 py-1 rounded border border-red-500/20">Maniobra en J</span>
+        <!-- Bloque OVACE Informativo -->
+        <div class="bg-slate-950/80 border border-slate-900 p-8 rounded-3xl relative overflow-hidden group hover:border-red-500/30 transition-all">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-red-500/5 rounded-bl-full pointer-events-none"></div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-red-500 text-xs font-mono font-bold tracking-widest">SALA SUR • CORPUS II</span>
+                <span class="text-[10px] bg-red-500/10 text-red-400 px-2.5 py-1 rounded font-mono border border-red-500/20">DINÁMICA DE NEUMÁTICOS</span>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">Asfixia por Atragantamiento (OVACE)</h3>
-            <p class="text-xs text-gray-400 leading-relaxed font-light">Resolución mecánica del colapso de la vía aérea por cuerpos extraños mediante el incremento drástico de la presión intratorácica.</p>
+            <h3 class="text-xl font-bold text-white mb-3">Obstrucción de Vía Aérea (OVACE)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed font-light mb-6">
+                Análisis patológico del colapso de la luz del árbol respiratorio por cuerpos extraños. Mecánica forense y clínica aplicada para la generación forzada de gradientes de presión intratorácica mediante vectores de tracción subdiafragmáticos.
+            </p>
+            <div class="grid grid-cols-2 gap-4 border-t border-slate-900 pt-4 font-mono text-[11px]">
+                <div><span class="text-slate-500 block">Fisiopatología:</span> Hipoxia Obstructiva</div>
+                <div><span class="text-slate-500 block">Maniobra Clave:</span> Compresión en J</div>
+            </div>
         </div>
+
     </section>
 
-    <footer class="border-t border-slate-900 py-6 text-center text-[10px] text-gray-600 font-mono relative z-10">
-        &copy; 2026 PABELLÓN DE EMERGENCIAS MÉDICAS VIRTUAL • UNIVERSIDAD CENTRAL DEL ECUADOR
+    <footer class="border-t border-slate-900 py-6 text-center text-[10px] text-slate-600 font-mono relative z-10 bg-[#030712]">
+        © 2026 PLATAFORMA AVANZADA DE SIMULACIÓN MÉDICA VIRTUAL • TODOS LOS DERECHOS RESERVADOS
     </footer>
 
     <script>
